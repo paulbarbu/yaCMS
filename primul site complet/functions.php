@@ -19,10 +19,15 @@ function render($template, $vars = NULL){
  * this function will build an HTMl menu based on the array received as 
  * parameter and will return it as a string
  */
-function build_menu_from_pages($pages){
+function build_menu_from_pages($pages, $currentPage){
 	$menu = '<ul>';
 	foreach($pages as $pageName => $metaData){
-		$menu .= '<li><a href="?show=' .$pageName. '">' .$metaData['title']. '</a></li>' .PHP_EOL;
+		if($pageName == $currentPage){
+			$menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
+		}
+		else{
+			$menu .= '<li><a href="?show=' .$pageName. '">' .$metaData['title']. '</a></li>' .PHP_EOL;
+		}
 	}
 	$menu .= '</ul>' .PHP_EOL;
 	

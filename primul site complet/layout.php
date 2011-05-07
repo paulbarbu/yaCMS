@@ -37,7 +37,7 @@
 <body>
 	<div id="menu">
 		<h3>Menu here</h3>
-		<p><?php echo build_menu_from_pages($pages)?></p>
+		<p><?php echo build_menu_from_pages($pages, $page)?></p>
 	</div>
 	
 	<div id="content">
