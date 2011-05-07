@@ -17,8 +17,6 @@
 }
 
 #menu{
-	text-align: center;
-
 	width: 10%;
 	
 	float: left;
@@ -37,7 +35,7 @@
 <body>
 	<div id="menu">
 		<h3>Menu here</h3>
-		<p><?php echo build_menu_from_pages($pages, $page)?></p>
+		<?php echo build_menu_from_pages($pages, $page)?>
 	</div>
 	
 	<div id="content">

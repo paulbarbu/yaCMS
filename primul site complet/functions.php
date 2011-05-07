@@ -20,7 +20,7 @@ function render($template, $vars = NULL){
  * parameter and will return it as a string
  */
 function build_menu_from_pages($pages, $currentPage){
-	$menu = '<ul>';
+	$menu = '<ul>' .PHP_EOL;
 	foreach($pages as $pageName => $metaData){
 		if($pageName != 'notfound'){
 			if($pageName == $currentPage){
