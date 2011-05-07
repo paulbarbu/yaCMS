@@ -1,7 +1,7 @@
 <?php
 return array(
 	'home' => array(
-		'title' => 'Welcome!',
+		'title' => 'Home',
 		'content' => 'home.php'
 	),
 	'about' => array(
