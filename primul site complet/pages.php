@@ -7,5 +7,9 @@ return array(
 	'about' => array(
 		'title' => 'About me',
 		'content' => 'about.php'
+	),
+	'notfound' => array(
+		'title' => 'Inexistent page',
+		'content' => 'notfound.php'
 	)
 );

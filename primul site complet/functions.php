@@ -22,11 +22,13 @@ function render($template, $vars = NULL){
 function build_menu_from_pages($pages, $currentPage){
 	$menu = '<ul>';
 	foreach($pages as $pageName => $metaData){
-		if($pageName == $currentPage){
-			$menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
-		}
-		else{
-			$menu .= '<li><a href="?show=' .$pageName. '">' .$metaData['title']. '</a></li>' .PHP_EOL;
+		if($pageName != 'notfound'){
+			if($pageName == $currentPage){
+				$menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
+			}
+			else{
+				$menu .= '<li><a href="?show=' .$pageName. '">' .$metaData['title']. '</a></li>' .PHP_EOL;
+			}
 		}
 	}
 	$menu .= '</ul>' .PHP_EOL;
