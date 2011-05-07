@@ -11,5 +11,9 @@ return array(
 	'notfound' => array(
 		'title' => 'Inexistent page',
 		'content' => 'notfound.php'
+	),
+	'user' => array(
+		'title' => 'About you',
+		'content' => 'user.php'
 	)
 );
