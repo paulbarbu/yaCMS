@@ -1,33 +1,7 @@
 <html>
 <head>
-<style>
-#content{
-	text-align: left;
-	
-	width: 90%;
-	
-	position: relative;
-	left:10.1%;
-	
-	border: #FBF9E2;
-	border-style: solid;
-	border-width: 1px;
-	
-	background-color: #FBF9E2;
-}
 
-#menu{
-	width: 10%;
-	
-	float: left;
-	
-	border: #E6E6FA;
-	border-style: solid;
-	border-width: 1px;
-	
-	background-color: #E6E6FA;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 
 <title><?php echo $pages[$page]['title'];?></title>
 
