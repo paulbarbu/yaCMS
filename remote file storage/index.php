@@ -4,7 +4,7 @@ require_once '.' . DIRECTORY_SEPARATOR . 'functions.php';
 require_once '.' . DIRECTORY_SEPARATOR . 'const.php';
 
 $result = NULL;
-$baseDir = __DIR__;
+const BASE_DIR = __DIR__;
 
 if(isset($_POST['upload'])){
 	$result = require '.' . DIRECTORY_SEPARATOR . 'upload.php';

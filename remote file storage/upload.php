@@ -13,7 +13,7 @@
  
 //create short variables
 $file = $_FILES['file'];
-$uploadDir = $baseDir . DIRECTORY_SEPARATOR . 'uploads';
+$uploadDir = BASE_DIR . DIRECTORY_SEPARATOR . 'uploads';
 
 if($file['error'] == UPLOAD_ERR_OK){ // if the upload went ok
 
