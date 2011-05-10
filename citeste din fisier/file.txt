@@ -1,0 +1,3 @@
+a file        full of
+Text and    with MANY
+spaces and \n's
