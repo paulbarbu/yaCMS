@@ -1,10 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-<title>Remote file storage</title>
-</head>
-<body>
 <form enctype="multipart/form-data" action="" method="post" >
 	<input type="hidden" name="MAX_FILE_SIZE" value="
 		<?php require_once '.' . DIRECTORY_SEPARATOR . 'functions.php';
@@ -17,5 +10,15 @@
 		
 	<input type="submit" name="upload" value="Upload" /> 
 </form>
-</body>
-</html>
+<?php
+require_once '.' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . $pages[$page]['constants'];
+
+if(isset($_POST['upload'])){
+    require 'upload.php';
+}
+
+if(isset($result)){
+	echo '<h3>' , $result , '</h3>';
+}
+
+?>

@@ -14,6 +14,7 @@
 //create short variables
 $file = $_FILES['file'];
 $uploadDir = BASE_DIR . DIRECTORY_SEPARATOR . 'uploads';
+$result = NULL;
 
 if($file['error'] == UPLOAD_ERR_OK){ // if the upload went ok
 
@@ -24,47 +25,47 @@ if($file['error'] == UPLOAD_ERR_OK){ // if the upload went ok
 			if(!is_dir($uploadDir)){ // create the directory if its inexistent
 				$created = mkdir($uploadDir);
 				if(!$created){
-					return ERR_CREATE_DIR . $_POST['secret'];
+					$result = ERR_CREATE_DIR . $_POST['secret'];
 				}
 			}
 			
 			$moved = move_uploaded_file($file['tmp_name'], $uploadDir . DIRECTORY_SEPARATOR . $file['name']);
 			
 			if(!$moved){
-				return ERR_MOVE;
+				$result = ERR_MOVE;
 			}
 			else{
-				return SUCCESS;
+				$result = SUCCESS;
 			}
 		}
 		else{
-			return ERR_SECRET;
+			$result = ERR_SECRET;
 		}
 	}
 	else{
-		return ERR_NOT_UPLOADED;
+		$result = ERR_NOT_UPLOADED;
 	}
 }
 else{ //if something went wrong
 	switch($file['error']){
 		case UPLOAD_ERR_INI_SIZE:  //break omitted intentionally
 		case UPLOAD_ERR_FORM_SIZE:
-			return ERR_SIZE;
+			$result = ERR_SIZE;
 			break;
 		case UPLOAD_ERR_PARTIAL:
-			return ERR_PARTIAL;
+			$result = ERR_PARTIAL;
 			break;
 		case UPLOAD_ERR_NO_FILE:
-			return ERR_NO_FILE;
+			$result = ERR_NO_FILE;
 			break;
 		case UPLOAD_ERR_NO_TMP_DIR:
-			return ERR_NO_TMP;
+			$result = ERR_NO_TMP;
 			break;
 		case UPLOAD_ERR_CANT_WRITE:
-			return ERR_NO_WRITE;
+			$result = ERR_NO_WRITE;
 			break;
 		case UPLOAD_ERR_EXTENSION:
-			return ERR_EXT;
+			$result = ERR_EXT;
 			break;
 		default:
 	}

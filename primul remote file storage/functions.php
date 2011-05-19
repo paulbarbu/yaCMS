@@ -36,3 +36,26 @@ function render($template, $vars = NULL){
 	}
 	require $template;
 }
+
+/**
+ * string build_menu_from_pages(array $pages, string $currentPage)
+ *
+ * this function will build an HTMl menu based on the array received as 
+ * parameter and will return it as a string
+ */
+function build_menu_from_pages($pages, $currentPage){
+	$menu = '<ul>' .PHP_EOL;
+	foreach($pages as $pageName => $metaData){
+		if($pageName != 'notfound'){
+			if($pageName == $currentPage){
+				$menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
+			}
+			else{
+				$menu .= '<li><a href="?show=' .$pageName. '">' .$metaData['title']. '</a></li>' .PHP_EOL;
+			}
+		}
+	}
+	$menu .= '</ul>' .PHP_EOL;
+	
+	return $menu;
+}
