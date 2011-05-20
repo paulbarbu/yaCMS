@@ -17,4 +17,10 @@ else{
 	$page = 'home';
 }
 
+if(isset($pages[$page]['preprocess'])){
+    foreach($pages[$page]['preprocess'] as $preprocessFile){
+        include $preprocessFile;
+    }
+}
+
 render('layout.php', compact('page', 'pages'));
