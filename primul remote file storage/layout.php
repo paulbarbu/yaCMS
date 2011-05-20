@@ -14,7 +14,7 @@
 	
 	<div id="content">
         <h3><?php echo $pages[$page]['title'];?></h3>
-		<p><?php include __DIR__ . '/pages/' . $pages[$page]['content'];?></p>
+		<p><?php include BASE_DIR . '/pages/' . $pages[$page]['content'];?></p>
 	</div>
 </body>
 </html>
