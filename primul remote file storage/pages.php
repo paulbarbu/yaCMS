@@ -2,7 +2,7 @@
 return array(
 	'home' => array(
 		'title' => 'Home',
-		'content' => 'home.php'
+		'content' => 'home.php',
 	),
 	'upload' => array(
 		'title' => 'Upload',
@@ -12,6 +12,6 @@ return array(
 	),
 	'notfound' => array(
 		'title' => 'Inexistent page',
-		'content' => 'notfound.php'
+		'content' => 'notfound.php',
 	),
 );
