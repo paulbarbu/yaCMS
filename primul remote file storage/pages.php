@@ -7,8 +7,10 @@ return array(
 	'upload' => array(
 		'title' => 'Upload',
         'content' => 'upload_content.php',
-        'script' => 'upload.php',
-        'constants' => 'upload_const.php',
+        'preprocess' => array(
+            'upload_const.php',
+            'upload.php',
+        ), 
 	),
 	'notfound' => array(
 		'title' => 'Inexistent page',
