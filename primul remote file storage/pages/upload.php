@@ -12,11 +12,12 @@
  */
  
 //create short variables
-$file = $_FILES['file'];
 $uploadDir = BASE_DIR . DIRECTORY_SEPARATOR . 'uploads';
 $result = NULL;
 
 if(isset($_POST['upload'])){
+    $file = $_FILES['file'];
+
     if($file['error'] == UPLOAD_ERR_OK){ // if the upload went ok
 
         if(is_uploaded_file($file['tmp_name'])){ // if the file is legitim(uploaded by POST method)
@@ -72,3 +73,4 @@ if(isset($_POST['upload'])){
         }
     }
 }
+var_dump($result);

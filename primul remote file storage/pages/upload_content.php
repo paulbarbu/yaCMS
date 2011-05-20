@@ -10,13 +10,8 @@
 	<input type="submit" name="upload" value="Upload" /> 
 </form>
 <?php
-require_once '.' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . $pages[$page]['constants'];
 
-if(isset($_POST['upload'])){
-    require 'upload.php';
-}
-
-if(isset($result)){
+if($result != NULL){
 	echo '<h3>' , $result , '</h3>';
 }
 

@@ -19,7 +19,7 @@ else{
 
 if(isset($pages[$page]['preprocess'])){
     foreach($pages[$page]['preprocess'] as $preprocessFile){
-        include $preprocessFile;
+        require BASE_DIR . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . $preprocessFile;
     }
 }
 

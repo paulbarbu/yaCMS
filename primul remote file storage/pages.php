@@ -5,7 +5,7 @@ return array(
 		'content' => 'home.php',
 	),
 	'upload' => array(
-		'title' => 'Upload',
+	    'title' => 'Upload',
         'content' => 'upload_content.php',
         'preprocess' => array(
             'upload_const.php',
