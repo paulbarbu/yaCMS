@@ -6,7 +6,7 @@ return array(
 	),
 	'upload' => array(
 		'title' => 'Upload',
-        'content' => 'upload_layout.php',
+        'content' => 'upload_content.php',
         'script' => 'upload.php',
         'constants' => 'upload_const.php',
 	),
