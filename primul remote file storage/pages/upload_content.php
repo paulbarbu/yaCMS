@@ -11,8 +11,8 @@
 </form>
 <?php
 
-if($result != NULL){
-	echo '<h3>' , $result , '</h3>';
+if($feedback['upload'] != NULL){
+	echo '<h3>' , $feedback['upload'] , '</h3>';
 }
 
 ?>
