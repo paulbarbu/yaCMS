@@ -8,8 +8,8 @@ return array(
 	    'title' => 'Upload',
         'content' => 'upload_content.php',
         'preprocess' => array(
-            'upload_const.php',
-            'upload.php',
+            'upload_const' => 'upload_const.php',
+            'upload' => 'upload.php',
         ), 
 	),
 	'notfound' => array(
