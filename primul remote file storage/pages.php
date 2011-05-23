@@ -6,11 +6,11 @@ return array(
 	),
 	'upload' => array(
 	    'title' => 'Upload',
-        'content' => 'upload_content.php',
-        'preprocess' => array(
-            'upload_const' => 'upload_const.php',
-            'upload' => 'upload.php',
-        ), 
+            'content' => 'upload_content.php',
+            'preprocess' => array(
+            	'upload_const' => 'upload_const.php',
+            	'upload' => 'upload.php',
+            ), 
 	),
 	'notfound' => array(
 		'title' => 'Inexistent page',
