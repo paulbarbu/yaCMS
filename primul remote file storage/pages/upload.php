@@ -73,5 +73,5 @@ if(isset($_POST['upload'])){
         }
     }
 }
-var_dump($result);
+
 return $result;

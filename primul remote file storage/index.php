@@ -23,7 +23,5 @@ if(isset($pages[$page]['preprocess'])){
         $feedback[$preprocessName] = require BASE_DIR . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . $preprocessFile;
     }
 }
-echo '<pre>';
-var_dump(compact('page', 'feedback', 'pages'));
-echo '</pre>';
+
 render('layout.php', compact('page', 'feedback', 'pages'));
