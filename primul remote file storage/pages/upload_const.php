@@ -1,7 +1,7 @@
 <?php
 /**
- * in this file are stored constants
- * for file error constants go to: 
+ * in this file are stored constants related to the upload.php script
+ * for details go to: 
  * 		http://www.php.net/manual/en/features.file-upload.errors.php
  */
  
