@@ -15,5 +15,13 @@ return array(
 	'notfound' => array(
 		'title' => 'Inexistent page',
 		'content' => 'notfound.php',
-	),
+    ),
+    'text' => array(
+        'title' => 'Edit your text',
+        'content' => 'text_content.php',
+        'preprocess' => array(
+            'text_const' => 'text_const.php',
+            'text' => 'text.php',
+        ),
+    ),
 );
