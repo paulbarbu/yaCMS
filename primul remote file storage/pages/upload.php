@@ -27,47 +27,47 @@ if(isset($_POST['upload'])){
                 if(!is_dir($uploadDir)){ // create the directory if its inexistent
                     $created = mkdir($uploadDir);
                     if(!$created){
-                        $result = ERR_CREATE_DIR . $_POST['secret'];
+                        return ERR_CREATE_DIR . $_POST['secret'];
                     }
                 }
                 
                 $moved = move_uploaded_file($file['tmp_name'], $uploadDir . DIRECTORY_SEPARATOR . $file['name']);
 
                 if(!$moved){
-                    $result = ERR_MOVE;
+                    return ERR_MOVE;
                 }
                 else{
                     $result = SUCCESS;
                 }
             }
             else{
-                $result = ERR_SECRET;
+                return ERR_SECRET;
             }
         }
         else{
-            $result = ERR_NOT_UPLOADED;
+            return ERR_NOT_UPLOADED;
         }
     }
     else{ //if something went wrong
         switch($file['error']){
             case UPLOAD_ERR_INI_SIZE:  //break omitted intentionally
             case UPLOAD_ERR_FORM_SIZE:
-                $result = ERR_SIZE;
+                return ERR_SIZE;
                 break;
             case UPLOAD_ERR_PARTIAL:
-                $result = ERR_PARTIAL;
+                return ERR_PARTIAL;
                 break;
             case UPLOAD_ERR_NO_FILE:
-                $result = ERR_NO_FILE;
+                return ERR_NO_FILE;
                 break;
             case UPLOAD_ERR_NO_TMP_DIR:
-                $result = ERR_NO_TMP;
+                return ERR_NO_TMP;
                 break;
             case UPLOAD_ERR_CANT_WRITE:
-                $result = ERR_NO_WRITE;
+                return ERR_NO_WRITE;
                 break;
             case UPLOAD_ERR_EXTENSION:
-                $result = ERR_EXT;
+                return ERR_EXT;
                 break;
             default:
         }
