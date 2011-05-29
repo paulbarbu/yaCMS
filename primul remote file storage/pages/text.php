@@ -61,7 +61,7 @@ if(isset($_POST['edit'])){
         }
         
         $name = substr(strrchr($file, DIRECTORY_SEPARATOR), 1);
-        $result['msg'] = '<i>' . $name . '</i> successfully updated!';
+        $result['msg'] = $name;
     }
    
 }
