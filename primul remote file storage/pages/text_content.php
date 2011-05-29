@@ -14,7 +14,7 @@ elseif(NULL != $feedback['text']['files']){
     echo '<input type="hidden" name="sec" value="' , $feedback['text']['msg'] , '" />';
 }
 else{
-    echo '<label for="id-s">Passphrase</label><input type="text" name="secret" id="id-s" />';
+    echo '<label for="id-s">Passphrase</label><input type="password" name="secret" id="id-s" />';
 }
 ?>
 <input type="submit" value="Edit" name="edit" />
