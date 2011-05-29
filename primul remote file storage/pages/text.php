@@ -9,11 +9,12 @@
  *
  * PATH - string containing the path for list_text_files() to look in
  * $file - the file selected to be edited
+ * $text - string that holds the contents of the file
  */
 
 $result = array(
     'files' => NULL,
-    'text' => NULL,
+    'contents' => NULL,
     'msg' => NULL,
 );
 
@@ -27,16 +28,30 @@ if(isset($_POST['edit'])){
             $result['msg'] = $secret;
         }
         else{ //passphrase incorrect(inexistent directory)
-            return 2;
+            return 1;
         }
     }
     elseif(isset($_POST['filelist'])){
         $file = PATH . DIRECTORY_SEPARATOR . $_POST['sec'] . DIRECTORY_SEPARATOR . $_POST['filelist'];
-        var_dump($file);
+
+        $text = file_get_contents($file);
+        if(FALSE == $text){
+            return 2;
+        }
+
+        $result['contents'] = $text;
+        $result['msg'] = DIRECTORY_SEPARATOR . $_POST['sec'] . DIRECTORY_SEPARATOR . $_POST['filelist'];
     }
-    else{ //radio box empty
-        //modify the file
-        //return message
+    elseif(isset($_POST['contents'])){
+        $file = PATH . $_POST['file'];
+
+        $check = file_put_contents($file, $_POST['contents']);
+        if(FALSE === $check){
+            return 3;
+        }
+        
+        $name = substr(strrchr($file, DIRECTORY_SEPARATOR), 1);
+        $result['msg'] = '<i>' . $name . '</i> successfully updated!';
     }
    
 }
