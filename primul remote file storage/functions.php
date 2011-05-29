@@ -2,7 +2,7 @@
 /**
  * int return_bytes( string $val)
  * 
- * this function is used to converd a shorthand notation like 2M in bytes
+ * this function is used to converd a shorthand notation like 2M in bytes 
  * please visit: http://www.php.net/manual/en/function.ini-get.php
  */
 function return_bytes($val) {
@@ -51,7 +51,8 @@ function build_menu_from_pages($pages, $currentPage){
 				$menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
 			}
 			else{
-				$menu .= '<li><a href="?show=' .$pageName. '">' .$metaData['title']. '</a></li>' .PHP_EOL;
+                $menu .= '<li><a href="?show=' . $pageName . '">' 
+                    . $metaData['title'] . '</a></li>' . PHP_EOL;
 			}
 		}
 	}
@@ -67,8 +68,8 @@ function build_menu_from_pages($pages, $currentPage){
  * searches recursively in the path provided by the only parameter the files 
  * which have the MIME type set to 'text/plain'
  *
- * returns an array containing the secret name of the directory as key and the path to the 
- * file as the value
+ * returns an array containing the secret name of the directory as key and the
+ * path to the file as the value
  */
 function list_text_files($path){
     $files = array();
@@ -93,5 +94,5 @@ function list_text_files($path){
         
         closedir($d);
     }
-	return $files;	
+    return $files;	
 }
