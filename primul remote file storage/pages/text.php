@@ -24,7 +24,8 @@ if(isset($_POST['edit'])){
         $secret = $_POST['secret'];
 
         if(is_dir(PATH . DIRECTORY_SEPARATOR . $secret)){
-            $result['files'] = list_text_files(PATH . DIRECTORY_SEPARATOR . $secret);
+            $result['files'] = list_text_files(PATH . DIRECTORY_SEPARATOR
+                . $secret);
             $result['msg'] = $secret;
         }
         else{ //passphrase incorrect(inexistent directory)
@@ -32,7 +33,8 @@ if(isset($_POST['edit'])){
         }
     }
     elseif(isset($_POST['filelist'])){
-        $file = PATH . DIRECTORY_SEPARATOR . $_POST['sec'] . DIRECTORY_SEPARATOR . $_POST['filelist'];
+        $file = PATH . DIRECTORY_SEPARATOR . $_POST['sec'] 
+            . DIRECTORY_SEPARATOR . $_POST['filelist'];
 
         $text = file_get_contents($file);
         if(FALSE == $text){
@@ -40,7 +42,8 @@ if(isset($_POST['edit'])){
         }
 
         $result['contents'] = $text;
-        $result['msg'] = DIRECTORY_SEPARATOR . $_POST['sec'] . DIRECTORY_SEPARATOR . $_POST['filelist'];
+        $result['msg'] = DIRECTORY_SEPARATOR . $_POST['sec'] 
+            . DIRECTORY_SEPARATOR . $_POST['filelist'];
     }
     elseif(isset($_POST['contents'])){
         $file = PATH . $_POST['file'];
