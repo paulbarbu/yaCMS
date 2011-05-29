@@ -1,14 +1,14 @@
 <?php
 /**
  * int return_bytes( string $val)
- * 
- * this function is used to converd a shorthand notation like 2M in bytes 
+ *
+ * this function is used to converd a shorthand notation like 2M in bytes
  * please visit: http://www.php.net/manual/en/function.ini-get.php
  */
 function return_bytes($val) {
 	$val = trim($val);
 	$last = $val[strlen($val)-1];
-	
+
 	switch($last) {
 		case 'g':
 		case 'G':
@@ -25,8 +25,8 @@ function return_bytes($val) {
 
 /**
  * void render(string $template, array $vars = NULL)
- * 
- * this function will take a path as first parameter and 
+ *
+ * this function will take a path as first parameter and
  * an associative array as second, from the array the function will create
  * variables that are necessary for including the file specified by $template
  */
@@ -40,7 +40,7 @@ function render($template, $vars = NULL){
 /**
  * string build_menu_from_pages(array $pages, string $currentPage)
  *
- * this function will build an HTMl menu based on the array received as 
+ * this function will build an HTMl menu based on the array received as
  * parameter and will return it as a string
  */
 function build_menu_from_pages($pages, $currentPage){
@@ -51,13 +51,13 @@ function build_menu_from_pages($pages, $currentPage){
 				$menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
 			}
 			else{
-                $menu .= '<li><a href="?show=' . $pageName . '">' 
+                $menu .= '<li><a href="?show=' . $pageName . '">'
                     . $metaData['title'] . '</a></li>' . PHP_EOL;
 			}
 		}
 	}
 	$menu .= '</ul>' .PHP_EOL;
-	
+
 	return $menu;
 }
 
@@ -65,7 +65,7 @@ function build_menu_from_pages($pages, $currentPage){
  * array list_text_files($path)
  *
  *
- * searches recursively in the path provided by the only parameter the files 
+ * searches recursively in the path provided by the only parameter the files
  * which have the MIME type set to 'text/plain'
  *
  * returns an array containing the secret name of the directory as key and the
@@ -76,7 +76,7 @@ function list_text_files($path){
 
     if(is_dir($path)){
         $d = opendir($path);
-        
+
         while($entry = readdir($d)){
             if("." != $entry && ".." != $entry){
                 if(is_dir($path . DIRECTORY_SEPARATOR . $entry)) {
@@ -91,8 +91,8 @@ function list_text_files($path){
                 }
             }
         }
-        
+
         closedir($d);
     }
-    return $files;	
+    return $files;
 }
