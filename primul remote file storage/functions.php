@@ -79,10 +79,12 @@ function list_text_files($path){
         while($entry = readdir($d)){
             if("." != $entry && ".." != $entry){
                 if(is_dir($path . DIRECTORY_SEPARATOR . $entry)) {
-                    $files =  array_unique(array_merge(list_text_files($path.DIRECTORY_SEPARATOR.$entry), $files));
+                    $files =  array_unique(array_merge(list_text_files(
+                        $path . DIRECTORY_SEPARATOR . $entry), $files));
                 }
                 else{
-                    if('text/plain' == mime_content_type($path . DIRECTORY_SEPARATOR . $entry)){
+                    if('text/plain' == mime_content_type(
+                        $path . DIRECTORY_SEPARATOR . $entry)){
                         $files[] = $entry;
                     }
                 }
