@@ -10,6 +10,15 @@
  * PATH - string containing the path for list_text_files() to look in
  * $file - the file selected to be edited
  * $text - string that holds the contents of the file
+ * $result['files'] - an array containing all the text files from the 'secret'
+ * folder 
+ * $result['content'] - string that holds the content of the chosen file
+ * $result['msg'] - string that holds metadatas about the secret folder, the 
+ * file or the upload itself
+ * ERR_PASS - will be returned when passphrase(secret) is incorrect
+ * ERR_READ - returned when file_get_contents() fails
+ * ERR_WRITE - returned if there is an error on writing the new contents to the 
+ * file
  */
 
 $result = array(
@@ -29,7 +38,7 @@ if(isset($_POST['edit'])){
             $result['msg'] = $secret;
         }
         else{ //passphrase incorrect(inexistent directory)
-            return 1;
+            return ERR_PASS;
         }
     }
     elseif(isset($_POST['filelist'])){
@@ -38,7 +47,7 @@ if(isset($_POST['edit'])){
 
         $text = file_get_contents($file);
         if(FALSE == $text){
-            return 2;
+            return ERR_READ;
         }
 
         $result['contents'] = $text;
@@ -50,7 +59,7 @@ if(isset($_POST['edit'])){
 
         $check = file_put_contents($file, $_POST['contents']);
         if(FALSE === $check){
-            return 3;
+            return ERR_WRITE;
         }
         
         $name = substr(strrchr($file, DIRECTORY_SEPARATOR), 1);
