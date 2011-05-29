@@ -9,7 +9,6 @@
  *
  * PATH - string containing the path for list_text_files() to look in
  * $file - the file selected to be edited
- * $text - string that holds the contents of the file
  * $result['files'] - an array containing all the text files from the 'secret'
  * folder 
  * $result['content'] - string that holds the content of the chosen file
@@ -45,12 +44,11 @@ if(isset($_POST['edit'])){
         $file = PATH . DIRECTORY_SEPARATOR . $_POST['sec'] 
             . DIRECTORY_SEPARATOR . $_POST['filelist'];
 
-        $text = file_get_contents($file);
-        if(FALSE == $text){
+        $result['contents'] = file_get_contents($file);
+        if(FALSE == $result['contents']){
             return ERR_READ;
         }
 
-        $result['contents'] = $text;
         $result['msg'] = DIRECTORY_SEPARATOR . $_POST['sec'] 
             . DIRECTORY_SEPARATOR . $_POST['filelist'];
     }
