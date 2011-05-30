@@ -15,7 +15,15 @@ if(isset($_GET['show'])){
     }
 }
 else{
-	$page = 'home';
+    $page = 'home';
+}
+
+session_start();
+//check cookie here(only if uID not set yet) and set uID
+if(isset($pages[$page]['login'])){
+    if(!isset($_SESSION['uID'])){
+        $page = 'login';
+    }
 }
 
 if(isset($pages[$page]['preprocess'])){
@@ -23,5 +31,7 @@ if(isset($pages[$page]['preprocess'])){
         $feedback[$preprocessName] = require BASE_DIR . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . $preprocessFile;
     }
 }
-
+echo '<pre>';
+var_dump($_SESSION['uID']);
+echo '</pre>';
 render('layout.php', compact('page', 'feedback', 'pages'));
