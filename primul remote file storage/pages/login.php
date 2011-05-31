@@ -1,13 +1,16 @@
 <?php
 /**
  * Login BL
- * This script the verifies the user's credentials and logs him in or rejects
- * him
+ * This script the verifies the user's credentials and logs him in(starts a
+ * session registering his uID) or rejects him
  *
- * $userList - contents of the user.csv file parsed into an array
- * $auth - stores a boolean shpwing if the user is authentified or not
+ * The password must be a directory in uploads/ and the user must be found in
+ * 'users.csv' file into uploads/password_dir
  *
- * TODO: logout, remember, login_header
+ * $userList - contents of the user.csv file parsed line by line into an array
+ * $auth - stores a boolean, if the user is authentified or not
+ *
+ * TODO: remember me
  */
 
 $userList = array();
@@ -36,21 +39,8 @@ if(isset($_POST['go'])){
                     if(FALSE !== $userOK){
                         $auth = TRUE;
 
-                        //$destroyed = session_destroy();
-                        //if($destroyed){
-
-                            //$started = session_start();
-                            //if($started){
-                            session_unset();
-                            $_SESSION['uID'] = $userList[1];
-                            //}
-                            //else{
-                                //return ERR_SESS;
-                            //}
-                        //}
-                        //else{
-                            //return ERR_D_SESS;
-                        //}
+                        $_SESSION = array();
+                        $_SESSION['uID'] = $userList[1];
                     }
                     else{ //inexistent username
                         return ERR_USER;
@@ -68,7 +58,7 @@ if(isset($_POST['go'])){
             return ERR_PASS;
         }
     }
-    else{
+    else{ //empty password field
         return ERR_NO_PASS;
     }
 
