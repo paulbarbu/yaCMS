@@ -19,7 +19,7 @@ else{
 }
 
 session_start();
-//check cookie here(only if uID not set yet) and set uID
+//TODO: check cookie here(only if uID not set yet) and set uID ->part of remember me
 if(isset($pages[$page]['login'])){
     if(!isset($_SESSION['uID'])){
         $page = 'login';
