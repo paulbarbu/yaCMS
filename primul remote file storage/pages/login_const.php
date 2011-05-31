@@ -1,8 +1,10 @@
 <?php
 /**
- * defined constants for the login script
+ * Defined constants for the login script
  */
-define('PATH', BASE_DIR . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR);
+define('PATH', BASE_DIR . DIRECTORY_SEPARATOR . 'uploads'
+    . DIRECTORY_SEPARATOR);
+
 const ERR_USER = 1;
 const ERR_FOPEN_USER = 2;
 const ERR_PASS = 3;
