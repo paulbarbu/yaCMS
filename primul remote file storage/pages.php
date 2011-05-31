@@ -34,4 +34,11 @@ return array(
             'login' => 'login.php',
         ),
     ),
+    'logout' => array(
+        'title' => 'Log out',
+        'content' => 'logout_content.php',
+        'preprocess' => array(
+            'logout' => 'logout.php'
+        ),
+    ),
 );
