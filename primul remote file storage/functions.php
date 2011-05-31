@@ -6,21 +6,21 @@
  * please visit: http://www.php.net/manual/en/function.ini-get.php
  */
 function return_bytes($val) {
-	$val = trim($val);
-	$last = $val[strlen($val)-1];
+    $val = trim($val);
+    $last = $val[strlen($val)-1];
 
-	switch($last) {
-		case 'g':
-		case 'G':
-			$val *= 1024;
-		case 'm':
-		case 'M':
-			$val *= 1024;
-		case 'k':
-		case 'K':
-			$val *= 1024;
-	}
-	return $val;
+    switch($last) {
+        case 'g':
+        case 'G':
+            $val *= 1024;
+        case 'm':
+        case 'M':
+            $val *= 1024;
+        case 'k':
+        case 'K':
+            $val *= 1024;
+    }
+    return $val;
 }
 
 /**
@@ -31,10 +31,10 @@ function return_bytes($val) {
  * variables that are necessary for including the file specified by $template
  */
 function render($template, $vars = NULL){
-	if($vars){
-		extract($vars);
-	}
-	require $template;
+    if($vars){
+        extract($vars);
+    }
+    require $template;
 }
 
 /**
@@ -44,21 +44,21 @@ function render($template, $vars = NULL){
  * parameter and will return it as a string
  */
 function build_menu_from_pages($pages, $currentPage){
-	$menu = '<ul>' .PHP_EOL;
-	foreach($pages as $pageName => $metaData){
-		if($pageName != 'notfound'){
-			if($pageName == $currentPage){
-				$menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
-			}
-			else{
+    $menu = '<ul>' .PHP_EOL;
+    foreach($pages as $pageName => $metaData){
+        if('notfound' != $pageName && 'login' != $pageName && 'logout' != $pageName){
+            if($pageName == $currentPage){
+                $menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
+            }
+            else{
                 $menu .= '<li><a href="?show=' . $pageName . '">'
                     . $metaData['title'] . '</a></li>' . PHP_EOL;
-			}
-		}
-	}
-	$menu .= '</ul>' .PHP_EOL;
+            }
+        }
+    }
+    $menu .= '</ul>' .PHP_EOL;
 
-	return $menu;
+    return $menu;
 }
 
 /**
