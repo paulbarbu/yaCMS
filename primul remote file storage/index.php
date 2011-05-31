@@ -19,7 +19,19 @@ else{
 }
 
 session_start();
-//TODO: check cookie here(only if uID not set yet) and set uID ->part of remember me
+if(!isset($_SESSION['uID'])){
+    if(isset($_COOKIE['autoLogin'])){
+        $_SESSION['uID'] = $_COOKIE['autoLogin'];
+    }
+    elseif(isset($pages[$page]['login'])){
+        /**
+         * if no session is registered and 'remember me' was not checked
+         * and still the page needs authentication
+         */
+        $page = 'login';
+    }
+}
+
 if(isset($pages[$page]['login'])){
     if(!isset($_SESSION['uID'])){
         $page = 'login';
@@ -33,5 +45,6 @@ if(isset($pages[$page]['preprocess'])){
 }
 echo '<pre>';
 var_dump($_SESSION['uID']);
+var_dump($_COOKIE['autoLogin']);
 echo '</pre>';
 render('layout.php', compact('page', 'feedback', 'pages'));
