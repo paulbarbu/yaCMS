@@ -9,8 +9,6 @@
  *
  * $userList - contents of the user.csv file parsed line by line into an array
  * $auth - stores a boolean, if the user is authentified or not
- *
- * TODO: remember me
  */
 
 $userList = array();
@@ -28,7 +26,7 @@ if(isset($_POST['go'])){
                     $user = $_POST['user'];
                     $userOK = FALSE;
 
-                    while(FALSE !== ($userList = fgetcsv($f, 1000))){
+                    while(FALSE !== ($userList = fgetcsv($f, 1000))){;
                         if(FALSE !== $userList && $user == $userList[0]){
                             $userOK = TRUE;
                             break;
@@ -62,7 +60,12 @@ if(isset($_POST['go'])){
         return ERR_NO_PASS;
     }
 
-    if(isset($_POST['r_me'])){
+    if(isset($_POST['r_me']) && $auth){ //create cookie for remembering the session
+        $cookie = setcookie(COOKIE_NAME, $userList[1], time()+60*60*24*30);
+
+        if(!$cookie){
+            return ERR_COOKIE;
+        }
     }
 }
 
