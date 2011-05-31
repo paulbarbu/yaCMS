@@ -1,11 +1,12 @@
 <form action="" method="post">
-<label for="id-u">Username:</label><input type="text" id="id-u" name="user" />
-<br /><label for="id-p">Password:</label><input type="password" id="id-p" name="pass" />
-<br /><input type="checkbox" name="r_me" id="id-r" /><label for="id-r">Remember me</label>
+<label for="id-u">User name:</label><input type="text" id="id-u" name="user" />
+<br /><label for="id-p">Password:</label>
+    <input type="password" id="id-p" name="pass" />
+<br /><input type="checkbox" name="r_me" id="id-r" />
+    <label for="id-r">Remember me</label>
 <br /><input type="submit" name="go" value="Log In" />
 </form>
 <?php
-//check for other errors too
 if(is_numeric($feedback['login'])){
     echo '<h3>';
     switch($feedback['login']){
