@@ -8,16 +8,21 @@
 
 $del_cookie = FALSE;
 $destroy_session = FALSE;
+$destroy_cookie = TRUE;
 
 $_SESSION = array();
 
 if(ini_get("session.use_cookies")){
     $params = session_get_cookie_params();
-    $del_cookie = setcookie(session_name(), '', time() - 42000, $params['path'],
+    $del_sCookie = setcookie(session_name(), '', time() - 42000, $params['path'],
         $params['domain'], $params['secure'], $params['httponly']
     );
 }
 
 $destroy_session = session_destroy();
 
-return $destroy_session & $del_cookie;
+if(isset($_COOKIE['autoLogin'])){
+    $destroy_cookie = setcookie('autoLogin', '', time() - 42000);
+}
+
+return $destroy_session & $del_sCookie & $destroy_cookie;
