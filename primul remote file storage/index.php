@@ -32,10 +32,8 @@ if(!isset($_SESSION['uID'])){
     }
 }
 
-if(isset($pages[$page]['login'])){
-    if(!isset($_SESSION['uID'])){
+if(isset($pages[$page]['login']) && !isset($_SESSION['uID'])){
         $page = 'login';
-    }
 }
 
 if(isset($pages[$page]['preprocess'])){
