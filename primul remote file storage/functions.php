@@ -64,7 +64,6 @@ function build_menu_from_pages($pages, $currentPage){
 /**
  * array list_text_files($path)
  *
- *
  * searches recursively in the path provided by the only parameter the files
  * which have the MIME type set to 'text/plain'
  *
@@ -93,4 +92,31 @@ function list_text_files($path){
         closedir($d);
     }
     return $files;
+}
+
+/**
+ * array csv_search(resource $file_handle, int $column, string $criteria)
+ *
+ * Read line by line the file stored in $file_handle and search on the $column
+ * the $criteria.
+ * The $column is the number of CSV separator + 1, example:
+ * john|31
+ * Here the CSV separator is | and "31" is on the second column, because it is
+ * found after the first separator
+ *
+ * $line represents one line from the CSV file to be checked against $criteria
+ *
+ * Returns the line containing the $criteria as array if $criteria was found otherwise
+ * FALSE
+ */
+function csv_search($fh, $column, $criteria){
+    $line = array();
+
+    while(FALSE !== ($line = fgetcsv($fh, 1000))){
+        if($criteria == $line[$column]){
+            return $line;
+        }
+    }
+
+    return FALSE;
 }
