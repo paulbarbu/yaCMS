@@ -25,17 +25,12 @@ if(isset($_POST['go'])){
 
                 if(isset($_POST['user']) && !empty($_POST['user'])){
                     $user = $_POST['user'];
-                    $userOK = FALSE;
 
-                    while(FALSE !== ($currentUser = fgetcsv($f, 1000))){
-                        if(FALSE !== $currentUser && $user == $currentUser[0]){
-                            $userOK = TRUE;
-                            break;
-                        }
-                    }
+                    $currentUser = csv_search($f, 0, $user);
+
                     fclose($f);
 
-                    if(FALSE !== $userOK){
+                    if(FALSE !== $currentUser){
                         $auth = TRUE;
 
                         $_SESSION = array();
