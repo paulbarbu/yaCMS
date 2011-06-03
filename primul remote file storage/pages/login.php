@@ -27,7 +27,7 @@ if(isset($_POST['go'])){
                     $user = $_POST['user'];
                     $userOK = FALSE;
 
-                    while(FALSE !== ($currentUser = fgetcsv($f, 1000))){;
+                    while(FALSE !== ($currentUser = fgetcsv($f, 1000))){
                         if(FALSE !== $currentUser && $user == $currentUser[0]){
                             $userOK = TRUE;
                             break;
