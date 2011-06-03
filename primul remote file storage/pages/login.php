@@ -7,11 +7,12 @@
  * The password must be a directory in uploads/ and the user must be found in
  * 'users.csv' file into uploads/password_dir
  *
- * $userList - contents of the user.csv file parsed line by line into an array
+ * $currentUser - array of two strings containing the credentials(username and
+ * the ID) of the logged in user
  * $auth - stores a boolean, if the user is authentified or not
  */
 
-$userList = array();
+$currentUser = array();
 $auth = FALSE;
 
 if(isset($_POST['go'])){
@@ -26,8 +27,8 @@ if(isset($_POST['go'])){
                     $user = $_POST['user'];
                     $userOK = FALSE;
 
-                    while(FALSE !== ($userList = fgetcsv($f, 1000))){;
-                        if(FALSE !== $userList && $user == $userList[0]){
+                    while(FALSE !== ($currentUser = fgetcsv($f, 1000))){;
+                        if(FALSE !== $currentUser && $user == $currentUser[0]){
                             $userOK = TRUE;
                             break;
                         }
@@ -38,7 +39,7 @@ if(isset($_POST['go'])){
                         $auth = TRUE;
 
                         $_SESSION = array();
-                        $_SESSION['uID'] = $userList[1];
+                        $_SESSION['uID'] = $currentUser[1];
                     }
                     else{ //inexistent username
                         return ERR_USER;
@@ -61,7 +62,7 @@ if(isset($_POST['go'])){
     }
 
     if(isset($_POST['r_me']) && $auth){ //create cookie for remembering the session
-        $cookie = setcookie(COOKIE_NAME, $userList[1], time()+60*60*24*30);
+        $cookie = setcookie(COOKIE_NAME, $currentUser[1], time()+60*60*24*30);
 
         if(!$cookie){
             return ERR_COOKIE;
