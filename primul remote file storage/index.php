@@ -19,21 +19,15 @@ else{
 }
 
 session_start();
-if(!isset($_SESSION['uID'])){
-    if(isset($_COOKIE[session_name()]) && is_numeric($_COOKIE[session_name()])){
+if(!isset($_SESSION['uID']) && isset($_COOKIE[session_name()]) && is_numeric($_COOKIE[session_name()])){
         $_SESSION['uID'] = $_COOKIE[session_name()];
-    }
-    elseif(isset($pages[$page]['login'])){
-        /**
-         * if no session is registered and 'remember me' was not checked
-         * and still the page needs authentication
-         */
-        $page = 'login';
-    }
 }
-
-if(isset($pages[$page]['login']) && !isset($_SESSION['uID'])){
-        $page = 'login';
+elseif(isset($pages[$page]['login']) && !isset($_SESSION['uID'])){
+    /**
+     * if no session is registered and 'remember me' was not checked
+     * and still the page needs authentication
+     */
+    $page = 'login';
 }
 
 if(isset($pages[$page]['preprocess'])){
