@@ -20,8 +20,9 @@ else{
 
 session_start();
 if(!isset($_SESSION['uID'])){
-    if(isset($_COOKIE['autoLogin'])){
-        $_SESSION['uID'] = $_COOKIE['autoLogin'];
+    if(is_numeric($_COOKIE[session_name()])){//if(isset($_COOKIE['autoLogin'])){
+        //$_SESSION['uID'] = $_COOKIE['autoLogin'];
+        $_SESSION['uID'] = $_COOKIE[session_name()];
     }
     elseif(isset($pages[$page]['login'])){
         /**
