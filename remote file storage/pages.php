@@ -42,4 +42,9 @@ return array(
             'logout' => 'logout.php'
         ),
     ),
+    'captcha' => array(
+        'preprocess' => array(
+            'captcha_img' => 'captcha_img.php',
+        ),
+    ),
 );
