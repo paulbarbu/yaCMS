@@ -5,7 +5,11 @@
 <br /><input type="checkbox" name="r_me" id="id-r" />
     <label for="id-r">Remember me</label>
 <br />
+<br />
 <img src="index.php?show=captcha">
+<br />
+<br />
+<label for="id-code">Code here:</label>
 <input type="text" name="code" id="id-code" />
 <br /><input type="submit" name="go" value="Log In" />
 </form>
