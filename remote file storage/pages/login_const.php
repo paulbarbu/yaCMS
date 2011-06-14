@@ -12,3 +12,6 @@ const ERR_NO_USER = 4;
 const ERR_NO_PASS = 5;
 const ERR_SESS = 6;
 const ERR_COOKIE = 7;
+const ERR_CAPTCHA = 8;
+const ERR_NO_CODE = 9;
+const ERR_W_CODE = 10;

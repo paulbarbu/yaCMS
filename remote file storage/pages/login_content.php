@@ -4,27 +4,34 @@
     <input type="password" id="id-p" name="pass" />
 <br /><input type="checkbox" name="r_me" id="id-r" />
     <label for="id-r">Remember me</label>
-<?php
-include BASE_DIR . DIRECTORY_SEPARATOR . 'pages'
-            . DIRECTORY_SEPARATOR . $pages['captcha']['content'];
-?>
+<br />
+<img src="./captcha_img.php">
+<input type="text" name="code" id="id-code" />
 <br /><input type="submit" name="go" value="Log In" />
 </form>
 <?php
 if(is_numeric($feedback['login'])){
     echo '<h3>';
     switch($feedback['login']){
-        case 1: echo 'Inexistent user!';
+        case ERR_USER: echo 'Inexistent user! - ', ERR_USER;
             break;
-        case 2: echo 'Error opening users.csv!';
+        case ERR_FOPEN_USER: echo 'Error opening users.csv! - ', ERR_FOPEN_USER;
             break;
-        case 3: echo 'Incorrect password!';
+        case ERR_PASS: echo 'Incorrect password! - ', ERR_PASS;
             break;
-        case 4: echo 'Please fill in a user name!';
+        case ERR_NO_USER: echo 'Please fill in a user name! - ', ERR_NO_USER;
             break;
-        case 5: echo 'Please provide a password!';
+        case ERR_NO_PASS: echo 'Please provide a password! - ', ERR_NO_PASS;
             break;
-        case 6: echo 'Error starting session!';
+        case ERR_SESS: echo 'Error starting session! - ', ERR_SESS;
+            break;
+        case ERR_COOKIE: echo 'Cannot set cookie! - ', ERR_COOKIE;
+            break;
+        case ERR_CAPTCHA: echo 'Captcha error! - ', ERR_CAPTCHA;
+            break;
+        case ERR_NO_CODE: echo 'Please type the captcha code! - ', ERR_NO_CODE;
+            break;
+        case ERR_W_CODE: echo 'Wrong captcha code! - ', ERR_W_CODE;
             break;
         default;
     }
