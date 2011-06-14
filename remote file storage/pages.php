@@ -30,7 +30,6 @@ return array(
         'title' => 'Log In',
         'content' => 'login_content.php',
         'preprocess' => array(
-            'captcha' => 'captcha.php',
             'login_const' => 'login_const.php',
             'login' => 'login.php',
         ),
