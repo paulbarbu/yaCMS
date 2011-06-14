@@ -30,6 +30,7 @@ return array(
         'title' => 'Log In',
         'content' => 'login_content.php',
         'preprocess' => array(
+            'captcha' => 'captcha.php',
             'login_const' => 'login_const.php',
             'login' => 'login.php',
         ),
@@ -39,12 +40,6 @@ return array(
         'content' => 'logout_content.php',
         'preprocess' => array(
             'logout' => 'logout.php'
-        ),
-    ),
-    'captcha' => array(
-        'content' => 'captcha_content.php',
-        'preprocess' => array(
-            'captcha' => 'captcha.php',
         ),
     ),
 );
