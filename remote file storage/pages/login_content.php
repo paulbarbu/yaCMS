@@ -5,7 +5,7 @@
 <br /><input type="checkbox" name="r_me" id="id-r" />
     <label for="id-r">Remember me</label>
 <br />
-<img src="./captcha_img.php">
+<img src="<?php echo '.' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'captcha_img.php' ?>">
 <input type="text" name="code" id="id-code" />
 <br /><input type="submit" name="go" value="Log In" />
 </form>

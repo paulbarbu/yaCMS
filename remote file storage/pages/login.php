@@ -15,7 +15,20 @@
 $currentUser = array();
 $auth = FALSE;
 
+if(!isset($_SESSION['captcha']) || -1 == $_SESSION['captcha']){
+    return ERR_CAPTCHA;
+}
+
 if(isset($_POST['go'])){
+    if(isset($_POST['code']) && NULL != $_POST['code']){
+        if($_POST['code'] != $_SESSION['captcha']){
+            return ERR_W_CODE;
+        }
+    }
+    else{
+        return ERR_NO_CODE;
+    }
+
     if(isset($_POST['pass'])  && !empty($_POST['pass'])){
         $pass = $_POST['pass'];
 
