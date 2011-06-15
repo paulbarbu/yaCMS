@@ -46,4 +46,12 @@ return array(
             'captcha_img' => 'captcha_img.php',
         ),
     ),
+    'gallery' => array(
+        'title'=> 'Gallery',
+        'content' => 'gallery_content.php',
+        'preprocess' => array(
+            'gallery_const' => 'gallery_const.php',
+            'gallery' => 'gallery.php',
+        ),
+    ),
 );
