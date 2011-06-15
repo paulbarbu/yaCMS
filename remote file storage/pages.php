@@ -49,6 +49,7 @@ return array(
     'gallery' => array(
         'title'=> 'Gallery',
         'content' => 'gallery_content.php',
+        'login' => TRUE,
         'preprocess' => array(
             'gallery_const' => 'gallery_const.php',
             'gallery' => 'gallery.php',
