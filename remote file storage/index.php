@@ -1,9 +1,11 @@
 <?php
 
+const BASE_DIR = __DIR__;
+
 require_once '.' . DIRECTORY_SEPARATOR . 'functions.php';
+require_once '.' . DIRECTORY_SEPARATOR . 'global_const.php';
 $pages = require_once '.' . DIRECTORY_SEPARATOR . 'pages.php';
 
-const BASE_DIR = __DIR__;
 $feedback = array();
 
 if(isset($_GET['show'])){
