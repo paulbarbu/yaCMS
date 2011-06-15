@@ -133,7 +133,7 @@ function csv_search($fh, $column, $criteria){
  * if the directory does not contain ONLY images then NULL is returned
  */
 
-function dir_type_check($dir_h, $path, $type = 'image'){
+function dir_type_check($dir_h, $dir_name, $type = 'image'){
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $images = array();
     $num_files = 0;
@@ -141,7 +141,7 @@ function dir_type_check($dir_h, $path, $type = 'image'){
         while($entry = readdir($dir_h)){
             if('.' != $entry && ".." != $entry && "users.csv" != $entry){
                 $entry = '.' . DIRECTORY_SEPARATOR . 'uploads'
-                    . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . $entry;
+                    . DIRECTORY_SEPARATOR . $dir_name . DIRECTORY_SEPARATOR . $entry;
                 $mime_type = finfo_file($finfo, $entry);
                 $num_files++;
 
