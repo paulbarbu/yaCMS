@@ -19,13 +19,13 @@ else{
 }
 if(NULL != $feedback['gallery'] && is_numeric($feedback['gallery'])){
     switch($feedback['gallery']){
-        case 1: echo 'Invalid directory name! - ', ERR_IS_DIR;
+        case ERR_IS_DIR: echo 'Invalid directory name! - ', ERR_IS_DIR;
             break;
-        case 2: echo 'Please provide a directory name! - ', ERR_NO_DIR;
+        case ERR_NO_DIR: echo 'Please provide a directory name! - ', ERR_NO_DIR;
             break;
-        case 3: echo 'Failed to open directory! - ', ERR_OPEN_DIR;
+        case ERR_OPEN_DIR: echo 'Failed to open directory! - ', ERR_OPEN_DIR;
             break;
-        case 4: echo 'The directory does not contain only images! - ',
+        case ERR_ONLY_IMAGES: echo 'The directory does not contain only images! - ',
                 ERR_ONLY_IMAGES;
             break;
         default;
