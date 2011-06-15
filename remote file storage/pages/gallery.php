@@ -7,14 +7,15 @@ $result = NULL;
 
 if(isset($_POST['submit'])){
     if(isset($_POST['dir']) && !empty($_POST['dir'])){
-        $dir = PATH . $_POST['dir'];
+        $dir_name = $_POST['dir'];
+        $dir = PATH . $dir_name;
 
         if(is_dir($dir)){
             $dir_h = opendir($dir);
             if(FALSE != $dir_h){
                 rewinddir($dir_h);
 
-                $result = dir_type_check($dir_h, $dir);
+                $result = dir_type_check($dir_h, $dir_name);
 
                 closedir($dir_h);
 
