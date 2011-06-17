@@ -46,8 +46,7 @@ function render($template, $vars = NULL){
 function build_menu_from_pages($pages, $currentPage){
     $menu = '<ul>' .PHP_EOL;
     foreach($pages as $pageName => $metaData){
-        if('notfound' != $pageName && 'login' != $pageName
-            && 'logout' != $pageName && 'captcha' != $pageName){
+        if(!isset($pages[$pageName]['show_in_menu']) || FALSE != $pages[$pageName]['show_in_menu']){
             if($pageName == $currentPage){
                 $menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
             }
