@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="header">
+<!--
         <div id="login">
             <?php
             if(isset($_SESSION['uID'])){
@@ -18,6 +19,7 @@
             }
             ?>
         </div>
+--!>
     </div>
     <div id="menu">
         <h3>Menu here</h3>
