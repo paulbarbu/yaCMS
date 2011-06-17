@@ -1,3 +1,7 @@
+<span id="adminlogin">
+<a href="index.php?show=gbook_admin">Admin panel</a>
+</span>
+<br />
 <form action="" method="post" >
 <label for="id-n">Name: </label>
 <input type="text" name="nick" id="id-n" />
