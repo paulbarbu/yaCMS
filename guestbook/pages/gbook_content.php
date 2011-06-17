@@ -41,13 +41,11 @@ $messages = post_to_div();
 if(is_numeric($messages)){
     echo '<h3>';
     switch($messages){
-        case 1: echo 'Error opening file!';
+        case ERR_OPEN: echo 'Error opening file! - ', ERR_OPEN;
             break;
-        case 2: echo 'Error reading line!';
+        case ERR_DECODE: echo 'Message cannot be decoded! - ', ERR_DECODE;
             break;
-        case 3: echo 'Message cannot be decoded!';
-            break;
-        case 4: echo 'No posts!';
+        case ERR_EMPTY: echo 'No posts! - ', ERR_EMPTY;
             break;
         default;
     }
