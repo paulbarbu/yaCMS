@@ -41,7 +41,14 @@
 #headpost{
     background-color: #E6E6FA;
 }
+
 #date{
+    position: relative;
+    float:right;
+    text-align: right;
+}
+
+#adminlogin{
     position: relative;
     float:right;
     text-align: right;
