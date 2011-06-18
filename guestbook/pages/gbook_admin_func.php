@@ -25,7 +25,7 @@ function get_ips_ban($path = PATH_MSG_FILE){
 
         $ips = array();
         $nr_ips = 0;
-        $fh = fopen(PATH_MSG_FILE, "r");
+        $fh = fopen($path, "r");
 
         if(FALSE != $fh){
             while(!feof($fh)){
@@ -33,6 +33,7 @@ function get_ips_ban($path = PATH_MSG_FILE){
                 $post = fgets($fh);
 
                 if(FALSE == $post){
+                    fclose($fh);
                     return $ips;
                 }
 
@@ -91,3 +92,54 @@ function ban_ip($fh, $ips){
     return TRUE;
 }
 
+/**
+ * get_ips_unban() Helper function that displays IPs for unban
+ *
+ * @param string $path path to ban file containing IPs
+ *
+ * @return int|array return and array containing the IPs or an error code
+ */
+function get_ips_unban($path = PATH_BAN_FILE){
+    if(is_file($path) && 0 != filesize($path)){
+
+        $ips = array();
+        $nr_ips = 0;
+        $currentIP = NULL;
+
+        $fh = fopen($path, "r");
+
+        if(FALSE != $fh){
+            while(!feof($fh)){
+
+                $currentIP = trim(fgets($fh));
+
+                if(FALSE == $currentIP){
+                    fclose($fh);
+                    return $ips;
+                }
+
+                $ips[$nr_ips] = NULL;
+
+                $ips[$nr_ips] .= '<input type="checkbox" name="unban_ips[]" value="'
+                    . $currentIP . '" id="idu-' . $currentIP . '" /><label
+                    for="idu-' . $currentIP . '">' . $currentIP . '</label>
+                    <br />';
+
+                $ips = array_unique($ips);
+
+                $nr_ips++;
+
+            }
+
+            fclose($fh);
+        }
+        else{
+            return  ERR_OPEN;
+        }
+
+        return $ips;
+    }
+    else{
+        return  ERR_EMPTY;
+    }
+}

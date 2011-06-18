@@ -14,3 +14,4 @@ const ERR_COOKIE = 6;
 const ERR_NO_IP = 7;
 const ERR_FOPEN_BAN_FILE = 8;
 const BANNED = 9;
+const UNBANNED = 10;
