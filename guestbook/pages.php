@@ -21,6 +21,7 @@ return array(
         'title' => 'Admin panel',
         'content' => 'gbook_admin_content.php',
         'preprocess' => array(
+            'gbook_admin_func' => 'gbook_admin_func.php',
             'gbook_admin_const' => 'gbook_admin_const.php',
             'gbook_admin' => 'gbook_admin.php',
             'gbook_controls' => 'gbook_controls.php'
