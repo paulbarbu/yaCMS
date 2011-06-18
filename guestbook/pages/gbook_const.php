@@ -2,7 +2,6 @@
 /**
  * Constants for GB script
  */
-define('PATH_MSG_FILE', PATH_GBOOK . 'msg.json');
 
 const OK = 0;
 const ERR_NO_NICK = 1;

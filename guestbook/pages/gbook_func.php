@@ -7,16 +7,19 @@ const ERR_OPEN =  1;
 const ERR_DECODE = 2;
 const ERR_EMPTY = 3;
 
+const ERR_IP_STRING = 4;
+const ERR_FOPEN_BAN_FILE = 5;
+
 /**
  * post_to_div() - Helper function, echoes div's as posts from a file passed as parameter
  *
- * @param string $path path to file containing posta formatted as JSON,
+ * @param string $path path to file containing posts formatted as JSON,
  * default: PATH_MSG_FILE constant
  * @return int|array an int is returned in case that the file canot be opened(1),
  * 2 if the messages cannot be decoded(from JSON format) or 3 if the file does
  * not exists or it's empty, on success it returns an array of strings
  */
-function post_to_div($path = PATH_MSG_FILE){
+function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
     if(is_file($path) && 0 != filesize($path)){
 
         $posts = array();
@@ -55,6 +58,10 @@ function post_to_div($path = PATH_MSG_FILE){
                         . $result['url'] . '</a>';
                 }
 
+                if(FALSE != $ip){
+                    $posts[$nr_posts] .= '&nbsp;' . $result['ip'];
+                }
+
                 $posts[$nr_posts] .= '<span id="date">' . $result['time']
                     . '</span></div><br />' . $result['msg'] . '</div>' . PHP_EOL;
 
@@ -73,4 +80,40 @@ function post_to_div($path = PATH_MSG_FILE){
     else{
         return  ERR_EMPTY;
     }
+}
+
+/**
+ * check_ip() - Helper function that checks if an IP is banned or not
+ *
+ * @param string $ip user's IP
+ * @param string $path_to_bans path to the ban list(database), default:
+ * PATH_BAN_FILE
+ *
+ * @return int|BOOL returns TRUE if the verified IP is banned, else FALSE, on
+ * error returns the error's code
+ */
+function check_ip($ip, $path = PATH_BAN_FILE){
+    if(!is_string($ip)){
+        return ERR_IP_STRING;
+    }
+
+    if(is_file($path) && 0 != filesize($path)){
+        $fh = fopen($path, "r");
+
+        if(FALSE == $fh){
+            return ERR_FOPEN_BAN_FILE;
+        }
+
+        while(!feof($fh)){
+            $currentIP = fgets($fh);
+            if(trim($currentIP) == trim($ip)){
+                fclose($fh);
+                return TRUE;
+            }
+        }
+
+        fclose($fh);
+    }
+
+    return FALSE;
 }

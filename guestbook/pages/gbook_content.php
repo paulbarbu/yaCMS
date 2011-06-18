@@ -1,3 +1,24 @@
+<?php
+$status = check_ip($_SERVER['REMOTE_ADDR']);
+
+if(is_numeric($status)){
+    echo '<h3>';
+
+    switch($status){
+        case ERR_IP_STRING: echo 'Invalid supplied IP! - ' , ERR_IP_STRING;
+            break;
+        case ERR_FOPEN_BAN_FILE: echo 'Error opening DB! - ' , ERR_FOPEN_BAN_FILE;
+            break;
+        default;
+    }
+
+    echo '</h3>';
+}
+elseif(TRUE == $status){
+    echo '<h3>This IP is banned, <u>' , $_SERVER['REMOTE_ADDR'] , '</u>!</h3>';
+}
+else{
+?>
 <span id="adminlogin">
 <a href="index.php?show=gbook_admin">Admin panel</a>
 </span>
@@ -21,44 +42,49 @@ Your message here...
 <input type="submit" name="post" value="Post" />
 </form>
 <?php
-if(is_numeric($feedback['gbook'])){
-    echo '<h3>';
+    if(is_numeric($feedback['gbook'])){
+        echo '<h3>';
 
-    switch($feedback['gbook']){
-        case ERR_NO_NICK: echo 'Please provide a nickname! - ', ERR_NO_NICK;
-            break;
-        case ERR_NO_MSG: echo 'Please write a message! - ', ERR_NO_MSG;
-            break;
-        case ERR_OPEN_MSG_FILE: echo 'Could not open file for writing! - ', ERR_OPEN_MSG_FILE;
-            break;
-        case ERR_WRITE_POST: echo 'Could not write your message! - ', ERR_WRITE_POST;
-            break;
-        case POST_SUCCESS: echo 'Posted!';
-            break;
-        default;
+        switch($feedback['gbook']){
+            case ERR_NO_NICK: echo 'Please provide a nickname! - ', ERR_NO_NICK;
+                break;
+            case ERR_NO_MSG: echo 'Please write a message! - ', ERR_NO_MSG;
+                break;
+            case ERR_OPEN_MSG_FILE: echo 'Could not open file for writing! - ', ERR_OPEN_MSG_FILE;
+                break;
+            case ERR_WRITE_POST: echo 'Could not write your message! - ', ERR_WRITE_POST;
+                break;
+            case POST_SUCCESS: echo 'Posted!';
+                break;
+            default;
+        }
+
+        echo '</h3>';
+    }
+    if(!isset($_SESSION['id'])){
+        $messages = post_to_div();
+    }
+    else{
+        $messages = post_to_div(PATH_MSG_FILE, TRUE);
     }
 
-    echo '</h3>';
-}
-
-$messages = post_to_div();
-if(is_numeric($messages)){
-    echo '<h3>';
-    switch($messages){
-        case ERR_OPEN: echo 'Error opening file! - ', ERR_OPEN;
-            break;
-        case ERR_DECODE: echo 'Message cannot be decoded! - ', ERR_DECODE;
-            break;
-        case ERR_EMPTY: echo 'No posts! - ', ERR_EMPTY;
-            break;
-        default;
+    if(is_numeric($messages)){
+        echo '<h3>';
+        switch($messages){
+            case ERR_OPEN: echo 'Error opening file! - ', ERR_OPEN;
+                break;
+            case ERR_DECODE: echo 'Message cannot be decoded! - ', ERR_DECODE;
+                break;
+            case ERR_EMPTY: echo 'No posts! - ', ERR_EMPTY;
+                break;
+            default;
+        }
+        echo '</h3>';
     }
-    echo '</h3>';
-}
-else{
-    for($i=count($messages) - 1;$i>=0;$i--){
-        echo $messages[$i];
+    else{
+        for($i=count($messages) - 1;$i>=0;$i--){
+            echo $messages[$i];
+        }
     }
 }
-
 ?>
