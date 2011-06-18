@@ -8,6 +8,7 @@ $result = array(
     'mail' => NULL,
     'url' => NULL,
     'time' => NULL,
+    'ip' => NULL,
 );
 
 if(isset($_POST['post'])){
@@ -27,6 +28,7 @@ if(isset($_POST['post'])){
             }
 
             $result['time'] = date("F j, Y, g:i a");
+            $result['ip'] = $_SERVER['REMOTE_ADDR'];
 
             $fh = fopen(PATH_MSG_FILE, "a");
 
