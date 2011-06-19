@@ -4,38 +4,59 @@ const BASE_DIR = __DIR__;
 
 require_once '.' . DIRECTORY_SEPARATOR . 'functions.php';
 require_once '.' . DIRECTORY_SEPARATOR . 'global_const.php';
-$pages = require_once '.' . DIRECTORY_SEPARATOR . 'pages.php';
+$modules = require_once '.' . DIRECTORY_SEPARATOR . 'modules.php';
 
 $feedback = array();
 
 if(isset($_GET['show'])){
-    if(array_key_exists($_GET['show'], $pages)){
-        $page = $_GET['show'];
+    if(array_key_exists($_GET['show'], $modules)){
+        $module = $_GET['show'];
     }
     else{
-        $page = 'notfound';
+        $module = 'notfound';
     }
 }
 else{
-    $page = 'gbook';
+    $module = 'gbook';
 }
 
-session_start();
-if(!isset($_SESSION['id']) && isset($_COOKIE[session_name()]) && is_numeric($_COOKIE[session_name()])){
-        $_SESSION['id'] = $_COOKIE[session_name()];
-}
-elseif(isset($pages[$page]['login']) && !isset($_SESSION['id'])){
-    /**
-     * if no session is registered and 'remember me' was not checked
-     * and still the page needs authentication
-     */
-    $page = 'login';
-}
+if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
+    foreach($modules[$module]['pre-process'] as $pre){
+        if(FALSE != stristr($pre, '.php')){
+            require BASE_DIR . DIRECTORY_SEPARATOR . 'modules'
+            . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . $pre;
+        }
+        else{//our module has another module as pre-dependency
+            foreach($modules[$pre]['pre-process'] as $dep_pre){
+                require BASE_DIR . DIRECTORY_SEPARATOR . 'modules'
+                . DIRECTORY_SEPARATOR . $pre . DIRECTORY_SEPARATOR . $dep_pre;
 
-if(isset($pages[$page]['preprocess'])){
-    foreach($pages[$page]['preprocess'] as $preprocessName => $preprocessFile){
-        $feedback[$preprocessName] = require BASE_DIR . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . $preprocessFile;
+            }
+        }
     }
 }
 
-render('layout.php', compact('page', 'feedback', 'pages'));
+if(isset($modules[$module]['BL'])){
+    foreach($modules[$module]['BL'] as $blName => $blFile){
+        $feedback[$blName] = require BASE_DIR . DIRECTORY_SEPARATOR . 'modules'
+            . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . $blFile;
+    }
+}
+
+render('layout.php', compact('module', 'feedback', 'modules'));
+
+if(isset($modules[$module]['post-process']) && !empty($modules[$module]['post-process'])){
+    foreach($modules[$module]['post-process'] as $post){
+        if(FALSE != stristr($post, '.php')){
+            require BASE_DIR . DIRECTORY_SEPARATOR . 'modules'
+            . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . $post;
+        }
+        else{//our module has another module as post-dependency
+            foreach($modules[$post]['post-process'] as $dep_post){
+                require BASE_DIR . DIRECTORY_SEPARATOR . 'modules'
+                . DIRECTORY_SEPARATOR . $post . DIRECTORY_SEPARATOR . $dep_post;
+
+            }
+        }
+    }
+}
