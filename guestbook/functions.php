@@ -43,7 +43,7 @@ function render($template, $vars = NULL){
  * this function will build an HTMl menu based on the array received as
  * parameter and will return it as a string
  */
-function build_menu_from_pages($modules, $currentModule){
+function build_menu_from_modules($modules, $currentModule){
     $menu = '<ul>' .PHP_EOL;
     foreach($modules as $moduleName => $metaData){
         if(!isset($modules[$moduleName]['VL']['show_in_menu']) ||
