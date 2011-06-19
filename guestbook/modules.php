@@ -5,6 +5,7 @@
 return array(
     'gbook' => array(
         'pre-process' => array(
+            'autologin' => 'login_admin',
         ),
         'VL' => array(
             'title' => 'G - book',
@@ -25,7 +26,7 @@ return array(
         ),
         'VL' => array(
             'title' => 'Admin panel',
-            'content' => 'gbook_admin_content.php',
+            'content' => 'gbook_panel_content.php',
         ),
         'BL' => array(
             'gbook_panel_func' => 'gbook_panel_func.php',
@@ -40,7 +41,7 @@ return array(
             'autologin' => 'autologin.php',
         ),
         'VL' => array(
-            'title' => 'Log In',
+            'title' => 'Admin Log In',
             'content' => 'login_content.php',
         ),
         'BL' => array(
@@ -52,6 +53,7 @@ return array(
     ),
     'logout' => array(
         'pre-process' => array(
+            'autologin' => 'login_admin'
         ),
         'VL' => array(
             'title' => 'Log out',
