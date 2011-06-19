@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-<title><?php echo $pages[$page]['title'];?></title>
+<title><?php echo $modules[$module]['VL']['title'];?></title>
 
 </head>
 <body>
@@ -23,12 +23,14 @@
     </div>
     <div id="menu">
         <h3>Menu here</h3>
-        <?php echo build_menu_from_pages($pages, $page)?>
+        <?php echo build_menu_from_modules($modules, $module)?>
     </div>
 
     <div id="content">
-        <h3><?php echo $pages[$page]['title'];?></h3>
-        <p><?php include BASE_DIR . '/pages/' . $pages[$page]['content'];?></p>
+        <h3><?php echo $modules[$module]['VL']['title'];?></h3>
+        <p><?php include BASE_DIR . DIRECTORY_SEPARATOR . 'modules'
+        . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR
+        . $modules[$module]['VL']['content'];?></p>
     </div>
 </body>
 </html>
