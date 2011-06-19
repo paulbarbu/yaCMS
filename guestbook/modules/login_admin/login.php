@@ -2,9 +2,9 @@
 /**
  * Login BL
  * This script the verifies the admin's credentials and logs him in(starts a
- * session registering his uID) or rejects him
+ * session registering his ID) or rejects him
  *
- * The password must match the one in /gbook_files/admin_pass
+ * The password must match the one in DATA_ROOT/gbook/admin_pass
  *
  * $auth - stores a boolean, if the user is authentified or not
  */
@@ -18,8 +18,8 @@ if(isset($_POST['adminlogin'])){
     if(isset($_POST['pass'])  && !empty($_POST['pass'])){
         $pass = $_POST['pass'];
 
-        if(is_dir(PATH_GBOOK)){
-            if(($f = fopen(PATH_GBOOK . 'admin_pass', "r")) !== FALSE){
+        if(is_dir(DATA_ROOT . 'gbook')){
+            if(($f = fopen(DATA_ROOT . 'gbook' . DIRECTORY_SEPARATOR . 'admin_pass', "r")) !== FALSE){
 
                 $currentPass = fgets($f);
 
