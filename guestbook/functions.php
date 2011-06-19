@@ -38,21 +38,22 @@ function render($template, $vars = NULL){
 }
 
 /**
- * string build_menu_from_pages(array $pages, string $currentPage)
+ * string build_menu_from_modules(array $modules, string $currentModule)
  *
  * this function will build an HTMl menu based on the array received as
  * parameter and will return it as a string
  */
-function build_menu_from_pages($pages, $currentPage){
+function build_menu_from_pages($modules, $currentModule){
     $menu = '<ul>' .PHP_EOL;
-    foreach($pages as $pageName => $metaData){
-        if(!isset($pages[$pageName]['show_in_menu']) || FALSE != $pages[$pageName]['show_in_menu']){
-            if($pageName == $currentPage){
-                $menu .= '<li>' .$metaData['title']. '</li>' .PHP_EOL;
+    foreach($modules as $moduleName => $metaData){
+        if(!isset($modules[$moduleName]['VL']['show_in_menu']) ||
+            FALSE != $modules[$moduleName]['VL']['show_in_menu']){
+            if($moduleName == $currentModule){
+                $menu .= '<li>' .$metaData['VL']['title']. '</li>' .PHP_EOL;
             }
             else{
-                $menu .= '<li><a href="?show=' . $pageName . '">'
-                    . $metaData['title'] . '</a></li>' . PHP_EOL;
+                $menu .= '<li><a href="?show=' . $moduleName . '">'
+                    . $metaData['VL']['title'] . '</a></li>' . PHP_EOL;
             }
         }
     }
