@@ -1,6 +1,6 @@
 <?php
 if(!isset($_SESSION['id'])){
-    header("Location: index.php?show=login_admin");//redirecting to login page
+    header("Location: index.php?show=login_admin");//redirecting to login module
 }
 else{
 ?>
