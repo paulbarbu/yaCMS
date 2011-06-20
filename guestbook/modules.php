@@ -13,7 +13,7 @@ return array(
         ),
         'BL' => array(
             'gbook_const' => 'constants.php',
-            'gbook_func' => 'funcctions.php',
+            'gbook_func' => 'functions.php',
             'gbook' => 'gbook.php',
         ),
         'post-process' => array(
