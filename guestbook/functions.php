@@ -138,24 +138,24 @@ function dir_type_check($dir_h, $dir_name, $type = 'image'){
     $images = array();
     $num_files = 0;
 
-        while($entry = readdir($dir_h)){
-            if('.' != $entry && ".." != $entry && "users.csv" != $entry){
-                $entry = '.' . DIRECTORY_SEPARATOR . 'uploads'
-                    . DIRECTORY_SEPARATOR . $dir_name . DIRECTORY_SEPARATOR . $entry;
-                $mime_type = finfo_file($finfo, $entry);
-                $num_files++;
+    while($entry = readdir($dir_h)){
+        if('.' != $entry && ".." != $entry && "users.csv" != $entry){
+            $entry = '.' . DIRECTORY_SEPARATOR . 'uploads'
+                . DIRECTORY_SEPARATOR . $dir_name . DIRECTORY_SEPARATOR . $entry;
+            $mime_type = finfo_file($finfo, $entry);
+            $num_files++;
 
-                if(FALSE !== stristr($mime_type, $type)){
-                    $images[] = $entry;
-                }
-                else{
-                    return NULL;
-                }
+            if(FALSE !== stristr($mime_type, $type)){
+                $images[] = $entry;
+            }
+            else{
+                return NULL;
             }
         }
+    }
 
-        finfo_close($finfo);
+    finfo_close($finfo);
 
-        return $num_files ? $images : NULL;
+    return $num_files ? $images : NULL;
 }
 

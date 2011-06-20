@@ -9,11 +9,11 @@ return array(
         ),
         'VL' => array(
             'title' => 'G - book',
-            'content' => 'gbook_content.php',
+            'content' => 'content.php',
         ),
         'BL' => array(
-            'gbook_const' => 'gbook_const.php',
-            'gbook_func' => 'gbook_func.php',
+            'gbook_const' => 'constants.php',
+            'gbook_func' => 'funcctions.php',
             'gbook' => 'gbook.php',
         ),
         'post-process' => array(
@@ -26,12 +26,12 @@ return array(
         ),
         'VL' => array(
             'title' => 'Admin panel',
-            'content' => 'gbook_panel_content.php',
+            'content' => 'content.php',
         ),
         'BL' => array(
-            'gbook_panel_const' => 'gbook_panel_const.php',
-            'gbook_panel_func' => 'gbook_panel_func.php',
-            'gbook_panel' => 'gbook_panel.php',
+            'gbook_panel_const' => 'constants.php',
+            'gbook_panel_func' => 'functions.php',
+            'gbook_panel' => 'panel.php',
         ),
         'post-process' => array(
         ),
@@ -42,10 +42,10 @@ return array(
         ),
         'VL' => array(
             'title' => 'Admin Log In',
-            'content' => 'login_content.php',
+            'content' => 'content.php',
         ),
         'BL' => array(
-            'login_const' => 'login_const.php',
+            'login_const' => 'constants.php',
             'login' => 'login.php',
         ),
         'post-process' => array(
@@ -57,7 +57,7 @@ return array(
         ),
         'VL' => array(
             'title' => 'Log out',
-            'content' => 'logout_content.php',
+            'content' => 'content.php',
             'show_in_menu' => FALSE,
         ),
         'BL' => array(
