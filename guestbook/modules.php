@@ -12,8 +12,8 @@ return array(
             'content' => 'gbook_content.php',
         ),
         'BL' => array(
-            'gbook_func' => 'gbook_func.php',
             'gbook_const' => 'gbook_const.php',
+            'gbook_func' => 'gbook_func.php',
             'gbook' => 'gbook.php',
         ),
         'post-process' => array(
@@ -29,8 +29,8 @@ return array(
             'content' => 'gbook_panel_content.php',
         ),
         'BL' => array(
-            'gbook_panel_func' => 'gbook_panel_func.php',
             'gbook_panel_const' => 'gbook_panel_const.php',
+            'gbook_panel_func' => 'gbook_panel_func.php',
             'gbook_panel' => 'gbook_panel.php',
         ),
         'post-process' => array(
