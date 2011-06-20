@@ -63,15 +63,18 @@ function build_menu_from_modules($modules, $currentModule){
 }
 
 /**
- * array list_text_files($path)
+ * array find_files_by_mime($path, $mime)
  *
- * searches recursively in the path provided by the only parameter the files
- * which have the MIME type set to 'text/plain'
+ * searches recursively in the path provided by $path the files which have the
+ * MIME type set to $mime
  *
- * returns an array containing the secret name of the directory as key and the
+ * @param string $path path to a directory
+ * @param string $mime MIME type to be matched
+ *
+ * @return array $files containing the the directory name as key and the
  * path to the file as the value
  */
-function list_text_files($path){
+function find_files_by_mime($path, $mime){
     $files = array();
 
     if(is_dir($path)){
@@ -80,11 +83,11 @@ function list_text_files($path){
         while($entry = readdir($d)){
             if("." != $entry && ".." != $entry){
                 if(is_dir($path . DIRECTORY_SEPARATOR . $entry)) {
-                    $files =  array_unique(array_merge(list_text_files(
-                        $path . DIRECTORY_SEPARATOR . $entry), $files));
+                    $files =  array_unique(array_merge(find_files_by_mime(
+                        $path . DIRECTORY_SEPARATOR . $entry, $mime), $files));
                 }
-                elseif('text/plain' == mime_content_type(
-                    $path . DIRECTORY_SEPARATOR . $entry)){
+                elseif(FALSE != strstr($mime, mime_content_type(
+                    $path . DIRECTORY_SEPARATOR . $entry))){
                         $files[] = $entry;
                 }
             }
