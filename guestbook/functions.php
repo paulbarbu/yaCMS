@@ -70,26 +70,36 @@ function build_menu_from_modules($modules, $currentModule){
  *
  * @param string $path path to a directory
  * @param string $mime MIME type to be matched
+ * @param bool $recursive search recursively or not in the provided directory
+ * (default: TRUE)
  *
  * @return array $files containing the the directory name as key and the
  * path to the file as the value
  */
-function find_files_by_mime($path, $mime){
+function find_files_by_mime($path, $mime, $recursive = TRUE){
     $files = array();
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+
+    if(DIRECTORY_SEPARATOR == substr($path, -1)){
+        $path = substr($path, 0, strlen(path)-2);
+    }
 
     if(is_dir($path)){
         $d = opendir($path);
 
         while($entry = readdir($d)){
+            $mime_type = finfo_file($finfo, $path . DIRECTORY_SEPARATOR . $entry);
+
             if("." != $entry && ".." != $entry){
-                if(is_dir($path . DIRECTORY_SEPARATOR . $entry)) {
+
+                if(is_dir($path . DIRECTORY_SEPARATOR . $entry) && $recursive){
                     $files =  array_unique(array_merge(find_files_by_mime(
                         $path . DIRECTORY_SEPARATOR . $entry, $mime), $files));
                 }
-                elseif(FALSE != strstr($mime, mime_content_type(
-                    $path . DIRECTORY_SEPARATOR . $entry))){
-                        $files[] = $entry;
+                elseif(FALSE !== stristr($mime_type, $mime)){
+                        $files[] = $path . DIRECTORY_SEPARATOR . $entry;
                 }
+
             }
         }
 
@@ -124,41 +134,3 @@ function csv_search($fh, $column, $criteria){
 
     return FALSE;
 }
-
-/**
- * dir_type_check() checks if a directory is full of $type files or not
- *
- * @param resource $dir directory handle(created by opendir) you want to check
- * @param string $type file type to search into the mime type of the file
- * (default: image)
- * @param string $path path to directory opened in $dir_h
- * @return array|NULL array of strings containing the image names,
- * if the directory does not contain ONLY images then NULL is returned
- */
-
-function dir_type_check($dir_h, $dir_name, $type = 'image'){
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $images = array();
-    $num_files = 0;
-
-    while($entry = readdir($dir_h)){
-        if('.' != $entry && ".." != $entry && "users.csv" != $entry){
-            $entry = '.' . DIRECTORY_SEPARATOR . 'uploads'
-                . DIRECTORY_SEPARATOR . $dir_name . DIRECTORY_SEPARATOR . $entry;
-            $mime_type = finfo_file($finfo, $entry);
-            $num_files++;
-
-            if(FALSE !== stristr($mime_type, $type)){
-                $images[] = $entry;
-            }
-            else{
-                return NULL;
-            }
-        }
-    }
-
-    finfo_close($finfo);
-
-    return $num_files ? $images : NULL;
-}
-
