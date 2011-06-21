@@ -3,6 +3,12 @@
  * Module list
  */
 return array(
+    'home' => array(
+        'VL' => array(
+            'title' => 'Home',
+            'content' => 'content.php',
+        ),
+    ),
     'gbook' => array(
         'pre-process' => array(
             'autologin' => 'login_admin',
@@ -27,11 +33,12 @@ return array(
         'VL' => array(
             'title' => 'Admin panel',
             'content' => 'content.php',
+            'show_in_menu' => FALSE,
         ),
         'BL' => array(
-            'gbook_panel_const' => 'constants.php',
-            'gbook_panel_func' => 'functions.php',
-            'gbook_panel' => 'panel.php',
+            'const' => 'constants.php',
+            'func' => 'functions.php',
+            'panel' => 'panel.php',
         ),
         'post-process' => array(
         ),
@@ -43,6 +50,7 @@ return array(
         'VL' => array(
             'title' => 'Admin Log In',
             'content' => 'content.php',
+            'show_in_menu' => FALSE,
         ),
         'BL' => array(
             'login_const' => 'constants.php',
@@ -51,12 +59,12 @@ return array(
         'post-process' => array(
         ),
     ),
-    'logout' => array(
+    'logout_admin' => array(
         'pre-process' => array(
-            'autologin' => 'login_admin'
+            'autologin_admin' => 'login_admin',
         ),
         'VL' => array(
-            'title' => 'Log out',
+            'title' => 'Admin logged out',
             'content' => 'content.php',
             'show_in_menu' => FALSE,
         ),
@@ -77,6 +85,48 @@ return array(
         'BL' => array(
         ),
         'post-process' => array(
+        ),
+    ),
+    'login_user' => array(
+        'pre-process' => array(
+            'autologin' => 'autologin.php',
+        ),
+        'VL' => array(
+            'title' => 'User Log in',
+            'content' => 'content.php',
+        ),
+        'BL' => array(
+            'login_const' => 'constants.php',
+            'login' => 'login.php',
+        ),
+
+    ),
+    'logout_user' => array(
+        'pre-process' => array(
+            'autologin_user' => 'login_user',
+        ),
+        'VL' => array(
+            'title' => 'User logged out',
+            'content' => 'content.php',
+            'show_in_menu' => FALSE,
+        ),
+        'BL' => array(
+            'logout' => 'logout.php'
+        ),
+        'post-process' => array(
+        ),
+    ),
+    'gallery' => array(
+        'pre-process' => array(
+            'autologin_user' => 'login_user',
+        ),
+        'VL' => array(
+            'title' => 'Gallery',
+            'content' => 'content.php',
+        ),
+        'BL' => array(
+            'const' => 'constants.php',
+            'gallery' => 'gallery.php',
         ),
     ),
 );
