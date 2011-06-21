@@ -4,9 +4,11 @@ define('BASE_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
 require_once BASE_DIR . 'functions.php';
 require_once BASE_DIR . 'global_const.php';
+
 $modules = require_once BASE_DIR . 'modules.php';
 
 $feedback = array();
+$rendered = NULL;
 
 if(isset($_GET['show'])){
     if(array_key_exists($_GET['show'], $modules)){
@@ -39,7 +41,16 @@ if(isset($modules[$module]['BL'])){
     }
 }
 
-render('layout.php', compact('module', 'feedback', 'modules'));
+$rendered = render('layout.php', compact('module', 'feedback', 'modules'));
+
+switch($rendered){
+    case RENDER_ERR_NO_FILE: echo 'No page to display! - ' , RENDER_ERR_NO_FILE;
+        break;
+    case RENDER_ERR_FILE: echo 'Cound not read the file! - ' , RENDER_ERR_FILE;
+        break;
+    default;
+}
+
 
 if(isset($modules[$module]['post-process']) && !empty($modules[$module]['post-process'])){
     foreach($modules[$module]['post-process'] as $post){
