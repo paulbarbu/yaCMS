@@ -14,7 +14,7 @@ if(!isset($_SESSION['id'])){
     if(is_numeric($feedback['login'])){
         echo '<h3>';
 
-        switch($feedback['gbook_admin']){
+        switch($feedback['login']){
             case ERR_PASS: echo 'Invalid password! - ' , ERR_PASS;
                 break;
             case ERR_READING: echo 'Could not read from DB! - ' , ERR_READING;
