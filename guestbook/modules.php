@@ -94,6 +94,7 @@ return array(
         'VL' => array(
             'title' => 'User Log in',
             'content' => 'content.php',
+            'show_in_menu' => FALSE,
         ),
         'BL' => array(
             'login_const' => 'constants.php',
