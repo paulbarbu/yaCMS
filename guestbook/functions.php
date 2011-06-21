@@ -1,4 +1,9 @@
 <?php
+
+const RENDER_OK = 0;
+const RENDER_ERR_NO_FILE = 1;
+const RENDER_ERR_FILE = 2;
+
 /**
  * int return_bytes( string $val)
  *
@@ -34,7 +39,18 @@ function render($template, $vars = NULL){
     if($vars){
         extract($vars);
     }
+
+    if(!file_exists($template)){
+        return RENDER_ERR_NO_FILE;
+    }
+
+    if(!is_readable($template)){
+        return RENDER_ERR_FILE;
+    }
+
     require $template;
+
+    return RENDER_OK;
 }
 
 /**
@@ -63,7 +79,7 @@ function build_menu_from_modules($modules, $currentModule){
 }
 
 /**
- * array find_files_by_mime($path, $mime)
+ * find_files_by_mime($path, $mime)
  *
  * searches recursively in the path provided by $path the files which have the
  * MIME type set to $mime
@@ -109,7 +125,7 @@ function find_files_by_mime($path, $mime, $recursive = TRUE){
 }
 
 /**
- * array csv_search(resource $file_handle, int $column, string $criteria)
+ * csv_search($fh, $column, $criteria)
  *
  * Read line by line the file stored in $file_handle and search on the $column
  * the $criteria.
@@ -118,9 +134,10 @@ function find_files_by_mime($path, $mime, $recursive = TRUE){
  * Here the CSV separator is | and "31" is on the second column, because it is
  * found after the first separator
  *
- * $line represents one line from the CSV file to be checked against $criteria
+ * @param resource $fh file stream for reading the comma separated values
+ * @param int $column colum to read the data from
  *
- * Returns the line containing the $criteria as array if $criteria was found otherwise
+ * @return FALSE|array on success returns the line containing the $criteria as array if $criteria was found otherwise
  * FALSE
  */
 function csv_search($fh, $column, $criteria){
