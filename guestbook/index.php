@@ -17,9 +17,8 @@ if(isset($_GET['show'])){
     }
 }
 else{
-    $module = 'gbook';
+    $module = 'home'; //default module
 }
-
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
     foreach($modules[$module]['pre-process'] as $pre){
         if(FALSE != stristr($pre, '.php')){
