@@ -4,7 +4,7 @@ if(!isset($_SESSION['id'])){
 }
 else{
 ?>
-<span id="adminlogin"><a href="index.php?show=logout">Log out</a></span>
+<span id="adminlogin"><a href="index.php?show=logout_admin">Log out</a></span>
 <h3>Ban IPs:</h3>
 <form action="" method="post">
 <?php
@@ -56,10 +56,10 @@ else{
 <input type="submit" name="unban_ip" value="Unban selected IPs" />
 </form>
 <?php
-    if(is_numeric($feedback['gbook_panel'])){
+    if(is_numeric($feedback['panel'])){
         echo '<h3>';
 
-        switch($feedback['gbook_panel']){
+        switch($feedback['panel']){
             case ERR_NO_IP: echo 'Please select an IP! - ', ERR_NO_IP;
                 break;
             case ERR_FOPEN_BAN_FILE: echo 'Could not access ban DB! - ' , ERR_FOPEN_BAN_FILE;
