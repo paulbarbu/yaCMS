@@ -8,7 +8,6 @@
 <input type="submit" name="adminlogin" value="Log in"/>
 </form>
 <?php
-var_dump($feedback_pre);
 if(is_numeric($feedback['login'])){
     echo '<h3>';
 
