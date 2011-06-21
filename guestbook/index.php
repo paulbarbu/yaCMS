@@ -22,6 +22,7 @@ if(isset($_GET['show'])){
 else{
     $module = 'home'; //default module
 }
+
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
     foreach($modules[$module]['pre-process'] as $pre_key => $pre){
         if(FALSE != stristr($pre, '.php')){
