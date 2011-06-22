@@ -9,6 +9,8 @@ $modules = require_once BASE_DIR . 'modules.php';
 
 $feedback = array();
 $feedback_pre = array();
+
+$reload = FALSE;
 $rendered = NULL;
 
 if(isset($_GET['show'])){
@@ -16,13 +18,23 @@ if(isset($_GET['show'])){
         $module = $_GET['show'];
     }
     else{
-        $module = 'notfound';
+        $module = '404';
     }
 }
 else{
-    $module = 'home'; //default module
+    foreach($modules as $candidate => $candidate_content){
+        if(!isset($candidate_content['VL']['show_in_menu'])){
+            $module = $candidate;
+            break;
+        }
+        elseif(TRUE == $candidate_content['VL']['show_in_menu']){
+            $module = $candidate;
+            break;
+        }
+    }
 }
 
+load_module:
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
     foreach($modules[$module]['pre-process'] as $pre_key => $pre){
         if(FALSE != stristr($pre, '.php')){
@@ -37,10 +49,18 @@ if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-proc
     }
 }
 
+/**
+ * Load BL
+ */
 if(isset($modules[$module]['BL'])){
     foreach($modules[$module]['BL'] as $blName => $blFile){
-        $feedback[$blName] = require MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+        $feedback[$blName] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
     }
+}
+
+if($reload){
+    $reload = FALSE;
+    goto load_module;
 }
 
 $rendered = render('layout.php', compact('module', 'feedback', 'modules', 'feedback_pre'));
