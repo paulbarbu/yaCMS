@@ -17,15 +17,15 @@ if(isset($_POST['submit'])){
                 return $result;
             }
             else{
-                return ERR_NO_IMAGES;
+                return G_ERR_NO_IMAGES;
             }
         }
         else{
-            return ERR_IS_DIR;
+            return G_ERR_IS_DIR;
         }
     }
     else{
-        return ERR_NO_DIR;
+        return G_ERR_NO_DIR;
     }
 }
-return OK;
+return G_OK;
