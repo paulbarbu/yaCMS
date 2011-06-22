@@ -36,6 +36,7 @@ if(isset($_POST['adminlogin'])){
 
                         if(isset($_GET['action']) && is_string($_GET['action'])){
                             $module = $_GET['action'];
+                            $reload = TRUE;
                         }
                     }
                     else{
