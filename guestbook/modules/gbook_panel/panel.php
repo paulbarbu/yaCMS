@@ -11,7 +11,7 @@ if(isset($_POST['ban_ip'])){
         $fh = fopen(PATH_BAN_FILE, "a");
 
         if(FALSE == $fh){
-            return ERR_FOPEN_BAN_FILE;
+            return GP_ERR_FOPEN_BAN_FILE;
         }
 
         $ban = ban_ip($fh, $ips);
@@ -22,11 +22,11 @@ if(isset($_POST['ban_ip'])){
             return $ban;
         }
         else{
-            return BANNED;
+            return GP_BANNED;
         }
     }
     else{
-        return ERR_NO_IP;
+        return GP_ERR_NO_IP;
     }
 }
 
@@ -38,7 +38,7 @@ if(isset($_POST['unban_ip'])){
         $bans = file(PATH_BAN_FILE);
 
         if(FALSE == $bans){
-            return ERR_FOPEN_BAN_FILE;
+            return GP_ERR_FOPEN_BAN_FILE;
         }
 
         for($i=0;$i<count($bans);$i++){
@@ -50,7 +50,7 @@ if(isset($_POST['unban_ip'])){
         $fh = fopen(PATH_BAN_FILE, "w");
 
         if(FALSE == $fh){
-            return ERR_FOPEN_BAN_FILE;
+            return GP_ERR_FOPEN_BAN_FILE;
         }
 
         $unban = ban_ip($fh, $ips); //write the remaining IPs
@@ -61,11 +61,11 @@ if(isset($_POST['unban_ip'])){
             return $unban;
         }
         else{
-            return UNBANNED;
+            return GP_UNBANNED;
         }
     }
     else{
-        return ERR_NO_IP;
+        return GP_ERR_NO_IP;
     }
 }
 
