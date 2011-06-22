@@ -66,11 +66,15 @@ return array(
             'logout' => 'logout_admin.php'
         ),
     ),
-    'notfound' => array(
+    '404' => array(
         'VL' => array(
             'title' => 'Inexistent page',
-            'content' => 'notfound.php',
+            'content' => 'content.php',
             'show_in_menu' => FALSE,
+            'custom' => TRUE,
+        ),
+        'BL' => array(
+            'notfound' => '404.php',
         ),
     ),
     'login_user' => array(
