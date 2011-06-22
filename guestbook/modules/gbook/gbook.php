@@ -40,23 +40,23 @@ if(isset($_POST['post'])){
                 fclose($fh);
 
                 if(FALSE != $write_success){
-                    return POST_SUCCESS;
+                    return GB_POST_SUCCESS;
                 }
                 else{
-                    return ERR_WRITE_POST;
+                    return GB_ERR_WRITE_POST;
                 }
             }
             else{
-                return ERR_OPEN_MSG_FILE;
+                return GB_ERR_OPEN_MSG_FILE;
             }
         }
         else{
-            return ERR_NO_MSG;
+            return GB_ERR_NO_MSG;
         }
     }
     else{
-        return ERR_NO_NICK;
+        return GB_ERR_NO_NICK;
     }
 }
 
-return OK;
+return GB_OK;
