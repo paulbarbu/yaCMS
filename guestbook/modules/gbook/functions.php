@@ -39,7 +39,7 @@ function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
 
                 if(NULL == $result){
                     fclose($fh);
-                    return ERR_DECODE;
+                    return GB_ERR_DECODE;
                 }
 
                 $result['msg'] = wordwrap($result['msg'], 100, "\n", true);
@@ -72,13 +72,13 @@ function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
             fclose($fh);
         }
         else{
-            return  ERR_OPEN;
+            return  GB_ERR_OPEN;
         }
 
         return $posts;
     }
     else{
-        return  ERR_EMPTY;
+        return  GB_ERR_EMPTY;
     }
 }
 
@@ -94,14 +94,14 @@ function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
  */
 function check_ip($ip, $path = PATH_BAN_FILE){
     if(!is_string($ip)){
-        return ERR_IP_STRING;
+        return GB_ERR_IP_STRING;
     }
 
     if(is_file($path) && 0 != filesize($path)){
         $fh = fopen($path, "r");
 
         if(FALSE == $fh){
-            return ERR_FOPEN_BAN_FILE;
+            return GB_ERR_FOPEN_BAN_FILE;
         }
 
         while(!feof($fh)){
