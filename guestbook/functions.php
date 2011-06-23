@@ -5,10 +5,14 @@ const RENDER_ERR_NO_FILE = 1;
 const RENDER_ERR_FILE = 2;
 
 /**
- * int return_bytes( string $val)
+ * int return_bytes(string $val)
  *
- * this function is used to converd a shorthand notation like 2M in bytes
+ * this function is used to convert a shorthand notation like 2M in bytes
  * please visit: http://www.php.net/manual/en/function.ini-get.php
+ *
+ * @param string $val shotrnotation (e.g. "2M")
+ *
+ * @return int bytes representation of the shorthand notation
  */
 function return_bytes($val) {
     $val = trim($val);
@@ -29,11 +33,18 @@ function return_bytes($val) {
 }
 
 /**
- * void render(string $template, array $vars = NULL)
+ * int render($template, $vars = NULL)
  *
- * this function will take a path as first parameter and
- * an associative array as second, from the array the function will create
- * variables that are necessary for including the file specified by $template
+ * creates variables that are necessary for including the file specified by
+ * $template and includes it
+ *
+ * @param string $template path to the file to be required
+ * @param array $vars associative array containing variable names needed by
+ * $template, default NULL(none)
+ *
+ * @return int returns an status code, if it's the case that status coude is an
+ * error
+ *
  */
 function render($template, $vars = NULL){
     if($vars){
@@ -54,10 +65,15 @@ function render($template, $vars = NULL){
 }
 
 /**
- * string build_menu_from_modules(array $modules, string $currentModule)
+ * string build_menu_from_modules($modules, $currentModule)
  *
- * this function will build an HTMl menu based on the array received as
+ * this function will build an HTML menu based on the array received as
  * parameter and will return it as a string
+ *
+ * @param array $modules array to get menu entries from
+ * @param string $currentModule name of the module not to wrap in <a> tags
+ *
+ * @return string string representing the menu's HTML code
  */
 function build_menu_from_modules($modules, $currentModule){
     $menu = '<ul>' .PHP_EOL;
