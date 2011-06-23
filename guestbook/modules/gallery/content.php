@@ -9,7 +9,7 @@ if(isset($feedback['gallery']) && is_array($feedback['gallery'])){
 }
 else{
 ?>
-<form method="post" action="" >
+<form method="post" action="?show=gallery" >
 <label for="id-dir">Directory containing images</label>
 <input type="text" name="dir" id="id-dir" />
 <br />

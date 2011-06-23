@@ -1,6 +1,6 @@
 <span id="adminlogin"><a href="index.php?show=logout_admin">Log out</a></span>
 <h3>Ban IPs:</h3>
-<form action="" method="post">
+<form action="?show=gbook_panel" method="post">
 <?php
 $ips = get_ips_ban();
 
