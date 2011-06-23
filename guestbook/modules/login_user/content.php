@@ -17,8 +17,8 @@
 <br /><input type="submit" name="go" value="Log In" />
 </form>
 <?php
+echo '<h3>';
 if(is_numeric($feedback['login'])){
-    echo '<h3>';
     switch($feedback['login']){
         case LU_ERR_USER: echo 'Inexistent user! - ', LU_ERR_USER;
             break;
@@ -42,6 +42,9 @@ if(is_numeric($feedback['login'])){
             break;
         default;
     }
-    echo '</h3>';
 }
+elseif($feedback['login']){
+    echo 'Authentified successfully!';
+}
+echo '</h3>';
 ?>

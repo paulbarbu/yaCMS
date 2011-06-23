@@ -17,8 +17,9 @@
 <input type="submit" name="adminlogin" value="Log in"/>
 </form>
 <?php
+echo '<h3>';
+
 if(is_numeric($feedback['login'])){
-    echo '<h3>';
 
     switch($feedback['login']){
         case LA_ERR_PASS: echo 'Invalid password! - ' , LA_ERR_PASS;
@@ -36,5 +37,9 @@ if(is_numeric($feedback['login'])){
         default;
     }
 
-    echo '</h3>';
 }
+elseif($feedback['login']){
+    echo 'Authentified successfully!';
+}
+
+echo '</h3>';

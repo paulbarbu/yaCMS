@@ -64,7 +64,7 @@ if(isset($_POST['go'])){
 
     if(isset($_POST['r_me']) && $auth){ //create cookie for remembering the session
 
-        $cookie = setcookie(session_name(), $currentUser[1], time()+60*60*24*30, '/');
+        $cookie = setcookie(session_name(), session_id(), time()+60*60*24*30, '/');
         if(!$cookie){
             return LU_ERR_COOKIE;
         }

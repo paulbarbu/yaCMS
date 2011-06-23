@@ -61,7 +61,7 @@ if(isset($_POST['adminlogin'])){
 
     if(isset($_POST['r_me']) && $auth){ //create cookie for remembering the session
 
-        $cookie = setcookie(session_name(), $id, time()+60*60*24*30, '/');
+        $cookie = setcookie(session_name(), session_id(), time()+60*60*24*30, '/');
         if(!$cookie){
             return LA_ERR_COOKIE;
         }
