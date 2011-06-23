@@ -1,4 +1,13 @@
-<form action="index.php?show=login_admin&action=<?php echo $feedback_pre['autologin']; ?>" method="post" >
+<form action="index.php?show=login_admin
+<?php
+    if(!empty($feedback_pre['autologin'])){
+?>
+&action=
+<?php
+     echo $feedback_pre['autologin'];
+}
+?>
+" method="post">
 <label for="id-p">Password:</label>
 <input type="password" name="pass" id="id-p" />
 <br />
