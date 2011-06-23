@@ -1,6 +1,9 @@
 <?php
 /**
  * Module list
+ *
+ * A configuration file to hold all available modules
+ * From this file a menu is build and pages are loaded
  */
 return array(
     'home' => array(
