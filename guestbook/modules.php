@@ -18,11 +18,11 @@ return array(
         ),
         'VL' => array(
             'title' => 'G - book',
-            'content' => 'gb_content.php',
+            'content' => 'content.php',
         ),
         'BL' => array(
-            'gbook_const' => 'gb_constants.php',
-            'gbook_func' => 'gb_functions.php',
+            'gbook_const' => 'constants.php',
+            'gbook_func' => 'functions.php',
             'gbook' => 'gbook.php',
         ),
     ),
@@ -32,28 +32,28 @@ return array(
         ),
         'VL' => array(
             'title' => 'Admin panel',
-            'content' => 'gp_content.php',
+            'content' => 'content.php',
             'show_in_menu' => FALSE,
             'login_need' => TRUE,
         ),
         'BL' => array(
-            'const' => 'gp_constants.php',
-            'func' => 'gp_functions.php',
+            'const' => 'constants.php',
+            'func' => 'functions.php',
             'panel' => 'panel.php',
         ),
     ),
     'login_admin' => array(
         'pre-process' => array(
-            'autologin' => 'autologin_admin.php',
+            'autologin' => 'autologin.php',
         ),
         'VL' => array(
             'title' => 'Admin Log In',
-            'content' => 'lia_content.php',
+            'content' => 'content.php',
             'show_in_menu' => FALSE,
         ),
         'BL' => array(
-            'login_const' => 'lia_constants.php',
-            'login' => 'login_admin.php',
+            'login_const' => 'constants.php',
+            'login' => 'login.php',
         ),
     ),
     'logout_admin' => array(
@@ -62,11 +62,11 @@ return array(
         ),
         'VL' => array(
             'title' => 'Admin logged out',
-            'content' => 'loa_content.php',
+            'content' => 'content.php',
             'show_in_menu' => FALSE,
         ),
         'BL' => array(
-            'logout' => 'logout_admin.php'
+            'logout' => 'logout.php'
         ),
     ),
     '404' => array(
@@ -82,16 +82,16 @@ return array(
     ),
     'login_user' => array(
         'pre-process' => array(
-            'autologin' => 'autologin_user.php',
+            'autologin' => 'autologin.php',
         ),
         'VL' => array(
             'title' => 'User Log in',
-            'content' => 'liu_content.php',
+            'content' => 'content.php',
             'show_in_menu' => FALSE,
         ),
         'BL' => array(
-            'login_const' => 'liu_constants.php',
-            'login' => 'login_user.php',
+            'login_const' => 'constants.php',
+            'login' => 'login.php',
         ),
 
     ),
@@ -101,11 +101,11 @@ return array(
         ),
         'VL' => array(
             'title' => 'User logged out',
-            'content' => 'lou_content.php',
+            'content' => 'content.php',
             'show_in_menu' => FALSE,
         ),
         'BL' => array(
-            'logout' => 'logout_user.php'
+            'logout' => 'logout.php'
         ),
     ),
     'gallery' => array(
@@ -114,11 +114,11 @@ return array(
         ),
         'VL' => array(
             'title' => 'Gallery',
-            'content' => 'g_content.php',
+            'content' => 'content.php',
             'login_need' => TRUE,
         ),
         'BL' => array(
-            'const' => 'g_constants.php',
+            'const' => 'constants.php',
             'gallery' => 'gallery.php',
         ),
     ),
