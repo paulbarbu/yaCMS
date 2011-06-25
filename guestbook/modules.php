@@ -7,6 +7,9 @@
  */
 return array(
     'home' => array(
+        'pre-process' => array(
+            'autologin' => 'login_user',
+        ),
         'VL' => array(
             'title' => 'Home',
             'content' => 'content.php',
@@ -120,6 +123,20 @@ return array(
         'BL' => array(
             'const' => 'constants.php',
             'gallery' => 'gallery.php',
+        ),
+    ),
+    'text' => array(
+        'pre-process' => array(
+            'autologin' => 'login_user',
+        ),
+        'VL' => array(
+            'title' => 'Text edit',
+            'content' => 'content.php',
+            'login_need' => TRUE,
+        ),
+        'BL' => array(
+            'const' => 'constants.php',
+            'text' => 'text.php',
         ),
     ),
 );
