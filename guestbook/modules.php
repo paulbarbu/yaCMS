@@ -139,4 +139,18 @@ return array(
             'text' => 'text.php',
         ),
     ),
+    'upload' => array(
+        'pre-process' => array(
+            'autologin' => 'login_user',
+        ),
+        'VL' => array(
+            'title' => 'Upload',
+            'content' => 'content.php',
+            'login_need' => TRUE,
+        ),
+        'BL' => array(
+            'const' => 'constants.php',
+            'upload' => 'upload.php'
+        ),
+    ),
 );
