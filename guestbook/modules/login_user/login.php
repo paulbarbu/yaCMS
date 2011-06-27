@@ -12,6 +12,7 @@
  * $auth - stores a boolean, if the user is authentified or not
  */
 
+
 $currentUser = array();
 $auth = FALSE;
 
@@ -63,8 +64,10 @@ if(isset($_POST['go'])){
     }
 
     if(isset($_POST['r_me']) && $auth){ //create cookie for remembering the session
+        $pos = strrpos($_SERVER['REQUEST_URI'], DIRECTORY_SEPARATOR);
+        $cookie_path = substr($_SERVER['REQUEST_URI'], 0, $pos);
 
-        $cookie = setcookie(session_name(), session_id(), time()+60*60*24*30, '/');
+        $cookie = setcookie(session_name(), session_id(), time()+60*60*24*30, $cookie_path);
         if(!$cookie){
             return LU_ERR_COOKIE;
         }
