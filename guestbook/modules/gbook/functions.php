@@ -19,7 +19,7 @@ const GB_ERR_FOPEN_BAN_FILE = 5;
  * 2 if the messages cannot be decoded(from JSON format) or 3 if the file does
  * not exists or it's empty, on success it returns an array of strings
  */
-function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
+function post_to_div($path = PATH_MSG_FILE, $admin = FALSE){
     if(is_file($path) && 0 != filesize($path)){
 
         $posts = array();
@@ -35,7 +35,7 @@ function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
                     return $posts;
                 }
 
-                $result = json_decode($post, true);
+                $result = json_decode($post, TRUE);
 
                 if(NULL == $result){
                     fclose($fh);
@@ -47,10 +47,18 @@ function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
 
                 $posts[$nr_posts] = NULL;
 
-                $posts[$nr_posts] .= '<div id="post"><div id="headpost">' . PHP_EOL . $result['nick'];
+                $posts[$nr_posts] .= '<div id="post"><div id="headpost">' . PHP_EOL;
+
+                if(FALSE != $admin){
+                    $unique_id = $result['time'] . '!' . $result['ip'];
+                    $posts[$nr_posts] .= '<input type="checkbox" name="manage_posts[]" value="' . $unique_id . '" />';
+                }
+
+                $posts[$nr_posts] .= $result['nick'];
+
                 if(NULL != $result['mail']){
-                    $posts[$nr_posts] .= '&nbsp;<<a href="mailto:' . $result['mail'] . '">'
-                        . $result['mail'] . '<a/>>';
+                    $posts[$nr_posts] .= '&nbsp;<a href="mailto:' . $result['mail'] . '">'
+                        . $result['mail'] . '<a/>';
                 }
 
                 if(NULL != $result['url']){
@@ -58,7 +66,7 @@ function post_to_div($path = PATH_MSG_FILE, $ip = FALSE){
                         . $result['url'] . '</a>';
                 }
 
-                if(FALSE != $ip){
+                if(FALSE != $admin){
                     $posts[$nr_posts] .= '&nbsp;' . $result['ip'];
                 }
 
