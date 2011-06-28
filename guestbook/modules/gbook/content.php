@@ -40,8 +40,11 @@ Your message here...
 </textarea>
 <br />
 <input type="submit" name="post" value="Post" />
-</form>
 <?php
+    if(isset($_SESSION['id'])){
+        echo '<br/> <input type="submit" name="del" value="Delete selected" />';
+    }
+
     if(is_numeric($feedback['gbook'])){
         echo '<h3>';
 
@@ -55,6 +58,10 @@ Your message here...
             case GB_ERR_WRITE_POST: echo 'Could not write your message! - ', GB_ERR_WRITE_POST;
                 break;
             case GB_POST_SUCCESS: echo 'Posted!';
+                break;
+            case GB_DEL_SUCCESS: echo 'Deleted!';
+                break;
+            case GB_ERR_NO_SELECTED: echo 'No posts selected! - ', GB_ERR_NO_SELECTED;
                 break;
             default;
         }
@@ -89,3 +96,4 @@ Your message here...
     }
 }
 ?>
+</form>

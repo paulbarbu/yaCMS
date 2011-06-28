@@ -59,4 +59,60 @@ if(isset($_POST['post'])){
     }
 }
 
+if(isset($_POST['del'])){
+    if(isset($_POST['manage_posts']) && !empty($_POST['manage_posts'])){
+        $manage_posts = $_POST['manage_posts'];
+        $posts_info = array();
+        $remaining_posts = array();
+
+        foreach($manage_posts as $post){
+            $post = explode('!', $post);
+            $posts_info[] = $post;
+        }
+
+        $fh = fopen(PATH_MSG_FILE, "r");
+
+        if(FALSE != $fh){
+            while(!feof($fh)){
+                $post = fgets($fh);
+
+                if(FALSE != $post){
+
+                    $result = json_decode($post, TRUE);
+
+                    foreach($posts_info as $info){
+                        if($info[0] != $result['time'] || $info[1] != $result['ip']){
+                            $remaining_posts[] = $post;
+                        }
+                    }
+                }
+                else{
+                    fclose($fh);
+                    $fh = fopen(PATH_MSG_FILE, "w");
+
+                    if(FALSE != $fh){
+                        foreach($remaining_posts as $post){
+                            fwrite($fh, $post);
+                        }
+                        fclose($fh);
+                    }
+                    else{
+                        return GB_ERR_OPEN_MAG_FILE;
+                    }
+
+                    return GB_DEL_SUCCESS;
+                }
+            }
+            fclose($fh);
+        }
+        else{
+            return GB_ERR_OPEN_MSG_FILE;
+        }
+
+    }
+    else{
+        return GB_ERR_NO_SELECTED;
+    }
+}
+
 return GB_OK;
