@@ -42,7 +42,7 @@ function post_to_div($path = PATH_MSG_FILE, $admin = FALSE){
                     return GB_ERR_DECODE;
                 }
 
-                $result['msg'] = wordwrap($result['msg'], 100, "\n", true);
+                $result['msg'] = wordwrap($result['msg'], 100, "\n", TRUE);
                 $result['msg'] = nl2br($result['msg']);
 
                 $posts[$nr_posts] = NULL;
