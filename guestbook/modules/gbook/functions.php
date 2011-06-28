@@ -47,6 +47,7 @@ function post_to_div($path = PATH_MSG_FILE, $admin = FALSE){
 
                 $posts[$nr_posts] = NULL;
 
+                //many XSS holes here
                 $posts[$nr_posts] .= '<div id="post"><div id="headpost">' . PHP_EOL;
 
                 if(FALSE != $admin){

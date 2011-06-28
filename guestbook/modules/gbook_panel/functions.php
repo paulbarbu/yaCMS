@@ -46,7 +46,6 @@ function get_ips_ban($path = PATH_MSG_FILE){
                 }
 
                 $ips[$nr_ips] = NULL;
-
                 $ips[$nr_ips] .= '<input type="checkbox" name="ips[]" value="'
                     . $result['ip'] . '" id="id-' . $result['ip'] . '" /><label
                     for="id-' . $result['ip'] . '">' . $result['ip'] . '</label>

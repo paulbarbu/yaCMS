@@ -12,6 +12,7 @@ if(is_numeric($feedback['text'])){
     }
     echo '</h3>';
 }
+//more XSS here
 elseif(NULL != $feedback['text']['contents']){
     echo '<label for="id-c">Edit here:</label><br /><textarea name="contents"
         id="id-c" rows="15" cols="100">' , $feedback['text']['contents']
