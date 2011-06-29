@@ -132,38 +132,52 @@ function find_files_by_mime($path, $mime, $recursive = TRUE){
                         $files[] = $path . DIRECTORY_SEPARATOR . $entry;
                 }
 
-            }
         }
-
-        closedir($d);
     }
-    return $files;
+
+    closedir($d);
+}
+return $files;
 }
 
 /**
- * csv_search($fh, $column, $criteria)
- *
- * Read line by line the file stored in $file_handle and search on the $column
- * the $criteria.
- * The $column is the number of CSV separator + 1, example:
- * john|31
- * Here the CSV separator is | and "31" is on the second column, because it is
- * found after the first separator
- *
- * @param resource $fh file stream for reading the comma separated values
- * @param int $column colum to read the data from
- *
- * @return FALSE|array on success returns the line containing the $criteria as array if $criteria was found otherwise
- * FALSE
- */
+* csv_search($fh, $column, $criteria)
+*
+* Read line by line the file stored in $file_handle and search on the $column
+* the $criteria.
+* The $column is the number of CSV separator + 1, example:
+* john|31
+* Here the CSV separator is | and "31" is on the second column, because it is
+* found after the first separator
+*
+* @param resource $fh file stream for reading the comma separated values
+* @param int $column colum to read the data from
+*
+* @return FALSE|array on success returns the line containing the $criteria as array if $criteria was found otherwise
+* FALSE
+*/
 function csv_search($fh, $column, $criteria){
-    $line = array();
+$line = array();
 
-    while(FALSE !== ($line = fgetcsv($fh, 1000))){
-        if($criteria == $line[$column]){
-            return $line;
-        }
+while(FALSE !== ($line = fgetcsv($fh, 1000))){
+    if($criteria == $line[$column]){
+        return $line;
     }
+}
 
-    return FALSE;
+return FALSE;
+}
+
+/**
+ * app_path()
+ *
+ * Get the application's directory on the server
+ *
+ * @return string $path the path the the directory where the application runs
+ */
+function app_path(){
+    $pos = strrpos($_SERVER['REQUEST_URI'], DIRECTORY_SEPARATOR);
+    $path = substr($_SERVER['REQUEST_URI'], 0, $pos);
+
+    return $path;
 }
