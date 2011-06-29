@@ -63,17 +63,23 @@ Your message here...
                 break;
             case GB_ERR_NO_SELECTED: echo 'No posts selected! - ', GB_ERR_NO_SELECTED;
                 break;
+            case GB_ERR_NO_MSG_FILE: echo 'Database does not exists! - ', GB_ERR_NO_MSG_FILE;
+                break;
+            case GB_ERR_READONLY: echo 'Database is readonly! - ', GB_ERR_READONLY;
+                break;
+            case GB_ERR_CANNOT_READ: echo 'Cannot read from database! - ', GB_ERR_CANNOT_READ;
+                break;
             default;
         }
 
         echo '</h3>';
     }
 
-    if(!isset($_SESSION['id'])){
-        $messages = post_to_div();
+    if(isset($_SESSION['admin']) && $_SESSION['admin']){
+        $messages = post_to_div(PATH_MSG_FILE, TRUE);
     }
     else{
-        $messages = post_to_div(PATH_MSG_FILE, TRUE);
+        $messages = post_to_div();
     }
 
     if(is_numeric($messages)){

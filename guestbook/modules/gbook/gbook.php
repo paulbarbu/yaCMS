@@ -30,24 +30,35 @@ if(isset($_POST['post'])){
             $result['time'] = date("F j, Y, g:i a");
             $result['ip'] = $_SERVER['REMOTE_ADDR'];
 
-            $fh = fopen(PATH_MSG_FILE, "a");
+            if(file_exists(PATH_MSG_FILE)){
+                if(is_writeable(PATH_MSG_FILE)){
 
-            if(FALSE != $fh){
-                $post = json_encode($result);
-                $post .= PHP_EOL;
+                    $fh = fopen(PATH_MSG_FILE, "a");
 
-                $write_success = fwrite($fh, $post);
-                fclose($fh);
+                    if(FALSE != $fh){
+                        $post = json_encode($result);
+                        $post .= PHP_EOL;
 
-                if(FALSE != $write_success){
-                    return GB_POST_SUCCESS;
+                        $write_success = fwrite($fh, $post);
+                        fclose($fh);
+
+                        if(FALSE != $write_success){
+                            return GB_POST_SUCCESS;
+                        }
+                        else{
+                            return GB_ERR_WRITE_POST;
+                        }
+                    }
+                    else{
+                        return GB_ERR_OPEN_MSG_FILE;
+                    }
                 }
                 else{
-                    return GB_ERR_WRITE_POST;
+                    return GB_ERR_READONLY;
                 }
             }
             else{
-                return GB_ERR_OPEN_MSG_FILE;
+                return GB_ERR_NO_MSG_FILE;
             }
         }
         else{
@@ -60,58 +71,74 @@ if(isset($_POST['post'])){
 }
 
 if(isset($_POST['del'])){
-    if(isset($_POST['manage_posts']) && !empty($_POST['manage_posts'])){
-        $manage_posts = $_POST['manage_posts'];
-        $posts_info = array();
-        $remaining_posts = array();
+    if(isset($_SESSION['admin']) && $_SESSION['admin']){
+       if(isset($_POST['manage_posts']) && !empty($_POST['manage_posts'])){
+            $manage_posts = $_POST['manage_posts'];
+            $posts_info = array();
+            $remaining_posts = array();
 
-        foreach($manage_posts as $post){
-            $post = explode('!', $post);
-            $posts_info[] = $post;
-        }
-
-        $fh = fopen(PATH_MSG_FILE, "r");
-
-        if(FALSE != $fh){
-            while(!feof($fh)){
-                $post = fgets($fh);
-
-                if(FALSE != $post){
-
-                    $result = json_decode($post, TRUE);
-
-                    foreach($posts_info as $info){
-                        if($info[0] != $result['time'] || $info[1] != $result['ip']){
-                            $remaining_posts[] = $post;
-                        }
-                    }
-                }
-                else{
-                    fclose($fh);
-                    $fh = fopen(PATH_MSG_FILE, "w");
+            foreach($manage_posts as $post){
+                $post = explode('!', $post);
+                $posts_info[] = $post;
+            }
+            if(file_exists(PATH_MSG_FILE)){
+                if(is_readable(PATH_MSG_FILE)){
+                    $fh = fopen(PATH_MSG_FILE, "r");
 
                     if(FALSE != $fh){
-                        foreach($remaining_posts as $post){
-                            fwrite($fh, $post);
+                        while(!feof($fh)){
+                            $post = fgets($fh);
+
+                            if(FALSE != $post){
+
+                                $result = json_decode($post, TRUE);
+
+                                foreach($posts_info as $info){
+                                    if($info[0] != $result['time'] || $info[1] != $result['ip']){
+                                        $remaining_posts[] = $post;
+                                    }
+                                }
+                            }
+                            else{
+                                fclose($fh);
+                                if(is_writeable(PATH_MSG_FILE)){
+                                    $fh = fopen(PATH_MSG_FILE, "w");
+
+                                    if(FALSE != $fh){
+                                        foreach($remaining_posts as $post){
+                                            fwrite($fh, $post);
+                                        }
+                                        fclose($fh);
+                                    }
+                                    else{
+                                        return GB_ERR_OPEN_MSG_FILE;
+                                    }
+
+                                    return GB_DEL_SUCCESS;
+                                }
+                                else{
+                                    return GB_ERR_READONLY;
+                                }
+                            }
                         }
                         fclose($fh);
                     }
                     else{
-                        return GB_ERR_OPEN_MAG_FILE;
+                        return GB_ERR_OPEN_MSG_FILE;
                     }
-
-                    return GB_DEL_SUCCESS;
+                }
+                else{
+                    return GB_ERR_CANNOT_READ;
                 }
             }
-            fclose($fh);
+            else{
+                return GB_ERR_NO_MSG_FILE;
+            }
+
         }
         else{
-            return GB_ERR_OPEN_MSG_FILE;
+            return GB_ERR_NO_SELECTED;
         }
-
-    }
-    else{
-        return GB_ERR_NO_SELECTED;
     }
 }
 

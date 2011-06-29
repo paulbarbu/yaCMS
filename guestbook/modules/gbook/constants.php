@@ -17,3 +17,6 @@ const GB_POST_SUCCESS = 5;
 
 const GB_ERR_NO_SELECTED = 6;
 const GB_DEL_SUCCESS = 7;
+const GB_ERR_NO_MSG_FILE = 8;
+const GB_ERR_CANNOT_READ = 9;
+const GB_ERR_READONLY = 10;
