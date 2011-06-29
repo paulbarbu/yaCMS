@@ -34,17 +34,11 @@ if(is_numeric($feedback['login'])){
             break;
         case LU_ERR_COOKIE: echo 'Cannot set cookie! - ', LU_ERR_COOKIE;
             break;
-        case LU_ERR_CAPTCHA: echo 'Captcha error! - ', LU_ERR_CAPTCHA;
-            break;
-        case LU_ERR_NO_CODE: echo 'Please type the captcha code! - ', LU_ERR_NO_CODE;
-            break;
-        case LU_ERR_W_CODE: echo 'Wrong captcha code! - ', LU_ERR_W_CODE;
-            break;
         default;
     }
 }
 elseif($feedback['login']){
-    echo 'Authentified successfully!';
+    echo 'Authentified!';
 }
 echo '</h3>';
 ?>

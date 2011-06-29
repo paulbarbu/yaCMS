@@ -32,14 +32,14 @@ if(is_numeric($feedback['login'])){
             break;
         case LA_ERR_NO_PASS: echo 'Plase fill in a password! - ' , LA_ERR_NO_PASS;
             break;
-        case LA_ERR_COOKIE: echo 'error setting cookie! - ' , LA_ERR_COOKIE;
+        case LA_ERR_COOKIE: echo 'Error setting cookie! - ' , LA_ERR_COOKIE;
             break;
         default;
     }
 
 }
 elseif($feedback['login']){
-    echo 'Authentified successfully!';
+    echo 'Authentified!';
 }
 
 echo '</h3>';
