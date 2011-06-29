@@ -2,12 +2,12 @@
 
 $prev = NULL;
 
-if(!isset($_SESSION)){
+if(isset($_COOKIE[session_name()])){
     session_start();
 }
 
 if(!isset($_SESSION['uID']) && isset($_COOKIE[session_name()]) && is_numeric($_COOKIE[session_name()])){
-        $_SESSION['uID'] = $_COOKIE[session_name()];
+        $_SESSION = $_COOKIE[session_name()];
 }
 elseif(isset($modules[$module]['VL']['login_need']) && $modules[$module]['VL']['login_need'] && !isset($_SESSION['uID'])){
     if($module != 'login_admin'){

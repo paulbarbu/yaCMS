@@ -29,10 +29,11 @@ if(isset($_POST['adminlogin'])){
                     if(trim($currentPass) == trim($pass)){
                         $auth = TRUE;
 
-                        $id = rand(1000, 9999);
+                        if(!isset($_SESSION)){
+                            session_start();
+                        }
 
-                        $_SESSION = array();
-                        $_SESSION['id'] = $id;
+                        $_SESSION['admin'] = TRUE;
 
                         if(isset($_GET['action']) && is_string($_GET['action'])){
                             $module = $_GET['action'];

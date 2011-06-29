@@ -35,7 +35,6 @@ if(isset($_POST['go'])){
                     if(FALSE !== $currentUser){
                         $auth = TRUE;
 
-                        $_SESSION = array();
                         $_SESSION['uID'] = $currentUser[1];
 
                         if(isset($_GET['action']) && is_string($_GET['action'])){
