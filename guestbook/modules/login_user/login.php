@@ -37,6 +37,7 @@ if(isset($_POST['go'])){
 
 
                         if(!isset($_SESSION)){
+                            session_set_cookie_params(0, app_path());
                             session_start();
                         }
 
@@ -71,7 +72,7 @@ if(isset($_POST['go'])){
         $pos = strrpos($_SERVER['REQUEST_URI'], DIRECTORY_SEPARATOR);
         $cookie_path = substr($_SERVER['REQUEST_URI'], 0, $pos);
 
-        $cookie = setcookie(session_name(), session_id(), time()+60*60*24*30, $cookie_path);
+        $cookie = setcookie(session_name(), session_id(), time()+60*60*24*30, app_path());
         if(!$cookie){
             return LU_ERR_COOKIE;
         }
