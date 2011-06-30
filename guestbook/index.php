@@ -43,7 +43,7 @@ if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-proc
                 $feedback_pre[$pre_key] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre;
             }
             else{
-                echo ERR_LOAD_FILE . MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre;
+                echo ERR_LOAD_FILE;
                 exit();
             }
         }
@@ -66,7 +66,7 @@ if(isset($modules[$module]['BL'])){
             $feedback[$blName] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
         }
         else{
-            echo ERR_LOAD_FILE . MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+            echo ERR_LOAD_FILE;
             exit();
         }
     }
@@ -77,23 +77,15 @@ if($reload){
     goto load_module;
 }
 
-if(file_exists('layout.php') && is_readable('layout.php')){
+$rendered = render('layout.php', compact('module', 'feedback', 'modules', 'feedback_pre'));
 
-    $rendered = render('layout.php', compact('module', 'feedback', 'modules', 'feedback_pre'));
-
-    switch($rendered){
-        case RENDER_ERR_NO_FILE: echo 'No page to display! - ' , RENDER_ERR_NO_FILE;
-            break;
-        case RENDER_ERR_FILE: echo 'Cound not read the file! - ' , RENDER_ERR_FILE;
-            break;
-        default;
-    }
+switch($rendered){
+    case RENDER_ERR_NO_FILE: echo 'No page to display! - ' , RENDER_ERR_NO_FILE;
+        break;
+    case RENDER_ERR_FILE: echo 'Cound not read the file! - ' , RENDER_ERR_FILE;
+        break;
+    default;
 }
-else{
-    echo ERR_LOAD_FILE . 'layout.php';
-    exit();
-}
-
 
 if(isset($modules[$module]['post-process']) && !empty($modules[$module]['post-process'])){
     foreach($modules[$module]['post-process'] as $post){
@@ -103,7 +95,7 @@ if(isset($modules[$module]['post-process']) && !empty($modules[$module]['post-pr
                 require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post;
             }
             else{
-                echo ERR_LOAD_FILE . MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post;
+                echo ERR_LOAD_FILE;
                 exit();
             }
         }
