@@ -47,23 +47,82 @@
  *      if there is no extension set, of course the module needed is searched in
  *      this file, if it's found it's 'pre-process' part is loaded before the
  *      callee is loaded.
- *      Here an undetermined number of modules/scripts can be loaded.
+ *      If a single script is to be pre-loaded then it is searched in the
+ *      current module's directory, if a module is to be loaded then it's loaded
+ *      from MODULES_ROOT
+ *      An undetermined number of modules/scripts can be loaded.
+ *
  * Example:
  *      'pre-process' => array(
  *          'foo_script' => 'foo.php',
  *          'login' => 'login_user',
  *      ),
- *      In this example 2 things are pre-loaded, the 'foo.php' script and the
- *      pre-process part of the 'login_user' module
+ *
+ *      In this example 2 things are pre-loaded, the 'foo.php' script(from the
+ *      current module's directory) and the pre-process part of the 'login_user'
+ *      module
  *
  * 'post-process' ->
  *      Acts the same as 'pre-process', the only differece being that the
  *      scripts/modules are post-loaded, so they are loaded after the callee has
  *      made his job. For post-loading modules the same rule applies: only the
- *      post-process part of the modul is loaded after the callee
+ *      post-process part of the module is loaded after the callee
  *
+ * 'VL' ->
+ *      Here you can set a predefined number of characteristics
+ *      Entries available at the moment:
  *
+ *      'title' -> the user will see this text as title
  *
+ *      'content' -> the VL script of the module found int he modeule's
+ *          directory
+ *
+ *      'show_in_menu' -> OPTIONAL - if it's not set the user will see this
+ *          module in the menu, if it's set to FALSE the user will not be able to
+ *          see it in the menu, else it will be shown
+ *
+ *      'login_need' -> OPTIONAL - if it's not set and a login module is
+ *          pre-loaded then it's optional to log in to use this module, if it's
+ *          set to TRUE then the login is mandatory
+ *
+ * Example:
+ *      'VL' => array(
+ *          'title' => 'BAR',
+ *          'content' => 'vl_script.php',
+ *      ),
+ *
+ *      In this example the user will see the page's title as 'BAR' and when
+ *      accessing the module the file 'vl_script.php' will be loaded, in this
+ *      case loggin in to use the module is optional and the module will be
+ *      visible in the menu
+ *
+ *      'VL' => array(
+ *          'title' => 'foo',
+ *          'content' => 'content.php',
+ *          'login_need' => TRUE,
+ *      ),
+ *
+ *      Here the title will be 'foo', the file 'content.php' will be loaded and
+ *      the login is mandatory so this module must have a login module as
+ *      'pre-process'
+ *
+ * 'BL' ->
+ *      This part of a module holds the "brain", the business logic scripts.
+ *      An undefined number of *.php scripts can be loaded, all files are loaded
+ *      from the module's directory.
+ *      The key from the array is the name under which the VL part of the
+ *      module receives feedback after the script finished processing(giving
+ *      feedback is not mandatory e.g. constants or functions files)
+ *
+ * Example:
+ *      'BL' => array(
+ *          'constants' => 'constants.php',
+ *          'func' => 'functions.php',
+ *          'brain' => 'baz.php',
+ *      ),
+ *
+ *      Here three files are loaded, the VL receives feedback from 'baz.php'
+ *      under this form: $feedback['brain']
  */
 
 return array(

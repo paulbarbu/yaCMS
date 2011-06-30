@@ -34,6 +34,8 @@ else{
     }
 }
 
+//TODO check module files here(pre(*.php), post(*.php), bl, vl) -> file_exists()
+
 load_module:
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
     foreach($modules[$module]['pre-process'] as $pre_key => $pre){
