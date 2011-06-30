@@ -9,3 +9,5 @@ define('DATA_ROOT', BASE_DIR . 'data' . DIRECTORY_SEPARATOR);
 
 define('UPLOADS_ROOT', 'uploads' . DIRECTORY_SEPARATOR);
 
+const ERR_LOAD_FILE = 'Cannot use current file, it does not exists or it\'s not readable: ';
+

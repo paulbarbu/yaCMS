@@ -34,13 +34,18 @@ else{
     }
 }
 
-//TODO check module files here(pre(*.php), post(*.php), bl, vl) -> file_exists()
-
 load_module:
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
     foreach($modules[$module]['pre-process'] as $pre_key => $pre){
         if(FALSE != stristr($pre, '.php')){
-            $feedback_pre[$pre_key] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre;
+            if(file_exists(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre) &&
+                is_readable(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre)){
+                $feedback_pre[$pre_key] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre;
+            }
+            else{
+                echo ERR_LOAD_FILE . MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre;
+                exit();
+            }
         }
         else{//our module has another module as pre-dependency
             foreach($modules[$pre]['pre-process'] as $dep_pre_key => $dep_pre){
@@ -56,7 +61,14 @@ if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-proc
  */
 if(isset($modules[$module]['BL'])){
     foreach($modules[$module]['BL'] as $blName => $blFile){
-        $feedback[$blName] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+        if(file_exists(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile) &&
+            is_readable(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile)){
+            $feedback[$blName] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+        }
+        else{
+            echo ERR_LOAD_FILE . MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+            exit();
+        }
     }
 }
 
@@ -65,21 +77,35 @@ if($reload){
     goto load_module;
 }
 
-$rendered = render('layout.php', compact('module', 'feedback', 'modules', 'feedback_pre'));
+if(file_exists('layout.php') && is_readable('layout.php')){
 
-switch($rendered){
-    case RENDER_ERR_NO_FILE: echo 'No page to display! - ' , RENDER_ERR_NO_FILE;
-        break;
-    case RENDER_ERR_FILE: echo 'Cound not read the file! - ' , RENDER_ERR_FILE;
-        break;
-    default;
+    $rendered = render('layout.php', compact('module', 'feedback', 'modules', 'feedback_pre'));
+
+    switch($rendered){
+        case RENDER_ERR_NO_FILE: echo 'No page to display! - ' , RENDER_ERR_NO_FILE;
+            break;
+        case RENDER_ERR_FILE: echo 'Cound not read the file! - ' , RENDER_ERR_FILE;
+            break;
+        default;
+    }
+}
+else{
+    echo ERR_LOAD_FILE . 'layout.php';
+    exit();
 }
 
 
 if(isset($modules[$module]['post-process']) && !empty($modules[$module]['post-process'])){
     foreach($modules[$module]['post-process'] as $post){
         if(FALSE != stristr($post, '.php')){
-            require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post;
+            if(file_exists(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post) &&
+               is_readable(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post)){
+                require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post;
+            }
+            else{
+                echo ERR_LOAD_FILE . MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post;
+                exit();
+            }
         }
         else{//our module has another module as post-dependency
             foreach($modules[$post]['post-process'] as $dep_post){
