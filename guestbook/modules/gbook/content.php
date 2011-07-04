@@ -85,11 +85,11 @@ Your message here...
     if(is_numeric($messages)){
         echo '<h3>';
         switch($messages){
-            case ERR_OPEN: echo 'Error opening file! - ', ERR_OPEN;
+            case GB_ERR_OPEN: echo 'Error opening file! - ', GB_ERR_OPEN;
                 break;
-            case ERR_DECODE: echo 'Message cannot be decoded! - ', ERR_DECODE;
+            case GB_ERR_DECODE: echo 'Message cannot be decoded! - ', GB_ERR_DECODE;
                 break;
-            case ERR_EMPTY: echo 'No posts! - ', ERR_EMPTY;
+            case GB_ERR_EMPTY: echo 'No posts! - ', GB_ERR_EMPTY;
                 break;
             default;
         }
