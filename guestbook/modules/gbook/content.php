@@ -41,7 +41,7 @@ Your message here...
 <br />
 <input type="submit" name="post" value="Post" />
 <?php
-    if(isset($_SESSION['id'])){
+    if(isset($_SESSION['admin'])){
         echo '<br/> <input type="submit" name="del" value="Delete selected" />';
     }
 
