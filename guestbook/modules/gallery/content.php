@@ -2,8 +2,7 @@
 if(isset($feedback['gallery']) && is_array($feedback['gallery'])){
     echo '<p>';
     foreach($feedback['gallery'] as $img){
-        //XSS here :)
-        echo '<img src="' . $img . '" />&nbsp;';
+        echo '<img src="' . strip_tags($img) . '" />&nbsp;';
     }
     echo '</p>';
 }

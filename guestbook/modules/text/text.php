@@ -28,13 +28,13 @@ $result = array(
 if(isset($_POST['edit'])){
 
     if(isset($_POST['secret']) && !empty($_POST['secret'])){
-        $secret = $_POST['secret'];
+        $secret = strip_tags($_POST['secret']);
 
         if(is_dir(UPLOADS_ROOT . $secret)){
             $result['files'] = find_files_by_mime(UPLOADS_ROOT . $secret, 'text', FALSE);
 
             foreach($result['files'] as $key => $file){
-                $result['files'][$key] = substr($file, strrpos($file, '/')+1);
+                $result['files'][$key] = strip_tags(substr($file, strrpos($file, '/')+1));
             }
 
             $result['msg'] = $secret;
