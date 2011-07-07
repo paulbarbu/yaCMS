@@ -5,7 +5,7 @@ A learning project developed while learning at [yap-phpro](https://github.com/Or
 Modules
 =======
 This CMS is mainly module based, login, logout, and every other functionality is
-based on these modules.
+based on these(and other) modules.
 
 Adding modules
 ==============
