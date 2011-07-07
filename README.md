@@ -2,6 +2,10 @@ yaCMS
 =====
 A learning project developed while learning at [yap-phpro](https://github.com/OriginalCopy/yap-phpro-book "yap-phpro")
 
+Documentation
+=============
+Auto-generated documentation using Doxygen can be found at [yaCMS Doc-Site](http://paullik.github.com/yaCMS/index.html)
+
 Modules
 =======
 This CMS is mainly module based, login, logout, and every other functionality is
