@@ -3,10 +3,21 @@
  * Global constants for Remote File Storage
  */
 
+/**
+ * constant for the modules directory
+ */
 define('MODULES_ROOT', BASE_DIR . 'modules' . DIRECTORY_SEPARATOR);
 
+/**
+ * constant for the data directory, all modules should
+ * place configuration files and databases at this location
+ */
 define('DATA_ROOT', BASE_DIR . 'data' . DIRECTORY_SEPARATOR);
 
+/**
+ * constant for the uploads directory, every upload
+ * should be placed at the location pointed by this string
+ */
 define('UPLOADS_ROOT', 'uploads' . DIRECTORY_SEPARATOR);
 
 const ERR_LOAD_FILE = 'Cannot use current file, it does not exists or it\'s not
