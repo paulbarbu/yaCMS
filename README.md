@@ -4,9 +4,17 @@ A learning project developed while learning at [yap-phpro](https://github.com/Or
 
 Modules
 =======
+This CMS is mainly module based, login, logout, and every other functionality is
+based on these modules.
 
 Adding modules
 ==============
+1. First off you have to add your new module's metadata and data in
+   `/src/modules.php`(please read that docblock)
+2. In `/src/modules/` you have to create a folder named like your module's name
+   and in that folder you have to create all the files specified in
+   `modules.php`
+3. See the result by accessing: `index.php?show=your_new_module`
 
 License
 =======
