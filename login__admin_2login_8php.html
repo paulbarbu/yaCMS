@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>yaCMS: Main Page</title>
+<title>yaCMS: src/modules/login_admin/login.php File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -28,8 +28,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -48,12 +48,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
 </div>
 <div class="header">
+  <div class="summary">
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">yaCMS Documentation</div>  </div>
+<div class="title">src/modules/login_admin/login.php File Reference</div>  </div>
 </div>
 <div class="contents">
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="login__admin_2login_8php.html#a87d95f36f973512487a4e829ffe3a717">$currentPass</a> = NULL</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="login__admin_2login_8php.html#abcd0772b5336b359fc5d2849dc85597b">$auth</a> = FALSE</td></tr>
+</table>
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="abcd0772b5336b359fc5d2849dc85597b"></a><!-- doxytag: member="login.php::$auth" ref="abcd0772b5336b359fc5d2849dc85597b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="login__user_2content_8php.html#a58ec2c4124558281de517bad8b4c07b4">if</a> (isset($_POST['adminlogin'])) return $auth = FALSE</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a87d95f36f973512487a4e829ffe3a717"></a><!-- doxytag: member="login.php::$currentPass" ref="a87d95f36f973512487a4e829ffe3a717" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$currentPass = NULL</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Login BL This script the verifies the admin's credentials and logs him in(starts a session registering his ID) or rejects him</p>
+<p>The password must match the one in DATA_ROOT/gbook/admin_pass</p>
+<p>$auth - stores a boolean, if the user is authentified or not </p>
+
+</div>
+</div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
