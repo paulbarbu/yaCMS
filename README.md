@@ -6,7 +6,7 @@ Documentation
 =============
 Auto-generated documentation using Doxygen can be found at [yaCMS Doc-Site](http://paullik.github.com/yaCMS/index.html)
 
-Doxygen configuration can be found in `/yacms_doc.cfg`
+Doxygen configuration can be found in `/yacms_docs.cfg`
 
 Modules
 =======
