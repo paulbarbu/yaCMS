@@ -1,4 +1,7 @@
 <?php
+/**
+ * Main functions file, all global scope functions reside here
+ */
 
 const RENDER_OK = 0;
 const RENDER_ERR_NO_FILE = 1;
@@ -44,7 +47,6 @@ function return_bytes($val) {
  *
  * @return int returns an status code, if it's the case that status coude is an
  * error
- *
  */
 function render($template, $vars = NULL){
     if($vars){
