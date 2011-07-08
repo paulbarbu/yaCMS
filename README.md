@@ -2,8 +2,8 @@ yaCMS
 =====
 A learning project developed while learning at [yap-phpro](https://github.com/OriginalCopy/yap-phpro-book "yap-phpro")
 
-Documentation
-=============
+Documentation & Doxygen configuration
+=====================================
 Auto-generated documentation using Doxygen can be found at [yaCMS Doc-Site](http://paullik.github.com/yaCMS/index.html)
 
 Doxygen configuration can be found in `/yacms_docs.cfg`
