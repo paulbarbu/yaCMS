@@ -1,16 +1,76 @@
 <?php
+/**
+ * @file index.php
+ * @brief Everything connects and is connected here
+ *
+ * @mainpage
+ *
+ * @section yaCMS
+ * A learning project developed while learning at
+ * <a href="https://github.com/OriginalCopy/yap-phpro-book" title="yap-phpro">yap-phpro</a>
+ *
+ * @section Modules
+ * This CMS is mainly module based, login, logout, and every other functionality
+ * is based on these(and other) modules.
+ *
+ * @section Adding modules
+ * @b 1. First off you have to add your new module's metadata and data in
+ * @c /src/modules.php (please read modules.php page)
+ *
+ * @b 2. In @c /src/modules/ you have to create a folder named like your module's name
+ * and in that folder you have to create all the files specified in @c modules.php
+ *
+ * @b 3. See the result by accessing: @c index.php?show=your_new_module
+ *
+ * @section License
+ * (C) Copyright 2011 PauLLiK
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see http://www.gnu.org/licenses/.
+ */
 
+/**
+ * The base directory of the application
+ */
 define('BASE_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
 require_once BASE_DIR . 'functions.php';
 require_once BASE_DIR . 'global_const.php';
 
+/**
+ * Main module structure loaded from modules.php
+ */
 $modules = require_once BASE_DIR . 'modules.php';
 
+/**
+ * Data received from the BL
+ */
 $feedback = array();
+
+/**
+ * Data received from pre-loading a module
+ */
 $feedback_pre = array();
 
+/**
+ * A semaphor variable to check whether a module needs reloading or not
+ *
+ * This variable is changed by a module
+ */
 $reload = FALSE;
+
+/**
+ * Container for @p render()'s retval
+ */
 $rendered = NULL;
 
 if(isset($_GET['show'])){

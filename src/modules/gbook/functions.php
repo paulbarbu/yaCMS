@@ -1,23 +1,43 @@
 <?php
 /**
- * Functions for the guest Book
+ * @file /src/modules/gbook/functions.php
+ * @brief Functions for the Guest Book
  */
 
+/**
+ * Error opening file
+ */
 const GB_ERR_OPEN =  1;
+
+/**
+ * Error decoding a format
+ */
 const GB_ERR_DECODE = 2;
+
+/**
+ * Empty file
+ */
 const GB_ERR_EMPTY = 3;
 
+/**
+ * IP is not a string
+ */
 const GB_ERR_IP_STRING = 4;
+
+/**
+ * Error opening bans file
+ */
 const GB_ERR_FOPEN_BAN_FILE = 5;
 
 /**
- * post_to_div() - Helper function, echoes div's as posts from a file passed as parameter
+ * Helper function, echoes div's as posts from a file passed as parameter
  *
- * @param string $path path to file containing posts formatted as JSON,
- * default: PATH_MSG_FILE constant
- * @return int|array an int is returned in case that the file canot be opened(1),
- * 2 if the messages cannot be decoded(from JSON format) or 3 if the file does
- * not exists or it's empty, on success it returns an array of strings
+ * @param string $path path to file containing posts formatted as JSON
+ * @param bool $admin flag that says whether an admin is loggen in or not
+ *
+ * @return @c 1 in case that the file canot be opened,
+ * @c 2 if the messages cannot be decoded(from JSON format) or @c 3 if the file
+ * does not exists or it's empty, on success it returns an array of strings
  */
 function post_to_div($path = PATH_MSG_FILE, $admin = FALSE){
     if(is_file($path) && 0 != filesize($path)){
@@ -91,13 +111,12 @@ function post_to_div($path = PATH_MSG_FILE, $admin = FALSE){
 }
 
 /**
- * check_ip() - Helper function that checks if an IP is banned or not
+ * Helper function that checks if an IP is banned or not
  *
  * @param string $ip user's IP
- * @param string $path_to_bans path to the ban list(database), default:
- * PATH_BAN_FILE
+ * @param string $path path to the ban list(database)
  *
- * @return int|BOOL returns TRUE if the verified IP is banned, else FALSE, on
+ * @return TRUE if the verified IP is banned, else FALSE, on
  * error returns the error's code
  */
 function check_ip($ip, $path = PATH_BAN_FILE){
