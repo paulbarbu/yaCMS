@@ -3,6 +3,14 @@
  * @file global_const.php
  * @brief Global constants
  * @author paullik
+ * @ingroup kernelFiles
+ */
+
+/**
+ * @defgroup definedPaths Defined Paths
+ * Defined constants for the various paths the app uses
+ * @ingroup constants
+ * @{
  */
 
 /**
@@ -22,9 +30,20 @@ define('DATA_ROOT', BASE_DIR . 'data' . DIRECTORY_SEPARATOR);
  */
 define('UPLOADS_ROOT', 'uploads' . DIRECTORY_SEPARATOR);
 
+/**
+ * @}
+ *
+ * @defgroup constConstants const Constants
+ * Constants defined for different statuses or errors
+ * @ingroup constants
+ *
+ * @defgroup globalConstants Global(kernel) Constants
+ * @ingroup constConstants
+ */
 
 /**
  * A file cannot be included
+ * @ingroup globalConstants
  */
 const ERR_LOAD_FILE = 'Cannot use current file, it does not exists or it\'s not
     readable, check your modules! <br /> <a href="javascript:history.go(-1)">

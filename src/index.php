@@ -5,6 +5,8 @@
  *
  * @author paullik
  *
+ * @ingroup kernelFiles
+ *
  * @mainpage
  *
  * @section yaCMS
@@ -41,12 +43,30 @@
  */
 
 /**
+ * @defgroup kernel Kernel
+ *
+ * @defgroup kernelFiles Kernel Files
+ * @ingroup kernel
+ *
+ * @defgroup constants Constants
+ */
+
+/**
  * The base directory of the application
+ * @ingroup definedPaths
  */
 define('BASE_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
 require_once BASE_DIR . 'functions.php';
 require_once BASE_DIR . 'global_const.php';
+
+/**
+ * @defgroup kernelVars Kernel Variables
+ * The kernel variables are those variables needed by the "brain" of the app to
+ * load and run the modules
+ * @ingroup kernel
+ * @{
+ */
 
 /**
  * Main module structure loaded from modules.php
@@ -74,6 +94,10 @@ $reload = FALSE;
  * Container for @p render()'s retval
  */
 $rendered = NULL;
+
+/**
+ * @}
+ */
 
 if(isset($_GET['show'])){
     if(array_key_exists($_GET['show'], $modules)){

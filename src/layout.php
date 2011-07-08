@@ -3,6 +3,7 @@
  * @file layout.php
  * @brief HTML main file
  * @author paullik
+ * @ingroup kernelFiles
  */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

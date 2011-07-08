@@ -6,6 +6,12 @@
  */
 
 /**
+ * @defgroup gbConstants Guest Book Constants
+ * @ingroup constConstants
+ * @{
+ */
+
+/**
  * Error opening file
  */
 const GB_ERR_OPEN =  1;
@@ -29,6 +35,16 @@ const GB_ERR_IP_STRING = 4;
  * Error opening bans file
  */
 const GB_ERR_FOPEN_BAN_FILE = 5;
+
+/**
+ * @}
+ */
+
+/**
+ * @defgroup gbFunctions Guest Book Functions
+ * @ingroup functions
+ * @{
+ */
 
 /**
  * Helper function, echoes div's as posts from a file passed as parameter
@@ -145,3 +161,7 @@ function check_ip($ip, $path = PATH_BAN_FILE){
 
     return FALSE;
 }
+
+/**
+ * @}
+ */

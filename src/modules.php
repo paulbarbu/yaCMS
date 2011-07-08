@@ -6,6 +6,8 @@
  *
  * @author paullik
  *
+ * @ingroup kernelFiles
+ *
  * Every module's structure must be compilant with the following example:
  *
  * @verbatim

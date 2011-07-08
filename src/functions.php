@@ -3,6 +3,12 @@
  * @file src/functions.php
  * @brief Global scope functions
  * @author paullik
+ * @ingroup kernelFiles
+ */
+
+/**
+ * @addtogroup globalConstants
+ * @{
  */
 
 /**
@@ -19,6 +25,16 @@ const RENDER_ERR_NO_FILE = 1;
  * File not readable
  */
 const RENDER_ERR_FILE = 2;
+
+/**
+ * @}
+ */
+/**
+ * @defgroup functions Functions
+ * @defgroup globalFunctions Global Functions
+ * @ingroup functions
+ * @{
+ */
 
 /**
  * Used to convert a shorthand notation like 2M in bytes.
@@ -189,3 +205,7 @@ function app_path(){
 
     return $path;
 }
+
+/**
+ * @}
+ */
