@@ -63,6 +63,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/functions.php File Reference</div>  </div>
 </div>
 <div class="contents">
+
+<p>Global scope functions.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -78,7 +81,9 @@ Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8php.html#adcd10613df579032356d20a89e4826c1">RENDER_ERR_NO_FILE</a> = 1</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8php.html#a6ede4d95cda988a49964fe4bb711c357">RENDER_ERR_FILE</a> = 2</td></tr>
 </table>
-<hr/><h2>Function Documentation</h2>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Global scope functions. </p>
+</div><hr/><h2>Function Documentation</h2>
 <a class="anchor" id="af0ee06542dbd380386602967dc241f9b"></a><!-- doxytag: member="functions.php::app_path" ref="af0ee06542dbd380386602967dc241f9b" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -94,7 +99,7 @@ Variables</h2></td></tr>
 <div class="memdoc">
 <p><a class="el" href="functions_8php.html#af0ee06542dbd380386602967dc241f9b">app_path()</a></p>
 <p>Get the application's directory on the server</p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>string $path the path the the directory where the application runs </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the path to the directory where the application runs </dd></dl>
 
 </div>
 </div>
@@ -122,8 +127,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>string build_menu_from_modules($modules, $currentModule)</p>
-<p>this function will build an HTML menu based on the array received as parameter and will return it as a string</p>
+<p>Builds a HTML menu based on the array received as parameter and will return it as a string</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramtype">array</td><td class="paramname">$modules</td><td>array to get menu entries from </td></tr>
@@ -131,7 +135,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>string string representing the menu's HTML code </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>string representing the menu's HTML code </dd></dl>
 
 </div>
 </div>
@@ -165,16 +169,19 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>csv_search($fh, $column, $criteria)</p>
-<p>Read line by line the file stored in $file_handle and search on the $column the $criteria. The $column is the number of CSV separator + 1, example: john|31 Here the CSV separator is | and "31" is on the second column, because it is found after the first separator</p>
+<p>Read line by line the file stored in $file_handle and search on the $column specified by $criteria.</p>
+<p>The $column is the number of CSV separator + 1, example:</p>
+<p><code>john|31</code> </p>
+<p>Here the CSV separator is | and "31" is on the second column, because it is found after the first separator</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramtype">resource</td><td class="paramname">$fh</td><td>file stream for reading the comma separated values </td></tr>
-    <tr><td class="paramtype">int</td><td class="paramname">$column</td><td>colum to read the data from</td></tr>
+    <tr><td class="paramtype">int</td><td class="paramname">$column</td><td>colum to read the data from </td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$criteria</td><td>string to be found</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>FALSE|array on success returns the line containing the $criteria as array if $criteria was found otherwise FALSE </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the line as an array containing the $criteria if $criteria was found, otherwise FALSE </dd></dl>
 
 </div>
 </div>
@@ -208,13 +215,12 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>find_files_by_mime($path, $mime)</p>
-<p>searches recursively in the path provided by $path the files which have the MIME type set to $mime</p>
+<p>Searches recursively in the path provided by $path the files which have the MIME type set to $mime</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to a directory </td></tr>
     <tr><td class="paramtype">string</td><td class="paramname">$mime</td><td>MIME type to be matched </td></tr>
-    <tr><td class="paramtype">bool</td><td class="paramname">$recursive</td><td>search recursively or not in the provided directory (default: TRUE)</td></tr>
+    <tr><td class="paramtype">bool</td><td class="paramname">$recursive</td><td>search recursively or not in the provided directory</td></tr>
   </table>
   </dd>
 </dl>
@@ -246,8 +252,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>int render($template, $vars = NULL)</p>
-<p>creates variables that are necessary for including the file specified by $template and includes it</p>
+<p>Creates variables that are necessary for including the file specified by $template and includes it</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramtype">string</td><td class="paramname">$template</td><td>path to the file to be required </td></tr>
@@ -255,7 +260,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>int returns an status code, if it's the case that status coude is an error </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>returns a status code, if it's the case that status coude is an error </dd></dl>
 
 </div>
 </div>
@@ -273,15 +278,14 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>int return_bytes(string $val)</p>
-<p>this function is used to convert a shorthand notation like 2M in bytes please visit: <a href="http://www.php.net/manual/en/function.ini-get.php">http://www.php.net/manual/en/function.ini-get.php</a></p>
+<p>Used to convert a shorthand notation like 2M in bytes. Please visit: <a href="http://www.php.net/manual/en/function.ini-get.php">http://www.php.net/manual/en/function.ini-get.php</a></p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramtype">string</td><td class="paramname">$val</td><td>shotrnotation (e.g. "2M")</td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$val</td><td>shortnotation (e.g. "2M")</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>int bytes representation of the shorthand notation </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>bytes representation of the shorthand notation </dd></dl>
 
 </div>
 </div>
@@ -296,6 +300,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>File not readable </p>
 
 </div>
 </div>
@@ -309,6 +314,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>No file to render </p>
 
 </div>
 </div>
@@ -322,7 +328,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Main functions file, all global scope functions reside here </p>
+<p>File rendered </p>
 
 </div>
 </div>
@@ -341,7 +347,7 @@ Variables</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 7 2011 21:22:03 for yaCMS by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jul 8 2011 16:53:31 for yaCMS by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

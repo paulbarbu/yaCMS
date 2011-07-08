@@ -60,9 +60,88 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/modules.php File Reference</div>  </div>
 </div>
 <div class="contents">
+
+<p>A configuration file to hold all available modules, from this file a menu is build and pages are loaded.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 </table>
-</div>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>A configuration file to hold all available modules, from this file a menu is build and pages are loaded. </p>
+<p>Every module's structure must be compilant with the following example:</p>
+<div class="fragment"><pre class="fragment">
+ * 'module_name' =&gt; array(
+ *      'pre-process' =&gt; array(
+ *          'script_meta_info' =&gt; 'script_name.php',
+ *          'module_meta_info' =&gt; 'module_name',
+ *          'more_meta_info_here' =&gt; 'more_modules_to_load',
+ *      ),
+ *      'VL' =&gt; array(
+ *          'title' =&gt; 'Module Title',
+ *          'content' =&gt; 'VL_script_name',
+ *          'show_in_menu' =&gt; &lt;bool value&gt;,
+ *          'login_need' =&gt; &lt;bool value&gt;,
+ *      ),
+ *      'BL' =&gt; array(
+ *          'script_meta_name' =&gt; 'name.php',
+ *          'script_meta_name2' =&gt; 'name_other.php',
+ *          'more_script_meta_here' =&gt; 'more_BL_scripts_to_load',
+ *      ),
+ *      'post-process' =&gt; array(
+ *          'script_meta_info' =&gt; 'script_name.php',
+ *          'module_meta_info' =&gt; 'module_name',
+ *          'more_meta_info_here' =&gt; 'more_modules_to_load',
+ *      ),
+ * ),</pre></div><p>So every module is a dictionary of MAXIMUM four dictionaries. The example shown above is a MAXIMUM of what a module can contain, except for the pre-preprocess, BL, and post-process, these parts can contain a never-ending set of scripts, more on this later.</p>
+<h2><a class="anchor" id="module_name"></a>
+module_name</h2>
+<p>Represents the name which will be shown in the URL <code></code>?show= part and the name by which it will be recognizable by other modules</p>
+<h2><a class="anchor" id="pre-process"></a>
+pre-process</h2>
+<p>This part of the module is optional, it's required when the module needs some pre-processing(e.g.: logging in a user), here simple scripts can be loaded(if the <code>*</code>.php extension is set on the name part) or whole modules if there is no extension set, of course the module needed is searched in this file, if it's found it's <code>pre-process</code> part is loaded before the callee is loaded.</p>
+<p>If a single script is to be pre-loaded then it is searched in the current module's directory, if a module is to be loaded then it's loaded from <code>MODULES_ROOT</code> </p>
+<p>An undetermined number of modules/scripts can be loaded.</p>
+<p>Example: </p>
+<div class="fragment"><pre class="fragment">
+ * 'pre-process' =&gt; array(
+ *      'foo_script' =&gt; 'foo.php',
+ *      'login' =&gt; 'login_user',
+ * ), </pre></div><p>In this example two things are pre-loaded, the <code>foo.php</code> script(from the current module's directory) and the pre-process part of the <code>login_user</code> module</p>
+<h2><a class="anchor" id="post-process"></a>
+post-process</h2>
+<p>Acts the same as <code>pre-process</code>, the only differece being that the scripts/modules are post-loaded, so they are loaded after the callee has made his job. For post-loading modules the same rule applies: only the post-process part of the module is loaded after the callee</p>
+<h2><a class="anchor" id="VL"></a>
+VL</h2>
+<p>Here you can set a predefined number of characteristics. Entries available at the moment:</p>
+<div class="fragment"><pre class="fragment">title </pre></div><p> The user will see this text as title</p>
+<div class="fragment"><pre class="fragment">content </pre></div><p> The VL script of the module found in the module's directory</p>
+<div class="fragment"><pre class="fragment">show_in_menu </pre></div><p> OPTIONAL - if it's not set the user will see this module in the menu, if it's set to <code>FALSE</code> the user will not be able to see it in the menu, else it will be shown</p>
+<div class="fragment"><pre class="fragment">login_need </pre></div><p> OPTIONAL - if it's not set and a login module is pre-loaded then it's optional to log in to use this module, if it's set to <code>TRUE</code> then the login is mandatory</p>
+<p>Example: </p>
+<div class="fragment"><pre class="fragment">
+ * 'VL' =&gt; array(
+ *      'title' =&gt; 'BAR',
+ *      'content' =&gt; 'vl_script.php',
+ * ),
+ * </pre></div><p>In this example the user will see the page's title as <em>BAR</em> and when accessing the module the file <code>vl_script.php</code> will be loaded, in this case loggin in to use the module is optional and the module will be visible in the menu</p>
+<div class="fragment"><pre class="fragment">
+ * 'VL' =&gt; array(
+ *     'title' =&gt; 'foo',
+ *     'content' =&gt; 'content.php',
+ *     'login_need' =&gt; TRUE,
+ * ),
+ * </pre></div><p>Here the title will be <code>foo</code>, the file <code>content.php</code> will be loaded and the login is mandatory so this module must have a login module as <code>pre-process</code> </p>
+<h2><a class="anchor" id="BL"></a>
+BL</h2>
+<p>This part of a module holds the "brain", the business logic scripts. An undefined number of <code>*</code>.php scripts can be loaded, all files are loaded from the module's directory. The key from the array is the name under which the VL part of the module receives feedback after the script finished processing(giving feedback is not mandatory e.g. constants or functions files)</p>
+<p>Example: </p>
+<div class="fragment"><pre class="fragment">
+ * 'BL' =&gt; array(
+ *      'constants' =&gt; 'constants.php',
+ *      'func' =&gt; 'functions.php',
+ *      'brain' =&gt; 'baz.php',
+ * ),
+ * </pre></div><p>Here three files are loaded, the VL receives feedback from <code>baz.php</code> under this form: <code>$feedback</code>['brain'] </p>
+</div></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -77,7 +156,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 7 2011 21:22:03 for yaCMS by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jul 8 2011 16:53:31 for yaCMS by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

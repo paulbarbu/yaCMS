@@ -63,6 +63,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">src/modules/gbook/functions.php File Reference</div>  </div>
 </div>
 <div class="contents">
+
+<p>Functions for the Guest Book.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -76,7 +79,9 @@ Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#afba5e006408d6fea6b7040adc4954229">GB_ERR_IP_STRING</a> = 4</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#aa59f8a61719e62f0d285366b63d8876b">GB_ERR_FOPEN_BAN_FILE</a> = 5</td></tr>
 </table>
-<hr/><h2>Function Documentation</h2>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Functions for the Guest Book. </p>
+</div><hr/><h2>Function Documentation</h2>
 <a class="anchor" id="a315ab7f8a37fb05c9312d3687ba1f7cc"></a><!-- doxytag: member="functions.php::check_ip" ref="a315ab7f8a37fb05c9312d3687ba1f7cc" args="($ip, $path=PATH_BAN_FILE)" -->
 <div class="memitem">
 <div class="memproto">
@@ -101,15 +106,15 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p><a class="el" href="modules_2gbook_2functions_8php.html#a315ab7f8a37fb05c9312d3687ba1f7cc">check_ip()</a> - Helper function that checks if an IP is banned or not</p>
+<p>Helper function that checks if an IP is banned or not</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramtype">string</td><td class="paramname">$ip</td><td>user's IP </td></tr>
-    <tr><td class="paramtype">string</td><td class="paramname">$path_to_bans</td><td>path to the ban list(database), default: PATH_BAN_FILE</td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to the ban list(database)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>int|BOOL returns TRUE if the verified IP is banned, else FALSE, on error returns the error's code </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>TRUE if the verified IP is banned, else FALSE, on error returns the error's code </dd></dl>
 
 </div>
 </div>
@@ -137,14 +142,15 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p><a class="el" href="modules_2gbook_2functions_8php.html#abdc1a34d681bc3346a4643b6c2193087">post_to_div()</a> - Helper function, echoes div's as posts from a file passed as parameter</p>
+<p>Helper function, echoes div's as posts from a file passed as parameter</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to file containing posts formatted as JSON, default: PATH_MSG_FILE constant </td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to file containing posts formatted as JSON </td></tr>
+    <tr><td class="paramtype">bool</td><td class="paramname">$admin</td><td>flag that says whether an admin is loggen in or not</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>int|array an int is returned in case that the file canot be opened(1), 2 if the messages cannot be decoded(from JSON format) or 3 if the file does not exists or it's empty, on success it returns an array of strings </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>1</code> in case that the file canot be opened, <code>2</code> if the messages cannot be decoded(from JSON format) or <code>3</code> if the file does not exists or it's empty, on success it returns an array of strings </dd></dl>
 
 </div>
 </div>
@@ -159,6 +165,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Error decoding a format </p>
 
 </div>
 </div>
@@ -172,6 +179,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Empty file </p>
 
 </div>
 </div>
@@ -185,6 +193,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Error opening bans file </p>
 
 </div>
 </div>
@@ -198,6 +207,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>IP is not a string </p>
 
 </div>
 </div>
@@ -211,7 +221,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Functions for the guest Book </p>
+<p>Error opening file </p>
 
 </div>
 </div>
@@ -230,7 +240,7 @@ Variables</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Jul 7 2011 21:22:03 for yaCMS by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jul 8 2011 16:53:31 for yaCMS by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>
