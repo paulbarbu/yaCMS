@@ -29,6 +29,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -69,164 +70,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#abdc1a34d681bc3346a4643b6c2193087">post_to_div</a> ($path=<a class="el" href="gbook_2constants_8php.html#aa0125acf977c2f2498257cbe64c8a07b">PATH_MSG_FILE</a>, $admin=FALSE)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#a315ab7f8a37fb05c9312d3687ba1f7cc">check_ip</a> ($ip, $path=<a class="el" href="gbook_2constants_8php.html#add15a4ed6830627751ae020a69f93168">PATH_BAN_FILE</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbFunctions.html#gabdc1a34d681bc3346a4643b6c2193087">post_to_div</a> ($path=<a class="el" href="gbook_2constants_8php.html#aa0125acf977c2f2498257cbe64c8a07b">PATH_MSG_FILE</a>, $admin=FALSE)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbFunctions.html#ga315ab7f8a37fb05c9312d3687ba1f7cc">check_ip</a> ($ip, $path=<a class="el" href="gbook_2constants_8php.html#add15a4ed6830627751ae020a69f93168">PATH_BAN_FILE</a>)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#ac388d916c1ce43e48c32d9084e7dd01e">GB_ERR_OPEN</a> = 1</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#afe5858cbdef4ac41e17f7017e33a0c4d">GB_ERR_DECODE</a> = 2</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#a55d000624d0d1aa92ba9c1a6cc1a629a">GB_ERR_EMPTY</a> = 3</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#afba5e006408d6fea6b7040adc4954229">GB_ERR_IP_STRING</a> = 4</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2gbook_2functions_8php.html#aa59f8a61719e62f0d285366b63d8876b">GB_ERR_FOPEN_BAN_FILE</a> = 5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbConstants.html#gac388d916c1ce43e48c32d9084e7dd01e">GB_ERR_OPEN</a> = 1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbConstants.html#gafe5858cbdef4ac41e17f7017e33a0c4d">GB_ERR_DECODE</a> = 2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbConstants.html#ga55d000624d0d1aa92ba9c1a6cc1a629a">GB_ERR_EMPTY</a> = 3</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbConstants.html#gafba5e006408d6fea6b7040adc4954229">GB_ERR_IP_STRING</a> = 4</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbConstants.html#gaa59f8a61719e62f0d285366b63d8876b">GB_ERR_FOPEN_BAN_FILE</a> = 5</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Functions for the Guest Book. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>paullik </dd></dl>
-</div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a315ab7f8a37fb05c9312d3687ba1f7cc"></a><!-- doxytag: member="functions.php::check_ip" ref="a315ab7f8a37fb05c9312d3687ba1f7cc" args="($ip, $path=PATH_BAN_FILE)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">check_ip </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>ip</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>path</em> = <code><a class="el" href="gbook_2constants_8php.html#add15a4ed6830627751ae020a69f93168">PATH_BAN_FILE</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Helper function that checks if an IP is banned or not</p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramtype">string</td><td class="paramname">$ip</td><td>user's IP </td></tr>
-    <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to the ban list(database)</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>TRUE if the verified IP is banned, else FALSE, on error returns the error's code </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="abdc1a34d681bc3346a4643b6c2193087"></a><!-- doxytag: member="functions.php::post_to_div" ref="abdc1a34d681bc3346a4643b6c2193087" args="($path=PATH_MSG_FILE, $admin=FALSE)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">post_to_div </td>
-          <td>(</td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>path</em> = <code><a class="el" href="gbook_2constants_8php.html#aa0125acf977c2f2498257cbe64c8a07b">PATH_MSG_FILE</a></code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>admin</em> = <code>FALSE</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Helper function, echoes div's as posts from a file passed as parameter</p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to file containing posts formatted as JSON </td></tr>
-    <tr><td class="paramtype">bool</td><td class="paramname">$admin</td><td>flag that says whether an admin is loggen in or not</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><code>1</code> in case that the file canot be opened, <code>2</code> if the messages cannot be decoded(from JSON format) or <code>3</code> if the file does not exists or it's empty, on success it returns an array of strings </dd></dl>
-
-</div>
-</div>
-<hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="afe5858cbdef4ac41e17f7017e33a0c4d"></a><!-- doxytag: member="functions.php::GB_ERR_DECODE" ref="afe5858cbdef4ac41e17f7017e33a0c4d" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="modules_2gbook_2functions_8php.html#afe5858cbdef4ac41e17f7017e33a0c4d">GB_ERR_DECODE</a> = 2</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Error decoding a format </p>
-
-</div>
-</div>
-<a class="anchor" id="a55d000624d0d1aa92ba9c1a6cc1a629a"></a><!-- doxytag: member="functions.php::GB_ERR_EMPTY" ref="a55d000624d0d1aa92ba9c1a6cc1a629a" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="modules_2gbook_2functions_8php.html#a55d000624d0d1aa92ba9c1a6cc1a629a">GB_ERR_EMPTY</a> = 3</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Empty file </p>
-
-</div>
-</div>
-<a class="anchor" id="aa59f8a61719e62f0d285366b63d8876b"></a><!-- doxytag: member="functions.php::GB_ERR_FOPEN_BAN_FILE" ref="aa59f8a61719e62f0d285366b63d8876b" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="modules_2gbook_2functions_8php.html#aa59f8a61719e62f0d285366b63d8876b">GB_ERR_FOPEN_BAN_FILE</a> = 5</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Error opening bans file </p>
-
-</div>
-</div>
-<a class="anchor" id="afba5e006408d6fea6b7040adc4954229"></a><!-- doxytag: member="functions.php::GB_ERR_IP_STRING" ref="afba5e006408d6fea6b7040adc4954229" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="modules_2gbook_2functions_8php.html#afba5e006408d6fea6b7040adc4954229">GB_ERR_IP_STRING</a> = 4</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>IP is not a string </p>
-
-</div>
-</div>
-<a class="anchor" id="ac388d916c1ce43e48c32d9084e7dd01e"></a><!-- doxytag: member="functions.php::GB_ERR_OPEN" ref="ac388d916c1ce43e48c32d9084e7dd01e" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="modules_2gbook_2functions_8php.html#ac388d916c1ce43e48c32d9084e7dd01e">GB_ERR_OPEN</a> = 1</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Error opening file </p>
-
-</div>
-</div>
-</div>
+</div></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -241,7 +98,7 @@ Variables</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Jul 8 2011 17:11:32 for yaCMS by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jul 8 2011 17:55:51 for yaCMS by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
 </body>

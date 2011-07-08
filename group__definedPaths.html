@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>yaCMS: src/modules/upload/upload.php File Reference</title>
+<title>yaCMS: Defined Paths</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -30,7 +30,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -49,52 +49,78 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
-    </ul>
-  </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#var-members">Variables</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">src/modules/upload/upload.php File Reference</div>  </div>
-</div>
+<div class="title">Defined Paths</div>  </div>
+<div class="ingroups"><a class="el" href="group__constants.html">Constants</a></div></div>
 <div class="contents">
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="upload_8php.html#a76101de3df453e22e2df687ad2e74a13">$uploadDir</a> = <a class="el" href="group__definedPaths.html#ga944d84d68020451559178e9ffde1acc5">UPLOADS_ROOT</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="upload_8php.html#abbefae4848d4363ae82aeb9559cefecb">$result</a> = NULL</td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__definedPaths.html#gab1e7fd8956cb89a5ac612ca345979094">MODULES_ROOT</a> </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__definedPaths.html#ga7fd38cf8a894b1b48ffb721a12f565ff">DATA_ROOT</a> </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__definedPaths.html#ga944d84d68020451559178e9ffde1acc5">UPLOADS_ROOT</a> </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__definedPaths.html#ga6c7db55cb69a3846d254023debc5b6b6">BASE_DIR</a> </td></tr>
 </table>
-<hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="abbefae4848d4363ae82aeb9559cefecb"></a><!-- doxytag: member="upload.php::$result" ref="abbefae4848d4363ae82aeb9559cefecb" args="" -->
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<p>Defined constants for the various paths the app uses </p>
+<hr/><h2>Enumeration Type Documentation</h2>
+<a class="anchor" id="ga6c7db55cb69a3846d254023debc5b6b6"></a><!-- doxytag: member="index.php::BASE_DIR" ref="ga6c7db55cb69a3846d254023debc5b6b6" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="login__user_2content_8php.html#a58ec2c4124558281de517bad8b4c07b4">if</a> (isset($_POST['upload'])) return $result = NULL</td>
+          <td class="memname">enum <a class="el" href="group__definedPaths.html#ga6c7db55cb69a3846d254023debc5b6b6">BASE_DIR</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>The base directory of the application </p>
 
 </div>
 </div>
-<a class="anchor" id="a76101de3df453e22e2df687ad2e74a13"></a><!-- doxytag: member="upload.php::$uploadDir" ref="a76101de3df453e22e2df687ad2e74a13" args="" -->
+<a class="anchor" id="ga7fd38cf8a894b1b48ffb721a12f565ff"></a><!-- doxytag: member="global_const.php::DATA_ROOT" ref="ga7fd38cf8a894b1b48ffb721a12f565ff" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$uploadDir = <a class="el" href="group__definedPaths.html#ga944d84d68020451559178e9ffde1acc5">UPLOADS_ROOT</a></td>
+          <td class="memname">enum <a class="el" href="group__definedPaths.html#ga7fd38cf8a894b1b48ffb721a12f565ff">DATA_ROOT</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Business logic of "Remote file upload"</p>
-<p>$_POST['secret'] - string that will represent the directory name to upload to $file - "abbreviation" from $FILES['file'] $uploadDir - string that will represent the path for the user's directory specified by $_POST['secret'] $created - check-variable to verify if the directory was created successfully $moved - check-variable to verify if the intendet file was moved in unser's directory </p>
+<p>Data directory, all modules should place configuration files and databases at this location </p>
+
+</div>
+</div>
+<a class="anchor" id="gab1e7fd8956cb89a5ac612ca345979094"></a><!-- doxytag: member="global_const.php::MODULES_ROOT" ref="gab1e7fd8956cb89a5ac612ca345979094" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__definedPaths.html#gab1e7fd8956cb89a5ac612ca345979094">MODULES_ROOT</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Modules directory </p>
+
+</div>
+</div>
+<a class="anchor" id="ga944d84d68020451559178e9ffde1acc5"></a><!-- doxytag: member="global_const.php::UPLOADS_ROOT" ref="ga944d84d68020451559178e9ffde1acc5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__definedPaths.html#ga944d84d68020451559178e9ffde1acc5">UPLOADS_ROOT</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Uploads directory, every upload should be placed at the location pointed by this string </p>
 
 </div>
 </div>

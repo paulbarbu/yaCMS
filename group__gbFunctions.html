@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>yaCMS: src/modules/upload/upload.php File Reference</title>
+<title>yaCMS: Guest Book Functions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -30,7 +30,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -49,52 +49,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
-    </ul>
-  </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">src/modules/upload/upload.php File Reference</div>  </div>
-</div>
+<div class="title">Guest Book Functions</div>  </div>
+<div class="ingroups"><a class="el" href="group__functions.html">Functions</a></div></div>
 <div class="contents">
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="upload_8php.html#a76101de3df453e22e2df687ad2e74a13">$uploadDir</a> = <a class="el" href="group__definedPaths.html#ga944d84d68020451559178e9ffde1acc5">UPLOADS_ROOT</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="upload_8php.html#abbefae4848d4363ae82aeb9559cefecb">$result</a> = NULL</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbFunctions.html#gabdc1a34d681bc3346a4643b6c2193087">post_to_div</a> ($path=<a class="el" href="gbook_2constants_8php.html#aa0125acf977c2f2498257cbe64c8a07b">PATH_MSG_FILE</a>, $admin=FALSE)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gbFunctions.html#ga315ab7f8a37fb05c9312d3687ba1f7cc">check_ip</a> ($ip, $path=<a class="el" href="gbook_2constants_8php.html#add15a4ed6830627751ae020a69f93168">PATH_BAN_FILE</a>)</td></tr>
 </table>
-<hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="abbefae4848d4363ae82aeb9559cefecb"></a><!-- doxytag: member="upload.php::$result" ref="abbefae4848d4363ae82aeb9559cefecb" args="" -->
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="ga315ab7f8a37fb05c9312d3687ba1f7cc"></a><!-- doxytag: member="functions.php::check_ip" ref="ga315ab7f8a37fb05c9312d3687ba1f7cc" args="($ip, $path=PATH_BAN_FILE)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="login__user_2content_8php.html#a58ec2c4124558281de517bad8b4c07b4">if</a> (isset($_POST['upload'])) return $result = NULL</td>
+          <td class="memname">check_ip </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>path</em> = <code><a class="el" href="gbook_2constants_8php.html#add15a4ed6830627751ae020a69f93168">PATH_BAN_FILE</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Helper function that checks if an IP is banned or not</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">string</td><td class="paramname">$ip</td><td>user's IP </td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to the ban list(database)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>TRUE if the verified IP is banned, else FALSE, on error returns the error's code </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a76101de3df453e22e2df687ad2e74a13"></a><!-- doxytag: member="upload.php::$uploadDir" ref="a76101de3df453e22e2df687ad2e74a13" args="" -->
+<a class="anchor" id="gabdc1a34d681bc3346a4643b6c2193087"></a><!-- doxytag: member="functions.php::post_to_div" ref="gabdc1a34d681bc3346a4643b6c2193087" args="($path=PATH_MSG_FILE, $admin=FALSE)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$uploadDir = <a class="el" href="group__definedPaths.html#ga944d84d68020451559178e9ffde1acc5">UPLOADS_ROOT</a></td>
+          <td class="memname">post_to_div </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>path</em> = <code><a class="el" href="gbook_2constants_8php.html#aa0125acf977c2f2498257cbe64c8a07b">PATH_MSG_FILE</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>admin</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Business logic of "Remote file upload"</p>
-<p>$_POST['secret'] - string that will represent the directory name to upload to $file - "abbreviation" from $FILES['file'] $uploadDir - string that will represent the path for the user's directory specified by $_POST['secret'] $created - check-variable to verify if the directory was created successfully $moved - check-variable to verify if the intendet file was moved in unser's directory </p>
+<p>Helper function, echoes div's as posts from a file passed as parameter</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">string</td><td class="paramname">$path</td><td>path to file containing posts formatted as JSON </td></tr>
+    <tr><td class="paramtype">bool</td><td class="paramname">$admin</td><td>flag that says whether an admin is loggen in or not</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>1</code> in case that the file canot be opened, <code>2</code> if the messages cannot be decoded(from JSON format) or <code>3</code> if the file does not exists or it's empty, on success it returns an array of strings </dd></dl>
 
 </div>
 </div>
