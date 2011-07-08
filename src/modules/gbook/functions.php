@@ -2,6 +2,7 @@
 /**
  * @file /src/modules/gbook/functions.php
  * @brief Functions for the Guest Book
+ * @author paullik
  */
 
 /**

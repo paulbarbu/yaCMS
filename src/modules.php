@@ -4,6 +4,8 @@
  * @brief A configuration file to hold all available modules, from this file a
  * menu is build and pages are loaded
  *
+ * @author paullik
+ *
  * Every module's structure must be compilant with the following example:
  *
  * @verbatim

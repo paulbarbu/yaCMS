@@ -2,6 +2,7 @@
 /**
  * @file global_const.php
  * @brief Global constants
+ * @author paullik
  */
 
 /**

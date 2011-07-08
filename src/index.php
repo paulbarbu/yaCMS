@@ -3,6 +3,8 @@
  * @file index.php
  * @brief Everything connects and is connected here
  *
+ * @author paullik
+ *
  * @mainpage
  *
  * @section yaCMS

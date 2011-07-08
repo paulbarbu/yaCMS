@@ -2,6 +2,7 @@
 /**
  * @file src/functions.php
  * @brief Global scope functions
+ * @author paullik
  */
 
 /**
