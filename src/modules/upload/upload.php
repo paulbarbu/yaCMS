@@ -25,8 +25,7 @@ if(isset($_POST['upload'])){
                 $uploadDir .= DIRECTORY_SEPARATOR . $_POST['secret'];
 
                 if(!is_dir($uploadDir)){ // create the directory if its inexistent
-                    umask(0003);// setting the proper mask for http user
-                    $created = mkdir($uploadDir, 0774);// creating the dir with the proer permisions for http user and group
+                    $created = mkdir($uploadDir);
                     if(!$created){
                         return UP_ERR_CREATE_DIR;
                     }
