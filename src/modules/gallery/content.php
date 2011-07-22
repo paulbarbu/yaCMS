@@ -20,14 +20,14 @@ if(isset($feedback['gallery']) && NULL != $feedback['gallery'] && is_numeric($fe
     echo '<h3>';
 
     switch($feedback['gallery']){
-        case G_ERR_IS_DIR: echo 'Invalid directory name! - ', G_ERR_IS_DIR;
+        case G_ERR_IS_DIR: printf('Invalid directory name! (#%d)', G_ERR_IS_DIR);
             break;
-        case G_ERR_NO_DIR: echo 'Please provide a directory name! - ', G_ERR_NO_DIR;
+        case G_ERR_NO_DIR: printf('Please provide a directory name! (#%d)', G_ERR_NO_DIR);
             break;
-        case G_ERR_OPEN_DIR: echo 'Failed to open directory! - ', G_ERR_OPEN_DIR;
+        case G_ERR_OPEN_DIR: printf('Failed to open directory! (#%d)', G_ERR_OPEN_DIR);
             break;
-        case G_ERR_NO_IMAGES: echo 'The directory does not contain images! - ',
-                G_ERR_NO_IMAGES;
+        case G_ERR_NO_IMAGES: printf('The directory does not contain images! (#%d)',
+                G_ERR_NO_IMAGES);
             break;
         default;
     }

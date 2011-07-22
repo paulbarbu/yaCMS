@@ -20,19 +20,19 @@
 echo '<h3>';
 if(is_numeric($feedback['login'])){
     switch($feedback['login']){
-        case LU_ERR_USER: echo 'Inexistent user! - ', LU_ERR_USER;
+        case LU_ERR_USER: printf('Inexistent user! (#%d)', LU_ERR_USER);
             break;
-        case LU_ERR_FOPEN_USER: echo 'Error opening users.csv! - ', LU_ERR_FOPEN_USER;
+        case LU_ERR_FOPEN_USER: printf('Error opening users.csv! (#%d)', LU_ERR_FOPEN_USER);
             break;
-        case LU_ERR_PASS: echo 'Incorrect password! - ', LU_ERR_PASS;
+        case LU_ERR_PASS: printf('Incorrect password! (#%d)', LU_ERR_PASS);
             break;
-        case LU_ERR_NO_USER: echo 'Please fill in a user name! - ', LU_ERR_NO_USER;
+        case LU_ERR_NO_USER: printf('Please fill in a user name! (#%d)', LU_ERR_NO_USER);
             break;
-        case LU_ERR_NO_PASS: echo 'Please provide a password! - ', LU_ERR_NO_PASS;
+        case LU_ERR_NO_PASS: printf('Please provide a password! (#%d)', LU_ERR_NO_PASS);
             break;
-        case LU_ERR_SESS: echo 'Error starting session! - ', LU_ERR_SESS;
+        case LU_ERR_SESS: printf('Error starting session! (#%d)', LU_ERR_SESS);
             break;
-        case LU_ERR_COOKIE: echo 'Cannot set cookie! - ', LU_ERR_COOKIE;
+        case LU_ERR_COOKIE: printf('Cannot set cookie! (#%d)', LU_ERR_COOKIE);
             break;
         default;
     }

@@ -15,27 +15,27 @@ if(is_numeric($feedback['upload'])){
     echo '<h3>' ;
 
     switch($feedback['upload']){
-        case UP_ERR_SIZE: echo 'The input file exceeded the size limit! - ' , UP_ERR_SIZE;
+        case UP_ERR_SIZE: printf('The input file exceeded the size limit! (#%d)' , UP_ERR_SIZE);
             break;
-        case UP_ERR_PARTiAL: echo 'The uploaded file was only partially uploaded! - ' , UP_ERR_PARTiAL;
+        case UP_ERR_PARTiAL: printf('The uploaded file was only partially uploaded! (#%d)' , UP_ERR_PARTIAL);
             break;
-        case UP_ERR_NO_FILE: echo 'You must select a file for uploading! - ' , UP_ERR_NO_FILE;
+        case UP_ERR_NO_FILE: printf('You must select a file for uploading! (#%d)' , UP_ERR_NO_FILE);
             break;
-        case UP_ERR_NO_TMP: echo 'The temporary directory is missing! - ' , UP_ERR_NO_TMP;
+        case UP_ERR_NO_TMP: printf('The temporary directory is missing! (#%d)' , UP_ERR_NO_TMP);
             break;
-        case UP_ERR_NO_WRITE: echo 'Directory permissions problems! - ' , UP_ERR_NO_WRITE;
+        case UP_ERR_NO_WRITE: printf('Directory permissions problems! (#%d)' , UP_ERR_NO_WRITE);
             break;
-        case UP_ERR_EXT: echo 'Upload stopped by extension! - ' , UP_ERR_EXT;
+        case UP_ERR_EXT: printf('Upload stopped by extension! (#%d)' , UP_ERR_EXT);
             break;
-        case UP_ERR_SECRET: echo 'Please specify a directory name to upload to! - ' , UP_ERR_SECRET;
+        case UP_ERR_SECRET: printf('Please specify a directory name to upload to! (#%d)' , UP_ERR_SECRET);
             break;
-        case UP_ERR_NOT_UPLOADED: echo 'The file you are trying to submit is not a valid uploaded file! - ' , UP_ERR_NOT_UPLOADED;
+        case UP_ERR_NOT_UPLOADED: printf('The file you are trying to submit is not a valid uploaded file! (#%d)' , UP_ERR_NOT_UPLOADED);
             break;
-        case UP_ERR_CREATE_DIR: echo 'Error creating directory! - ' , UP_ERR_CREATE_DIR;
+        case UP_ERR_CREATE_DIR: printf('Error creating directory! (#%d)' , UP_ERR_CREATE_DIR);
             break;
-        case UP_ERR_MOVE: echo 'An unexpected error occured while moving the file to destination! - ' , UP_ERR_MOVE;
+        case UP_ERR_MOVE: printf('An unexpected error occured while moving the file to destination! (#%d)' , UP_ERR_MOVE);
             break;
-        case UP_SUCCESS: echo 'File uploaded successfully! - ' , UP_SUCCESS;
+        case UP_SUCCESS: printf('File uploaded successfully! (#%d)' , UP_SUCCESS);
             break;
         default;
     }
