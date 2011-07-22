@@ -16,3 +16,4 @@ const UP_ERR_NOT_UPLOADED = 8;
 const UP_ERR_CREATE_DIR = 9;
 const UP_ERR_MOVE = 10;
 const UP_SUCCESS = 11;
+const UP_ERR_CONTACT_ADMIN = 12;

@@ -37,6 +37,8 @@ if(is_numeric($feedback['upload'])){
             break;
         case UP_SUCCESS: echo 'File uploaded successfully! - ' , UP_SUCCESS;
             break;
+        case UP_ERR_CONTACT_ADMIN: echo 'Please contact website administrator! - (', UP_ERR_CONTACT_ADMIN, ')';
+            break;
         default;
     }
 

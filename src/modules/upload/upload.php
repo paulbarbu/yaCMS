@@ -22,11 +22,25 @@ if(isset($_POST['upload'])){
 
         if(is_uploaded_file($file['tmp_name'])){ // if the file is legitim(uploaded by POST method)
             if(isset($_POST['secret']) && !empty($_POST['secret'])){ //the directory is a "must"
-                $uploadDir .= DIRECTORY_SEPARATOR . $_POST['secret'];
+                if(is_dir($uploadDir)){
+                    if(!is_writable($uploadDir)){
+                        return UP_ERR_CONTACT_ADMIN;
+                    }
+                }
+                else{
+                    if(!is_writable(BASE_DIR)){
+                        return UP_ERR_CONTACT_ADMIN;
+                    }
+                    umask(0003);
+                    if(!mkdir($uploadDir,0774)){
+                        return UP_ERR_CREATE_DIR;
+                    }
+                }
 
-                if(!is_dir($uploadDir)){ // create the directory if its inexistent
-                    $created = mkdir($uploadDir);
-                    if(!$created){
+                $uploadDir .= DIRECTORY_SEPARATOR . $_POST['secret'];
+                if(!is_dir($uploadDir)){
+                    umask(0003);
+                    if(!mkdir($uploadDir, 0774)){
                         return UP_ERR_CREATE_DIR;
                     }
                 }
