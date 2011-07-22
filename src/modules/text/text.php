@@ -51,8 +51,7 @@ if(isset($_POST['edit'])){
             return TXT_ERR_READ;
         }
 
-        $result['msg'] = DIRECTORY_SEPARATOR . $_POST['sec']
-            . DIRECTORY_SEPARATOR . $_POST['filelist'];
+        $result['msg'] = $_POST['sec'] . DIRECTORY_SEPARATOR . $_POST['filelist'];
     }
     elseif(isset($_POST['contents'])){
         $file = UPLOADS_ROOT . $_POST['file'];
