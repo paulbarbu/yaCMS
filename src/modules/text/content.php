@@ -3,11 +3,11 @@
 if(is_numeric($feedback['text'])){
     echo '<h3>';
     switch($feedback['text']){
-        case TXT_ERR_PASS: echo 'Incorrect passphrase! - ', TXT_ERR_PASS;
+        case TXT_ERR_PASS: printf('Incorrect passphrase! (#%d)', TXT_ERR_PASS);
             break;
-        case TXT_ERR_READ: echo 'Error on reading the file! - ', TXT_ERR_READ;
+        case TXT_ERR_READ: printf('Error on reading the file! (#%d)', TXT_ERR_READ);
             break;
-        case TXT_ERR_WRITE: echo 'Error on writing to file! - ', TXT_ERR_WRITE;
+        case TXT_ERR_WRITE: printf('Error on writing to file! (#%d)', TXT_ERR_WRITE);
         default;
     }
     echo '</h3>';

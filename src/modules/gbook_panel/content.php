@@ -7,11 +7,11 @@ $ips = get_ips_ban();
 if(is_numeric($ips)){
     echo '<h3>';
     switch($ips){
-        case GP_ERR_OPEN: echo 'Error opening file! - ', GP_ERR_OPEN;
+        case GP_ERR_OPEN: printf('Error opening file! (#%d)', GP_ERR_OPEN);
             break;
-        case GP_ERR_DECODE: echo 'Message cannot be decoded! - ', GP_ERR_DECODE;
+        case GP_ERR_DECODE: printf('Message cannot be decoded! (#%d)', GP_ERR_DECODE);
             break;
-        case GP_ERR_EMPTY: echo 'No posts! - ', GP_ERR_EMPTY;
+        case GP_ERR_EMPTY: printf('No posts! (#%d)', GP_ERR_EMPTY);
             break;
         default;
     }
@@ -32,9 +32,9 @@ $ips = get_ips_unban();
 if(is_numeric($ips)){
     echo '<h3>';
     switch($ips){
-        case GP_ERR_OPEN: echo 'Error opening file! - ', GP_ERR_OPEN;
+        case GP_ERR_OPEN: printf('Error opening file! (#%d)', GP_ERR_OPEN);
             break;
-        case GP_ERR_EMPTY: echo 'No bans! - ', GP_ERR_EMPTY;
+        case GP_ERR_EMPTY: printf('No bans! (#%d)', GP_ERR_EMPTY);
             break;
         default;
     }
@@ -53,15 +53,15 @@ if(is_numeric($feedback['panel'])){
     echo '<h3>';
 
     switch($feedback['panel']){
-        case GP_ERR_NO_IP: echo 'Please select an IP! - ', GP_ERR_NO_IP;
+        case GP_ERR_NO_IP: printf('Please select an IP! (#%d)', GP_ERR_NO_IP);
             break;
-        case GP_ERR_FOPEN_BAN_FILE: echo 'Could not access ban DB! - ' , GP_ERR_FOPEN_BAN_FILE;
+        case GP_ERR_FOPEN_BAN_FILE: printf('Could not access ban DB! (#%d)' , GP_ERR_FOPEN_BAN_FILE);
             break;
-        case GP_UNBANNED: echo 'Selected IPs successfully unbanned!';
+        case GP_UNBANNED: printf('Selected IPs successfully unbanned!');
             break;
-        case GP_ERR_INVALID_ARRAY: echo 'Invalid IP list! - ' , GP_ERR_INVALID_ARRAY;
+        case GP_ERR_INVALID_ARRAY: printf('Invalid IP list! (#%d)' , GP_ERR_INVALID_ARRAY);
             break;
-        case GP_BANNED: echo 'Selected IPs successfully banned!';
+        case GP_BANNED: printf('Selected IPs successfully banned!');
         default;
     }
 

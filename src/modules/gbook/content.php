@@ -5,9 +5,9 @@ if(is_numeric($status)){
     echo '<h3>';
 
     switch($status){
-        case GB_ERR_IP_STRING: echo 'Invalid supplied IP! - ' , GB_ERR_IP_STRING;
+        case GB_ERR_IP_STRING: printf('Invalid supplied IP! (#%d)' , GB_ERR_IP_STRING);
             break;
-        case GB_ERR_FOPEN_BAN_FILE: echo 'Error opening DB! - ' , GB_ERR_FOPEN_BAN_FILE;
+        case GB_ERR_FOPEN_BAN_FILE: printf('Error opening DB! (#%d)' , GB_ERR_FOPEN_BAN_FILE);
             break;
         default;
     }
@@ -49,25 +49,25 @@ Your message here...
         echo '<h3>';
 
         switch($feedback['gbook']){
-            case GB_ERR_NO_NICK: echo 'Please provide a nickname! - ', GB_ERR_NO_NICK;
+            case GB_ERR_NO_NICK: printf('Please provide a nickname! (#%d)', GB_ERR_NO_NICK);
                 break;
-            case GB_ERR_NO_MSG: echo 'Please write a message! - ', GB_ERR_NO_MSG;
+            case GB_ERR_NO_MSG: printf('Please write a message! (#%d)', GB_ERR_NO_MSG);
                 break;
-            case GB_ERR_OPEN_MSG_FILE: echo 'Could not open file for writing! - ', GB_ERR_OPEN_MSG_FILE;
+            case GB_ERR_OPEN_MSG_FILE: printf('Could not open file for writing! (#%d)', GB_ERR_OPEN_MSG_FILE);
                 break;
-            case GB_ERR_WRITE_POST: echo 'Could not write your message! - ', GB_ERR_WRITE_POST;
+            case GB_ERR_WRITE_POST: printf('Could not write your message! (#%d)', GB_ERR_WRITE_POST);
                 break;
             case GB_POST_SUCCESS: echo 'Posted!';
                 break;
             case GB_DEL_SUCCESS: echo 'Deleted!';
                 break;
-            case GB_ERR_NO_SELECTED: echo 'No posts selected! - ', GB_ERR_NO_SELECTED;
+            case GB_ERR_NO_SELECTED: printf('No posts selected! (#%d)', GB_ERR_NO_SELECTED);
                 break;
-            case GB_ERR_NO_MSG_FILE: echo 'Database does not exists! - ', GB_ERR_NO_MSG_FILE;
+            case GB_ERR_NO_MSG_FILE: printf('Database does not exists! (#%d)', GB_ERR_NO_MSG_FILE);
                 break;
-            case GB_ERR_READONLY: echo 'Database is readonly! - ', GB_ERR_READONLY;
+            case GB_ERR_READONLY: printf('Database is readonly! (#%d)', GB_ERR_READONLY);
                 break;
-            case GB_ERR_CANNOT_READ: echo 'Cannot read from database! - ', GB_ERR_CANNOT_READ;
+            case GB_ERR_CANNOT_READ: printf('Cannot read from database! (#%d)', GB_ERR_CANNOT_READ);
                 break;
             default;
         }
@@ -85,11 +85,11 @@ Your message here...
     if(is_numeric($messages)){
         echo '<h3>';
         switch($messages){
-            case GB_ERR_OPEN: echo 'Error opening file! - ', GB_ERR_OPEN;
+            case GB_ERR_OPEN: printf('Error opening file! (#%d)', GB_ERR_OPEN);
                 break;
-            case GB_ERR_DECODE: echo 'Message cannot be decoded! - ', GB_ERR_DECODE;
+            case GB_ERR_DECODE: printf('Message cannot be decoded! (#%d)', GB_ERR_DECODE);
                 break;
-            case GB_ERR_EMPTY: echo 'No posts! - ', GB_ERR_EMPTY;
+            case GB_ERR_EMPTY: printf('No posts! (#%d)', GB_ERR_EMPTY);
                 break;
             default;
         }
