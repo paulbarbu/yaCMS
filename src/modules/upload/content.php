@@ -10,36 +10,52 @@
 	<input type="submit" name="upload" value="Upload" />
 </form>
 <?php
-
 if(is_numeric($feedback['upload'])){
     echo '<h3>' ;
-
     switch($feedback['upload']){
-        case UP_ERR_SIZE: printf('The input file exceeded the size limit! (#%d)' , UP_ERR_SIZE);
+        case UP_ERR_SIZE:
+            printf('The input file exceeded the size limit! (#%d)' ,UP_ERR_SIZE);
             break;
-        case UP_ERR_PARTiAL: printf('The uploaded file was only partially uploaded! (#%d)' , UP_ERR_PARTIAL);
+        case UP_ERR_PARTIAL:
+            printf('The uploaded file was only partially uploaded! (#%d)' ,UP_ERR_PARTIAL);
             break;
-        case UP_ERR_NO_FILE: printf('You must select a file for uploading! (#%d)' , UP_ERR_NO_FILE);
+        case UP_ERR_NO_FILE:
+            printf('You must select a file for uploading! (#%d)' ,UP_ERR_NO_FILE);
             break;
-        case UP_ERR_NO_TMP: printf('The temporary directory is missing! (#%d)' , UP_ERR_NO_TMP);
+        case UP_ERR_NO_TMP:
+            printf('The temporary directory is missing! (#%d)' ,UP_ERR_NO_TMP);
             break;
-        case UP_ERR_NO_WRITE: printf('Directory permissions problems! (#%d)' , UP_ERR_NO_WRITE);
+        case UP_ERR_NO_WRITE:
+            printf('Directory permissions problems! (#%d)' ,UP_ERR_NO_WRITE);
             break;
-        case UP_ERR_EXT: printf('Upload stopped by extension! (#%d)' , UP_ERR_EXT);
+        case UP_ERR_EXT:
+            printf('Upload stopped by extension! (#%d)' ,UP_ERR_EXT);
             break;
-        case UP_ERR_SECRET: printf('Please specify a directory name to upload to! (#%d)' , UP_ERR_SECRET);
+        case UP_ERR_SECRET:
+            printf('Please specify a directory name to upload to! (#%d)' ,UP_ERR_SECRET);
             break;
-        case UP_ERR_NOT_UPLOADED: printf('The file you are trying to submit is not a valid uploaded file! (#%d)' , UP_ERR_NOT_UPLOADED);
+        case UP_ERR_NOT_UPLOADED:
+            printf('The file you are trying to submit is not a valid uploaded file! (#%d)' ,UP_ERR_NOT_UPLOADED);
             break;
-        case UP_ERR_CREATE_DIR: printf('Error creating directory! (#%d)' , UP_ERR_CREATE_DIR);
+        case UP_ERR_CREATE_DIR:
+            printf('Error creating directory! Please contact website administrator! (#%d)', UP_ERR_CREATE_DIR);
             break;
-        case UP_ERR_MOVE: printf('An unexpected error occured while moving the file to destination! (#%d)' , UP_ERR_MOVE);
+        case UP_ERR_MOVE:
+            printf('An unexpected error occured while moving the file to destination! (#%d)' ,UP_ERR_MOVE);
             break;
-        case UP_SUCCESS: printf('File uploaded successfully! (#%d)' , UP_SUCCESS);
+        case UP_ERR_WRITE_UPLD_DIR:
+            printf('Unable to write in upload directory! Please contact website administrator! (#%d)',UP_ERR_WRITE_UPLD_DIR);
             break;
-        default;
-    }
+        case UP_ERR_WRITE_BASE_DIR:
+            printf('Unable to write in base directory! Please contact website administrator! (#%d)',UP_ERR_WRITE_BASE_DIR);
+            break;
+        case UP_ERR_WRITE_FL_UPLD_DIR:
+            printf('Unable to write file in destination directory! Please contact website administrator! (#%d)', UP_ERR_WRITE_FL_UPLD_DIR);
+            break;
 
+        default:
+            echo 'File uploaded successfully!';
+    }
     echo '</h3>';
 }
 
