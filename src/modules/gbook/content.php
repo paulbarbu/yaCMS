@@ -15,7 +15,7 @@ if(is_numeric($status)){
     echo '</h3>';
 }
 elseif(TRUE == $status){
-    echo '<h3>This IP is banned, <u>' , $_SERVER['REMOTE_ADDR'] , '</u>!</h3>';
+    echo '<h3>This IP is banned,<u>' , $_SERVER['REMOTE_ADDR'] , '</u>!</h3>';
 }
 else{
 ?>
@@ -41,48 +41,57 @@ Your message here...
 <br />
 <input type="submit" name="post" value="Post" />
 <?php
-    if(isset($_SESSION['admin'])){
+    if(isset($_SESSION['admin'])) {
         echo '<br/> <input type="submit" name="del" value="Delete selected" />';
     }
 
-    if(is_numeric($feedback['gbook'])){
+    if(is_numeric($feedback['gbook'])) {
         echo '<h3>';
 
         switch($feedback['gbook']){
-            case GB_ERR_NO_NICK: printf('Please provide a nickname! (#%d)', GB_ERR_NO_NICK);
-                break;
-            case GB_ERR_NO_MSG: printf('Please write a message! (#%d)', GB_ERR_NO_MSG);
-                break;
-            case GB_ERR_OPEN_MSG_FILE: printf('Could not open file for writing! (#%d)', GB_ERR_OPEN_MSG_FILE);
-                break;
-            case GB_ERR_WRITE_POST: printf('Could not write your message! (#%d)', GB_ERR_WRITE_POST);
-                break;
-            case GB_POST_SUCCESS: echo 'Posted!';
-                break;
-            case GB_DEL_SUCCESS: echo 'Deleted!';
-                break;
-            case GB_ERR_NO_SELECTED: printf('No posts selected! (#%d)', GB_ERR_NO_SELECTED);
-                break;
-            case GB_ERR_NO_MSG_FILE: printf('Database does not exists! (#%d)', GB_ERR_NO_MSG_FILE);
-                break;
-            case GB_ERR_READONLY: printf('Database is readonly! (#%d)', GB_ERR_READONLY);
-                break;
-            case GB_ERR_CANNOT_READ: printf('Cannot read from database! (#%d)', GB_ERR_CANNOT_READ);
-                break;
-            default;
+        case GB_ERR_NO_NICK:
+            printf('Please provide a nickname! (#%d)', GB_ERR_NO_NICK);
+            break;
+        case GB_ERR_NO_MSG:
+            printf('Please write a message! (#%d)', GB_ERR_NO_MSG);
+            break;
+        case GB_ERR_OPEN_MSG_FILE:
+            printf('Could not open file for writing! (#%d)', GB_ERR_OPEN_MSG_FILE);
+            break;
+        case GB_ERR_WRITE_POST:
+            printf('Could not write your message! (#%d)', GB_ERR_WRITE_POST);
+            break;
+        case GB_POST_SUCCESS:
+            echo 'Posted!';
+            break;
+        case GB_DEL_SUCCESS:
+            echo 'Deleted!';
+            break;
+        case GB_ERR_NO_SELECTED:
+            printf('No posts selected! (#%d)', GB_ERR_NO_SELECTED);
+            break;
+        case GB_ERR_NO_MSG_FILE:
+            printf('Database does not exists! (#%d)', GB_ERR_NO_MSG_FILE);
+            break;
+        case GB_ERR_READONLY:
+            printf("Can't write in to database! Please contact website administrator.(#%d)", GB_ERR_READONLY);
+            break;
+        case GB_ERR_CANNOT_READ:
+            printf('Cannot read from database! (#%d)', GB_ERR_CANNOT_READ);
+            break;
+        default;
         }
-
         echo '</h3>';
     }
 
-    if(isset($_SESSION['admin']) && $_SESSION['admin']){
+    if(isset($_SESSION['admin']) && $_SESSION['admin']) {
         $messages = post_to_div(PATH_MSG_FILE, TRUE);
     }
     else{
         $messages = post_to_div();
     }
 
-    if(is_numeric($messages)){
+    if(is_numeric($messages)) {
         echo '<h3>';
         switch($messages){
             case GB_ERR_OPEN: printf('Error opening file! (#%d)', GB_ERR_OPEN);
@@ -95,10 +104,10 @@ Your message here...
         }
         echo '</h3>';
     }
-    else{
+    else {
         for($i=count($messages) - 1;$i>=0;$i--){
             echo $messages[$i];
-        }
+         }
     }
 }
 ?>
