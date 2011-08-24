@@ -3,12 +3,19 @@
 if(is_numeric($feedback['text'])){
     echo '<h3>';
     switch($feedback['text']){
-        case TXT_ERR_PASS: printf('Incorrect passphrase! (#%d)', TXT_ERR_PASS);
-            break;
-        case TXT_ERR_READ: printf('Error on reading the file! (#%d)', TXT_ERR_READ);
-            break;
-        case TXT_ERR_WRITE: printf('Error on writing to file! (#%d)', TXT_ERR_WRITE);
-        default;
+    case TXT_ERR_PASS:
+        printf('Incorrect passphrase! (#%d)', TXT_ERR_PASS);
+        break;
+    case TXT_ERR_READ:
+        printf('Error on reading the file! (#%d)', TXT_ERR_READ);
+        break;
+    case TXT_ERR_WRITE:
+        printf('Error on writing to file! (#%d)', TXT_ERR_WRITE);
+        break;
+    case TXT_ERR_WPROTECT:
+        printf('The file is wright protected! Please contact website administrator (#%d)', TXT_ERR_WPROTECT);
+        break;
+    default;
     }
     echo '</h3>';
 }

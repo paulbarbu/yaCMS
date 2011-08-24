@@ -55,12 +55,15 @@ if(isset($_POST['edit'])){
     }
     elseif(isset($_POST['contents'])){
         $file = UPLOADS_ROOT . $_POST['file'];
-
+    if(is_writable($file)) {
         $check = file_put_contents($file, $_POST['contents']);
         if(FALSE === $check){
             return TXT_ERR_WRITE;
         }
-
+    }
+    else {
+        return TXT_ERR_WPROTECT;
+    }
         $name = substr(strrchr($file, DIRECTORY_SEPARATOR), 1);
         $result['msg'] = $name;
     }
