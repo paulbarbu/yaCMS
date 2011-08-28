@@ -16,7 +16,9 @@
 /**
  * Modules directory
  */
-define('MODULES_ROOT', BASE_DIR . 'modules' . DIRECTORY_SEPARATOR);
+if(!defined('MODULES_ROOT')){
+    define('MODULES_ROOT', BASE_DIR . 'modules' . DIRECTORY_SEPARATOR);
+}
 
 /**
  * Data directory, all modules should

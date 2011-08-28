@@ -71,7 +71,9 @@ require_once BASE_DIR . 'global_const.php';
 /**
  * Main module structure loaded from modules.php
  */
-$modules = require_once BASE_DIR . 'modules.php';
+if(!isset($modules) || empty($modules)){
+    $modules = require_once BASE_DIR . 'modules.php';
+}
 
 /**
  * Data received from the BL
