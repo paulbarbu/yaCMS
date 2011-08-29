@@ -3,10 +3,8 @@
  * Constants for GB script
  */
 
-define('PATH_MSG_FILE', DATA_ROOT . DIRECTORY_SEPARATOR . 'gbook'
-    . DIRECTORY_SEPARATOR . 'msg.json');
-define('PATH_BAN_FILE', DATA_ROOT . DIRECTORY_SEPARATOR . 'gbook'
-    . DIRECTORY_SEPARATOR . 'bans');
+define('PATH_MSG_FILE', implode(DIRECTORY_SEPARATOR, array(DATA_ROOT, 'gbook', 'msg.json')));
+define('PATH_BAN_FILE', implode(DIRECTORY_SEPARATOR, array(DATA_ROOT, 'gbook', 'bans')));
 
 const GB_OK = 0;
 const GB_ERR_NO_NICK = 1;

@@ -11,6 +11,7 @@
 <html>
 <head>
 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 <title><?php echo $modules[$module]['VL']['title'];?></title>
@@ -39,17 +40,17 @@
     <div id="content">
         <h3><?php echo $modules[$module]['VL']['title'];?></h3>
         <?php
-            if(file_exists(MODULES_ROOT . $module . DIRECTORY_SEPARATOR
-                            . $modules[$module]['VL']['content']) &&
-                is_readable(MODULES_ROOT . $module . DIRECTORY_SEPARATOR
-                . $modules[$module]['VL']['content'])){
+            if(file_exists(MODULES_ROOT.$module.DIRECTORY_SEPARATOR
+                           .$modules[$module]['VL']['content']) &&
+                is_readable(MODULES_ROOT.$module.DIRECTORY_SEPARATOR
+                           .$modules[$module]['VL']['content'])) {
         ?>
             <p>
         <?php
-                    include MODULES_ROOT . $module . DIRECTORY_SEPARATOR
-                        . $modules[$module]['VL']['content'];
+                    include MODULES_ROOT.$module.DIRECTORY_SEPARATOR
+                            .$modules[$module]['VL']['content'];
             }
-            else{
+            else {
                 echo '<h3>' , ERR_LOAD_FILE , '</h3>';
             }
         ?>
