@@ -2,7 +2,7 @@
 /**
  * @file src/functions.php
  * @brief Global scope functions
- * @author paullik
+ * @author Paul Barbu
  * @ingroup kernelFiles
  */
 
