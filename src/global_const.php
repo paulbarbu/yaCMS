@@ -32,6 +32,14 @@ define('DATA_ROOT', BASE_DIR . 'data' . DIRECTORY_SEPARATOR);
  */
 define('UPLOADS_ROOT', 'uploads' . DIRECTORY_SEPARATOR);
 
+
+/**
+ * HTML template
+ */
+if(!defined('LAYOUT_PATH')){
+    define('LAYOUT_PATH', BASE_DIR . 'layout.php');
+}
+
 /**
  * @}
  *

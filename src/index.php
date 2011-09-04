@@ -165,7 +165,7 @@ if($reload){
     goto load_module;
 }
 
-$rendered = render('layout.php', compact('module', 'feedback', 'modules', 'feedback_pre'));
+$rendered = render(LAYOUT_PATH, compact('module', 'feedback', 'modules', 'feedback_pre'));
 
 switch($rendered){
     case RENDER_ERR_NO_FILE: echo 'No page to display! - ' , RENDER_ERR_NO_FILE;
