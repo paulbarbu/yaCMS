@@ -17,14 +17,14 @@
  * Modules directory
  */
 if(!defined('MODULES_ROOT')){
-    define('MODULES_ROOT', BASE_DIR . 'modules' . DIRECTORY_SEPARATOR);
+    define('MODULES_ROOT', YACMS_BASE_DIR . 'modules' . DIRECTORY_SEPARATOR);
 }
 
 /**
  * Data directory, all modules should
  * place configuration files and databases at this location
  */
-define('DATA_ROOT', BASE_DIR . 'data' . DIRECTORY_SEPARATOR);
+define('DATA_ROOT', YACMS_BASE_DIR . 'data' . DIRECTORY_SEPARATOR);
 
 /**
  * Uploads directory, every upload
@@ -37,7 +37,7 @@ define('UPLOADS_ROOT', 'uploads' . DIRECTORY_SEPARATOR);
  * HTML template
  */
 if(!defined('LAYOUT_PATH')){
-    define('LAYOUT_PATH', BASE_DIR . 'layout.php');
+    define('LAYOUT_PATH', YACMS_BASE_DIR . 'layout.php');
 }
 
 /**

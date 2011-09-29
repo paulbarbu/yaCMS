@@ -55,10 +55,10 @@
  * The base directory of the application
  * @ingroup definedPaths
  */
-define('BASE_DIR', __DIR__ . DIRECTORY_SEPARATOR);
+define('YACMS_BASE_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
-require_once BASE_DIR . 'functions.php';
-require_once BASE_DIR . 'global_const.php';
+require_once YACMS_BASE_DIR . 'functions.php';
+require_once YACMS_BASE_DIR . 'global_const.php';
 
 /**
  * @defgroup kernelVars Kernel Variables
@@ -72,7 +72,7 @@ require_once BASE_DIR . 'global_const.php';
  * Main module structure loaded from modules.php
  */
 if(!isset($modules) || empty($modules)){
-    $modules = require_once BASE_DIR . 'modules.php';
+    $modules = require_once YACMS_BASE_DIR . 'modules.php';
 }
 
 /**

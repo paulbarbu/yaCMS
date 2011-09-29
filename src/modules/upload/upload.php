@@ -28,7 +28,7 @@ if(isset($_POST['upload'])){
                     }
                 }
                 else{
-                    if(!is_writable(BASE_DIR)){
+                    if(!is_writable(YACMS_BASE_DIR)){
                         return UP_ERR_WRITE_BASE_DIR;
                     }
                     umask(0003);
