@@ -207,5 +207,19 @@ function app_path(){
 }
 
 /**
+ * Load (in a recursive manner) a module's dependendencies
+ *
+ * Walk the dependency arrays and push every file onto a stack, which will be
+ * popped at the end of the recursivity(when every dependency needed is pushed)
+ *
+ * @param array $tree the first level dependency
+ * @param array $stack the stack that will store the paths to the dependencies
+ *
+ * @return ERR_LOAD_FILE if a dependency cannot be loaded
+ */
+function load_deps($tree, $stack = array()){
+}
+
+/**
  * @}
  */
