@@ -136,9 +136,23 @@ if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-proc
             }
         }
         else{//our module has another module as pre-dependency
-            foreach($modules[$pre]['pre-process'] as $dep_pre_key => $dep_pre){
-                $feedback_pre[$dep_pre_key] = require_once MODULES_ROOT . $pre . DIRECTORY_SEPARATOR . $dep_pre;
 
+            foreach($modules[$pre]['pre-process'] as $p_key => $p){
+                if(FALSE != stristr($p, '.php')){
+                    if(file_exists(MODULES_ROOT . $pre . DIRECTORY_SEPARATOR . $p) &&
+                        is_readable(MODULES_ROOT . $pre . DIRECTORY_SEPARATOR . $p)){
+                        $feedback_pre[$p_key] = require_once MODULES_ROOT . $pre . DIRECTORY_SEPARATOR . $p;
+                    }
+                    else{
+                        echo ERR_LOAD_FILE;
+                        exit();
+                    }
+                }
+                else{//our module has another module as pre-dependency
+                    foreach($modules[$p]['pre-process'] as $dep_p_key => $dep_p){
+                        $feedback_pre[$dep_p_key] = require_once MODULES_ROOT . $p . DIRECTORY_SEPARATOR . $dep_p;
+                    }
+                }
             }
         }
     }
