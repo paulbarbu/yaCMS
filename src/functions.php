@@ -226,7 +226,7 @@ function get_deps($modules, $module, $modules_root, $part = 'pre-process', $stac
             $stack[] = array($meta => $modules_root . $module . DIRECTORY_SEPARATOR . $dep);
         }
         else{
-            $stack = load_deps($modules, $dep, $modules_root, $part, $stack);
+            $stack = get_deps($modules, $dep, $modules_root, $part, $stack);
         }
     }
 
@@ -242,6 +242,20 @@ function get_deps($modules, $module, $modules_root, $part = 'pre-process', $stac
  * consisting of the keys in the stack associated with the dependencies retvals
  */
 function load_deps($stack){
+    $result = array();
+
+    foreach($stack as $dep){
+        foreach($dep as $meta => $dep_file){
+            if(file_exists($dep_file) && is_readable($dep_file)){
+                $result[$meta] = require_once $dep_file;
+            }
+            else{
+                return ERR_LOAD_FILE;
+            }
+        }
+    }
+
+    return $result;
 }
 
 /**
