@@ -207,17 +207,41 @@ function app_path(){
 }
 
 /**
- * Load (in a recursive manner) a module's dependendencies
+ * Get (in a recursive manner) a module's dependendencies
  *
- * Walk the dependency arrays and push every file onto a stack, which will be
- * popped at the end of the recursivity(when every dependency needed is pushed)
+ * Walk the dependency arrays and push every file path onto a stack
  *
- * @param array $tree the first level dependency
+ * @param array $modules the complete list of modules
+ * @param array $module of which the deps should be loaded
+ * @param array $modules_root path to the directory where the modules lay(with a
+ * DIRECTORY_SEPARATOR at the end)
  * @param array $stack the stack that will store the paths to the dependencies
+ * @param string $part get either post-process or pre-process dependencies
  *
- * @return ERR_LOAD_FILE if a dependency cannot be loaded
+ * @return $stack return the complete list of dependencies
  */
-function load_deps($tree, $stack = array()){
+function get_deps($modules, $module, $modules_root, $part = 'pre-process', $stack = array()){
+    foreach($modules[$module][$part] as $meta => $dep){
+        if(FALSE != stristr($dep, '.php')){
+            $stack[] = array($meta => $modules_root . $module . DIRECTORY_SEPARATOR . $dep);
+        }
+        else{
+            $stack = load_deps($modules, $dep, $modules_root, $part, $stack);
+        }
+    }
+
+    return $stack;
+}
+
+/**
+ * Load a module's dependencies
+ *
+ * @param $stack the stack of dependencies genereted by load_deps()
+ *
+ * @return ERR_LOAD_FILE if a dependency could not be loaded, else a dictionary
+ * consisting of the keys in the stack associated with the dependencies retvals
+ */
+function load_deps($stack){
 }
 
 /**
