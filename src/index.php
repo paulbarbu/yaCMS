@@ -124,37 +124,11 @@ else{
 
 load_module:
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
-    foreach($modules[$module]['pre-process'] as $pre_key => $pre){
-        if(FALSE != stristr($pre, '.php')){
-            if(file_exists(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre) &&
-                is_readable(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre)){
-                $feedback_pre[$pre_key] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $pre;
-            }
-            else{
-                echo ERR_LOAD_FILE;
-                exit();
-            }
-        }
-        else{//our module has another module as pre-dependency
+    $feedback_pre = load_deps(get_deps($modules, $module, MODULES_ROOT, 'pre-process'));
 
-            foreach($modules[$pre]['pre-process'] as $p_key => $p){
-                if(FALSE != stristr($p, '.php')){
-                    if(file_exists(MODULES_ROOT . $pre . DIRECTORY_SEPARATOR . $p) &&
-                        is_readable(MODULES_ROOT . $pre . DIRECTORY_SEPARATOR . $p)){
-                        $feedback_pre[$p_key] = require_once MODULES_ROOT . $pre . DIRECTORY_SEPARATOR . $p;
-                    }
-                    else{
-                        echo ERR_LOAD_FILE;
-                        exit();
-                    }
-                }
-                else{//our module has another module as pre-dependency
-                    foreach($modules[$p]['pre-process'] as $dep_p_key => $dep_p){
-                        $feedback_pre[$dep_p_key] = require_once MODULES_ROOT . $p . DIRECTORY_SEPARATOR . $dep_p;
-                    }
-                }
-            }
-        }
+    if($feedback_pre == ERR_LOAD_FILE){
+        echo ERR_LOAD_FILE;
+        exit();
     }
 }
 
@@ -190,22 +164,10 @@ switch($rendered){
 }
 
 if(isset($modules[$module]['post-process']) && !empty($modules[$module]['post-process'])){
-    foreach($modules[$module]['post-process'] as $post){
-        if(FALSE != stristr($post, '.php')){
-            if(file_exists(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post) &&
-               is_readable(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post)){
-                require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $post;
-            }
-            else{
-                echo ERR_LOAD_FILE;
-                exit();
-            }
-        }
-        else{//our module has another module as post-dependency
-            foreach($modules[$post]['post-process'] as $dep_post){
-                require_once MODULES_ROOT . $post . DIRECTORY_SEPARATOR . $dep_post;
+    $feedback_post = load_deps(get_deps($modules, $module, MODULES_ROOT, 'post-process'));
 
-            }
-        }
+    if($feedback_post == ERR_LOAD_FILE){
+        echo ERR_LOAD_FILE;
+        exit();
     }
 }
