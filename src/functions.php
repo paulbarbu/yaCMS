@@ -97,20 +97,24 @@ function render($template, $vars = NULL){
  *
  * @param array $modules array to get menu entries from
  * @param string $currentModule name of the module not to wrap in <a> tags
+ * @param callback $cb a callback for checking is the user is logged in or not
  *
  * @return string representing the menu's HTML code
  */
-function build_menu_from_modules($modules, $currentModule){
+function build_menu_from_modules($modules, $currentModule, $cb = NULL){
     $menu = '<ul>' .PHP_EOL;
     foreach($modules as $moduleName => $metaData){
         if(!isset($modules[$moduleName]['VL']['show_in_menu']) ||
             FALSE != $modules[$moduleName]['VL']['show_in_menu']){
-            if($moduleName == $currentModule){
-                $menu .= '<li>' .$metaData['VL']['title']. '</li>' .PHP_EOL;
-            }
-            else{
-                $menu .= '<li><a href="?show=' . $moduleName . '">'
-                    . $metaData['VL']['title'] . '</a></li>' . PHP_EOL;
+
+            if(!isset($modules[$moduleName]['VL']['login_need']) || $cb != NULL && $modules[$moduleName]['VL']['login_need'] == TRUE && $cb()){
+                if($moduleName == $currentModule){
+                    $menu .= '<li>' .$metaData['VL']['title']. '</li>' .PHP_EOL;
+                }
+                else{
+                    $menu .= '<li><a href="?show=' . $moduleName . '">'
+                        . $metaData['VL']['title'] . '</a></li>' . PHP_EOL;
+                }
             }
         }
     }
