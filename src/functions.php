@@ -129,41 +129,41 @@ function build_menu_from_modules($modules, $currentModule, $cb = NULL){
  *
  * @param string $path path to a directory
  * @param string $mime MIME type to be matched
- * @param bool $recursive search recursively or not in the provided directory
+ * @param bool $recursive if TRUE searches recursively
  *
- * @return array $files containing the the directory name as key and the
- * path to the file as the value
+ * @return array $files containing the path to the files
  */
 function find_files_by_mime($path, $mime, $recursive = TRUE){
     $files = array();
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
-    if(DIRECTORY_SEPARATOR == substr($path, -1)){
-        $path = substr($path, 0, strlen(path)-2);
+    if(DIRECTORY_SEPARATOR != substr($path, -1)){
+        $path .= DIRECTORY_SEPARATOR;
     }
 
     if(is_dir($path)){
         $d = opendir($path);
 
         while($entry = readdir($d)){
-            $mime_type = finfo_file($finfo, $path . DIRECTORY_SEPARATOR . $entry);
+            $mime_type = finfo_file($finfo, $path . $entry);
 
             if("." != $entry && ".." != $entry){
 
-                if(is_dir($path . DIRECTORY_SEPARATOR . $entry) && $recursive){
+                if(is_dir($path . $entry) && $recursive){
                     $files =  array_unique(array_merge(find_files_by_mime(
-                        $path . DIRECTORY_SEPARATOR . $entry, $mime), $files));
+                        $path . $entry, $mime), $files));
                 }
                 elseif(FALSE !== stristr($mime_type, $mime)){
-                        $files[] = $path . DIRECTORY_SEPARATOR . $entry;
+                        $files[] = $path . $entry;
                 }
 
+            }
         }
+
+        closedir($d);
     }
 
-    closedir($d);
-}
-return $files;
+    return $files;
 }
 
 /**
