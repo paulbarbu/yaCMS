@@ -257,7 +257,7 @@ function load_deps($stack, $vars = NULL){
     foreach($stack as $dep){
         foreach($dep as $meta => $dep_file){
             if(file_exists($dep_file) && is_readable($dep_file)){
-                $result[$meta] = require_once $dep_file;
+                $result[$meta] = require $dep_file;
             }
             else{
                 return ERR_LOAD_FILE;

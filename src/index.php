@@ -86,13 +86,6 @@ $feedback = array();
 $feedback_pre = array();
 
 /**
- * A semaphor variable to check whether a module needs reloading or not
- *
- * This variable is changed by a module
- */
-$reload = FALSE;
-
-/**
  * Container for @p render()'s retval
  */
 $rendered = NULL;
@@ -148,10 +141,17 @@ if(isset($modules[$module]['BL'])){
     }
 }
 
-if($reload){
-    $reload = FALSE;
-    goto load_module;
+/**
+ * Reload the page if the module or the dependencies says so
+ */
+foreach($feedback_pre as $name => $val){
+    if(is_array($val) && isset($val['reload']) && $val['reload']){
+        $module = $val['module'];
+        goto load_module;
+    }
 }
+
+//TODO: think what I should to when the controller wants a reload
 
 $rendered = render(LAYOUT_PATH, compact('module', 'feedback', 'modules', 'feedback_pre'));
 
