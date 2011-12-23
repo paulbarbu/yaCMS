@@ -70,3 +70,4 @@ if(isset($_POST['unban_ip'])){
 }
 
 return TRUE;
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/

@@ -143,3 +143,4 @@ function get_ips_unban($path = PATH_BAN_FILE){
         return  GP_ERR_EMPTY;
     }
 }
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/

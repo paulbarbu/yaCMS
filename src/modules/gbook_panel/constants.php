@@ -12,3 +12,4 @@ const GP_ERR_NO_IP = 7;
 const GP_ERR_FOPEN_BAN_FILE = 8;
 const GP_BANNED = 9;
 const GP_UNBANNED = 10;
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/

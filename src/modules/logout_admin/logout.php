@@ -21,3 +21,4 @@ if(ini_get("session.use_cookies")){
 $destroy_session = session_destroy();
 
 return $destroy_session & $del_sCookie;
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/

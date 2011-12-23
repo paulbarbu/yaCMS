@@ -165,3 +165,4 @@ function check_ip($ip, $path = PATH_BAN_FILE){
 /**
  * @}
  */
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/

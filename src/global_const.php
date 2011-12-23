@@ -59,3 +59,4 @@ const ERR_LOAD_FILE = 'Cannot use current file, it does not exists or it\'s not
     readable, check your modules! <br /> <a href="javascript:history.go(-1)">
     Go back!</a>';
 
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/

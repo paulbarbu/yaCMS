@@ -40,3 +40,4 @@ else{ //the user must specify the 'secret'
 ?>
 <input type="submit" value="Continue" name="edit" />
 </form>
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/
