@@ -37,7 +37,7 @@ else{ //the user must specify the 'secret'
     echo '<label for="id-s">Passphrase</label><input type="password"
         name="secret" id="id-s" />';
 }
+/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/
 ?>
 <input type="submit" value="Continue" name="edit" />
 </form>
-/* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/
