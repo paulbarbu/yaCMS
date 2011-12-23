@@ -104,10 +104,18 @@ function render($template, $vars = NULL){
 function build_menu_from_modules($modules, $currentModule, $cb = NULL){
     $menu = '<ul>' .PHP_EOL;
     foreach($modules as $moduleName => $metaData){
-        if(!isset($modules[$moduleName]['VL']['show_in_menu']) ||
-            FALSE != $modules[$moduleName]['VL']['show_in_menu']){
+        if((!isset($modules[$moduleName]['VL']['show_in_menu']) ||
+            FALSE != $modules[$moduleName]['VL']['show_in_menu']) &&
+            (
+            (isset($modules[$moduleName]['VL']['login_need']) &&
+            $modules[$moduleName]['VL']['login_need'] == TRUE &&
+            $cb != NULL && $cb()) ||
 
-            if(!isset($modules[$moduleName]['VL']['login_need']) || $cb != NULL && $modules[$moduleName]['VL']['login_need'] == TRUE && $cb()){
+            !(isset($modules[$moduleName]['VL']['login_need']) &&
+            TRUE == $modules[$moduleName]['VL']['login_need'])
+            )
+        ){
+
                 if($moduleName == $currentModule){
                     $menu .= '<li>' .$metaData['VL']['title']. '</li>' .PHP_EOL;
                 }
@@ -115,7 +123,6 @@ function build_menu_from_modules($modules, $currentModule, $cb = NULL){
                     $menu .= '<li><a href="?show=' . $moduleName . '">'
                         . $metaData['VL']['title'] . '</a></li>' . PHP_EOL;
                 }
-            }
         }
     }
     $menu .= '</ul>' .PHP_EOL;
