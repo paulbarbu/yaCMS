@@ -241,12 +241,18 @@ function get_deps($modules, $module, $modules_root, $part = 'pre-process', $stac
  * Load a module's dependencies
  *
  * @param $stack the stack of dependencies genereted by load_deps()
+ * @param array $vars associative array containing variable names needed by
+ * the dependencies, default NULL(none)
  *
  * @return ERR_LOAD_FILE if a dependency could not be loaded, else a dictionary
  * consisting of the keys in the stack associated with the dependencies retvals
  */
-function load_deps($stack){
+function load_deps($stack, $vars = NULL){
     $result = array();
+
+    if($vars){
+        extract($vars);
+    }
 
     foreach($stack as $dep){
         foreach($dep as $meta => $dep_file){

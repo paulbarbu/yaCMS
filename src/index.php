@@ -124,7 +124,7 @@ else{
 
 load_module:
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
-    $feedback_pre = load_deps(get_deps($modules, $module, MODULES_ROOT, 'pre-process'));
+    $feedback_pre = load_deps(get_deps($modules, $module, MODULES_ROOT, 'pre-process'), compact('modules', 'module'));
 
     if($feedback_pre == ERR_LOAD_FILE){
         echo ERR_LOAD_FILE;
