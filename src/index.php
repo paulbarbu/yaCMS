@@ -151,7 +151,13 @@ foreach($feedback_pre as $name => $val){
     }
 }
 
-//TODO: think what I should to when the controller wants a reload
+foreach($feedback as $blName => $result){
+    if(is_array($result) && isset($result['reload']) && $result['reload']){
+        $module = $result['module'];
+        $feedback = array();
+        goto load_module;
+    }
+}
 
 $rendered = render(LAYOUT_PATH, compact('module', 'feedback', 'modules', 'feedback_pre'));
 
