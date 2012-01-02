@@ -117,7 +117,7 @@ else{
 
 load_module:
 if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-process'])){
-    $feedback_pre = load_deps(get_deps($modules, $module, MODULES_ROOT, 'pre-process'), compact('modules', 'module'));
+    $feedback_pre = load_deps(get_deps($modules, $module, MODULES_ROOT, 'pre-process'), compact('modules', 'module', 'feedback'));
 
     if($feedback_pre == ERR_LOAD_FILE){
         echo ERR_LOAD_FILE;
@@ -154,7 +154,7 @@ foreach($feedback_pre as $name => $val){
 foreach($feedback as $blName => $result){
     if(is_array($result) && isset($result['reload']) && $result['reload']){
         $module = $result['module'];
-        $feedback = array();
+        $feedback[$blName]['reload'] = FALSE;
         goto load_module;
     }
 }
@@ -170,7 +170,7 @@ switch($rendered){
 }
 
 if(isset($modules[$module]['post-process']) && !empty($modules[$module]['post-process'])){
-    $feedback_post = load_deps(get_deps($modules, $module, MODULES_ROOT, 'post-process'));
+    $feedback_post = load_deps(get_deps($modules, $module, MODULES_ROOT, 'post-process'), compact('modules', 'module', 'feedback', 'feedback_pre'));
 
     if($feedback_post == ERR_LOAD_FILE){
         echo ERR_LOAD_FILE;
