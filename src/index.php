@@ -58,6 +58,7 @@
 define('YACMS_BASE_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
 require_once YACMS_BASE_DIR . 'functions.php';
+$config = require_once YACMS_BASE_DIR . 'config.php';
 require_once YACMS_BASE_DIR . 'global_const.php';
 
 /**
@@ -132,7 +133,15 @@ if(isset($modules[$module]['BL'])){
     foreach($modules[$module]['BL'] as $blName => $blFile){
         if(file_exists(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile) &&
             is_readable(MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile)){
-            $feedback[$blName] = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+
+                if(in_array($blName, $config['req_once'])){
+                    $req_result = require_once MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+                }
+                else{
+                    $req_result = require MODULES_ROOT . $module . DIRECTORY_SEPARATOR . $blFile;
+                }
+
+                $feedback[$blName] = $req_result;
         }
         else{
             echo ERR_LOAD_FILE;
@@ -147,6 +156,7 @@ if(isset($modules[$module]['BL'])){
 foreach($feedback_pre as $name => $val){
     if(is_array($val) && isset($val['reload']) && $val['reload']){
         $module = $val['module'];
+        $feedback[$name]['reload'] = FALSE;
         goto load_module;
     }
 }
