@@ -156,7 +156,7 @@ if(isset($modules[$module]['BL'])){
 foreach($feedback_pre as $name => $val){
     if(is_array($val) && isset($val['reload']) && $val['reload']){
         $module = $val['module'];
-        $feedback[$name]['reload'] = FALSE;
+        $feedback_pre[$name]['reload'] = FALSE;
         goto load_module;
     }
 }
