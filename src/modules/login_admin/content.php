@@ -38,7 +38,7 @@ if(is_numeric($feedback['login'])){
     }
 
 }
-elseif($feedback['login']){
+elseif($feedback['login']['auth']){
     echo 'Authentified!';
 }
 
