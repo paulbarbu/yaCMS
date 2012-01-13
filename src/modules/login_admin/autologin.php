@@ -1,6 +1,7 @@
 <?php
 
-$prev = NULL;
+$out = array();
+$out['prev'] = NULL;
 
 if(isset($_COOKIE[session_name()])){
     session_set_cookie_params(0, app_path());
@@ -12,11 +13,11 @@ if(!isset($_SESSION['admin']) && isset($_COOKIE[session_name()]) && is_numeric($
 }
 elseif(isset($modules[$module]['VL']['login_need']) && $modules[$module]['VL']['login_need'] && !isset($_SESSION['admin'])){
     if($module != 'login_admin'){
-        $prev = $module;
+        $out['prev'] = $module;
     }
 
-    $module = 'login_admin';
+    $out['r_module'] = 'login_admin';
 }
 
-return $prev;
+return $out;
 /* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/
