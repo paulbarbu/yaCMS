@@ -126,6 +126,17 @@ if(isset($modules[$module]['pre-process']) && !empty($modules[$module]['pre-proc
     }
 }
 
+foreach ($feedback_pre as $key => $value){
+  if(is_array($value)){
+    foreach ($value as $k => $v){
+        if (isset($feedback_pre[$key]['r_module'])){
+            $module = $feedback_pre[$key]['r_module'];
+            break;
+        }
+    }
+  }
+}
+
 /**
  * Load BL
  */
