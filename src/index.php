@@ -105,12 +105,9 @@ if(isset($_GET['show'])){
 }
 else{
     foreach($modules as $candidate => $candidate_content){
-        if(!isset($candidate_content['VL']['show_in_menu'])){
-            $module = $candidate;
-            break;
-        }
-        elseif(TRUE == $candidate_content['VL']['show_in_menu']){
-            $module = $candidate;
+        if(!(isset($candidate_content['VL']['show_in_menu'])
+            && TRUE !== $candidate_content['VL']['show_in_menu'])){
+           $module = $candidate;
             break;
         }
     }
