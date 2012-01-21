@@ -105,12 +105,9 @@ if(isset($_GET['show'])){
 }
 else{
     foreach($modules as $candidate => $candidate_content){
-        if(!isset($candidate_content['VL']['show_in_menu'])){
-            $module = $candidate;
-            break;
-        }
-        elseif(TRUE == $candidate_content['VL']['show_in_menu']){
-            $module = $candidate;
+        if(!(isset($candidate_content['VL']['show_in_menu'])
+            && TRUE !== $candidate_content['VL']['show_in_menu'])){
+           $module = $candidate;
             break;
         }
     }
@@ -167,7 +164,7 @@ if(isset($modules[$module]['BL'])){
 foreach($feedback_pre as $name => $val){
     if(is_array($val) && isset($val['reload']) && $val['reload']){
         $module = $val['module'];
-        $feedback[$name]['reload'] = FALSE;
+        $feedback_pre[$name]['reload'] = FALSE;
         goto load_module;
     }
 }
