@@ -16,7 +16,8 @@ elseif(isset($modules[$module]['VL']['login_need']) && $modules[$module]['VL']['
         $out['prev'] = $module;
     }
 
-    $out['r_module'] = 'login_admin';
+    $out['module'] = 'login_admin';
+    $out['reload'] = true;
 }
 
 return $out;
