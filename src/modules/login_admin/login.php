@@ -10,7 +10,8 @@
  */
 
 $currentPass = NULL;
-$auth = FALSE;
+$out = array();
+$out['auth'] = FALSE;
 
 
 if(isset($_POST['adminlogin'])){
@@ -27,7 +28,7 @@ if(isset($_POST['adminlogin'])){
 
                 if(FALSE !== $currentPass){
                     if(trim($currentPass) == trim($pass)){
-                        $auth = TRUE;
+                        $out['auth'] = TRUE;
 
                         if(!isset($_SESSION)){
                             session_set_cookie_params(0, app_path());
@@ -37,8 +38,8 @@ if(isset($_POST['adminlogin'])){
                         $_SESSION['admin'] = TRUE;
 
                         if(isset($_GET['action']) && is_string($_GET['action'])){
-                            $module = $_GET['action'];
-                            $reload = TRUE;
+                            $out['module'] = $_GET['action'];
+                            $out['reload'] = TRUE;
                         }
                     }
                     else{
@@ -70,6 +71,6 @@ if(isset($_POST['adminlogin'])){
     }
 }
 
-return $auth;
+return $out;
 
 /* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/

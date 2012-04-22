@@ -1,10 +1,10 @@
 <form action="index.php?show=login_user
 <?php
-    if(!empty($feedback_pre['autologin'])){
+    if(!empty($feedback_pre['autologin']['prev'])){
 ?>
 &action=
 <?php
-     echo $feedback_pre['autologin'];
+     echo $feedback_pre['autologin']['prev'];
 }
 ?>
 " method="post">
@@ -37,7 +37,7 @@ if(is_numeric($feedback['login'])){
         default;
     }
 }
-elseif($feedback['login']){
+elseif($feedback['login']['auth']){
     echo 'Authentified!';
 }
 echo '</h3>';

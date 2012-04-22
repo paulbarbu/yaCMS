@@ -14,7 +14,8 @@
 
 
 $currentUser = array();
-$auth = FALSE;
+$out = array();
+$out['auth'] = FALSE;
 
 if(isset($_POST['go'])){
 
@@ -33,7 +34,7 @@ if(isset($_POST['go'])){
                     fclose($f);
 
                     if(FALSE !== $currentUser){
-                        $auth = TRUE;
+                        $out['auth'] = TRUE;
 
 
                         if(!isset($_SESSION)){
@@ -44,8 +45,8 @@ if(isset($_POST['go'])){
                         $_SESSION['uID'] = $currentUser[1];
 
                         if(isset($_GET['action']) && is_string($_GET['action'])){
-                            $module = $_GET['action'];
-                            $reload = TRUE;
+                            $out['module'] = $_GET['action'];
+                            $out['reload'] = TRUE;
                         }
                     }
                     else{ //inexistent username
@@ -79,5 +80,5 @@ if(isset($_POST['go'])){
     }
 }
 
-return $auth;
+return $out;
 /* vim: set ts=4 sw=4 tw=80 sts=4 fdm=marker nowrap et :*/
